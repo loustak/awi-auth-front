@@ -1,6 +1,6 @@
 {
   "name": "auth-front",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "react": "^16.11.0",
@@ -10,6 +10,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "style": "standard",
+    "style-fix": "standard --fix",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -27,5 +29,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "jest": "^24.9.0",
+    "standard": "^14.3.1"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
