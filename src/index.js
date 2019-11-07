@@ -6,7 +6,6 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from './components/pages/Login.js'
 import 'semantic-ui-css/semantic.min.css'
 
-
 ReactDOM.render(
   <BrowserRouter>
     <div>
