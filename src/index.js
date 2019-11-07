@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/index.css'
-import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from './components/pages/Login.js'
@@ -10,8 +9,8 @@ ReactDOM.render(
   <BrowserRouter>
     <div>
       <Switch>
-        <Route path="/login" component={Login}/>
-        <Redirect path="/*" to="/"/>
+        <Route path='/login' component={Login} />
+        <Redirect path='/*' to='/' />
       </Switch>
     </div>
   </BrowserRouter>,
