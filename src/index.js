@@ -4,6 +4,7 @@ import './styles/index.css'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from './components/pages/Login.js'
+import Dashboard from './components/pages/Dashboard.js'
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
@@ -11,6 +12,7 @@ ReactDOM.render(
     <div>
       <Switch>
         <Route path='/login' component={Login} />
+        <Route path='/dashboard' component={Dashboard} />
         <Redirect path='/*' to='/' />
       </Switch>
     </div>
