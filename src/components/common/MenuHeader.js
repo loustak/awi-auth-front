@@ -1,9 +1,15 @@
 import React from 'react'
 import logo from '../../assets/logoMyDash.svg'
 import { Button, Container, Dropdown, Icon, Image, Menu } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 class MenuHeader extends React.Component {
-  state = { activeItem: 'dashboard' }
+  constructor (props) {
+    super(props)
+    this.state = {
+      activeItem: 'dashboard'
+    }
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -12,26 +18,30 @@ class MenuHeader extends React.Component {
 
     return (
       <div>
-        <Menu stackable pointing>
+        <Menu stackable>
           <Container>
             <Menu.Item as='a' disabled>
               <Image size='tiny' src={logo} />
             </Menu.Item>
 
-            <Menu.Item
-              as='a'
-              name='dashboard'
-              active={activeItem === 'dashboard'}
-              onClick={this.handleItemClick}
-            />
+            <Link to='/dashboard'>
+              <Menu.Item
+                as='a'
+                name='dashboard'
+                active={activeItem === 'dashboard'}
+                onClick={this.handleItemClick}
+              />
+            </Link>
 
-            <Dropdown item simple text='Statistics'>
-              <Dropdown.Menu>
-                <Dropdown.Item>General</Dropdown.Item>
-                <Dropdown.Item>Courses</Dropdown.Item>
-                <Dropdown.Item>...</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <Link to='/statistics'>
+              <Dropdown item simple text='Statistics'>
+                <Dropdown.Menu>
+                  <Dropdown.Item path='statistics/general' onClick={this.handleItemClick}>General</Dropdown.Item>
+                  <Dropdown.Item>Courses</Dropdown.Item>
+                  <Dropdown.Item>...</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Link>
 
             <Menu.Item as='a' position='right'>
               <Button>
