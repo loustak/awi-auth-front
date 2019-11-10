@@ -12,7 +12,7 @@ class MenuHeader extends React.Component {
 
     return (
       <div>
-        <Menu fixed='top' stackable pointing>
+        <Menu stackable pointing>
           <Container>
             <Menu.Item as='a' disabled>
               <Image size='tiny' src={logo} />
