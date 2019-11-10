@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, Form } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
-
   constructor (props) {
     super(props)
     this.state = {

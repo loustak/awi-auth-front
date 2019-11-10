@@ -34,7 +34,10 @@ class MenuHeader extends React.Component {
             </Dropdown>
 
             <Menu.Item as='a' position='right'>
-              <Button> <Icon name='log out' color='red' /> Log out </Button>
+              <Button>
+                <Icon name='log out' color='red' />
+                Log out
+              </Button>
             </Menu.Item>
           </Container>
         </Menu>
