@@ -19,29 +19,27 @@ class MenuHeader extends React.Component {
     return (
       <div>
         <Menu stackable>
-          <Container>
             <Menu.Item as='a' disabled>
               <Image size='tiny' src={logo} />
             </Menu.Item>
 
-            <Link to='/dashboard'>
               <Menu.Item
                 as='a'
                 name='dashboard'
                 active={activeItem === 'dashboard'}
                 onClick={this.handleItemClick}
-              />
-            </Link>
+              >
+                <Link to={`/${this.props.userRole}/dashboard`}>Dashboard</Link>
+              </Menu.Item>
 
-            <Link to='/statistics'>
-              <Dropdown item simple text='Statistics'>
-                <Dropdown.Menu>
-                  <Dropdown.Item path='statistics/general' onClick={this.handleItemClick}>General</Dropdown.Item>
-                  <Dropdown.Item>Courses</Dropdown.Item>
-                  <Dropdown.Item>...</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Link>
+            <Menu.Item
+              as='a'
+              name='statistics'
+              active={activeItem === 'statistics'}
+              onClick={this.handleItemClick}
+            >
+              <Link to='/statistics'>Statistics</Link>
+            </Menu.Item>
 
             <Menu.Item as='a' position='right'>
               <Button>
@@ -49,7 +47,6 @@ class MenuHeader extends React.Component {
                 Log out
               </Button>
             </Menu.Item>
-          </Container>
         </Menu>
       </div>
 

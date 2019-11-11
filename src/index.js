@@ -12,7 +12,9 @@ ReactDOM.render(
     <div>
       <Switch>
         <Route path='/login' component={Login} />
-        <Route path='/dashboard' component={Dashboard} />
+        <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} />
+        <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} />
+        <Route path='/statistics' component={Dashboard} />
         <Redirect path='/*' to='/' />
       </Switch>
     </div>

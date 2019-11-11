@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Container, Segment, Card } from 'semantic-ui-react'
+import { Container, Segment, Card, Header } from 'semantic-ui-react'
 
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -45,17 +45,15 @@ const settings = {
 const UserApps = () => {
   return (
     <Container>
-      <Slider {...settings} style={{ padding: 50 }}>
+      <Header as='h2' inverted>My Apps</Header>
+      <Slider {...settings}>
 
         <Card color='teal' fluid>
-          <Card.Content>
+          <Card.Content textAlign='center'>
             <Card.Header textAlign='center'>My courses</Card.Header>
             <Card.Meta>
               <span className='date'>Joined in 2015</span>
             </Card.Meta>
-          </Card.Content>
-          <Card.Content>
-            <Button icon='trash' compact size='mini' />
           </Card.Content>
         </Card>
         <Segment inverted size='huge' />
@@ -67,9 +65,6 @@ const UserApps = () => {
               <span className='date'>Joined in 2015</span>
             </Card.Meta>
           </Card.Content>
-          <Card.Content>
-            <Button icon='trash' compact size='mini' />
-          </Card.Content>
         </Card>
         <Segment inverted size='huge' />
 
@@ -80,9 +75,6 @@ const UserApps = () => {
               <span className='date'>Joined in 2015</span>
             </Card.Meta>
           </Card.Content>
-          <Card.Content>
-            <Button icon='trash' compact size='mini' />
-          </Card.Content>
         </Card>
         <Segment inverted size='huge' />
 
@@ -92,9 +84,6 @@ const UserApps = () => {
             <Card.Meta>
               <span className='date'>Joined in 2015</span>
             </Card.Meta>
-          </Card.Content>
-          <Card.Content>
-            <Button icon='trash' compact size='mini' />
           </Card.Content>
         </Card>
         <Segment inverted size='huge' />

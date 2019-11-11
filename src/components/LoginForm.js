@@ -18,11 +18,14 @@ class LoginForm extends React.Component {
     this.setState({ password: event.target.value })
   }
 
+  handleSubmitLogin (event) {
+  }
+
   render () {
     const isEnabled = this.state.email.length > 0 && this.state.password.length > 0
 
     return (
-      <Form size='large'>
+      <Form size='large' onSubmit={this.handleSubmitLogint}>
         <Form.Input
           fluid
           icon='user'
