@@ -9,17 +9,16 @@ import StudentModules from '../StudentModules'
 
 const studentTabs = [
   { menuItem: 'General Infos', render: () => <Tab.Pane><StudentGeneralInfos /></Tab.Pane> },
-  { menuItem: 'My modules', render: () => <Tab.Pane><StudentModules/></Tab.Pane> },
+  { menuItem: 'My modules', render: () => <Tab.Pane><StudentModules /></Tab.Pane> }
 ]
 
 const teacherTabs = [
   { menuItem: 'General Infos', render: () => <Tab.Pane>TO DO</Tab.Pane> },
-  { menuItem: 'My students', render: () => <Tab.Pane><TeacherStudentList /></Tab.Pane> },
+  { menuItem: 'My students', render: () => <Tab.Pane><TeacherStudentList /></Tab.Pane> }
 ]
 
 class Dashboard extends React.Component {
-
-  render() {
+  render () {
     return (
       <Responsive>
         <Segment
@@ -27,9 +26,9 @@ class Dashboard extends React.Component {
           style={{ minHeight: 300, padding: '2em 4em' }}
         >
 
-          <MenuHeader userRole={this.props.userRole}/>
-          <Divider/>
-          <UserApps/>
+          <MenuHeader userRole={this.props.userRole} />
+          <Divider />
+          <UserApps />
 
         </Segment>
 

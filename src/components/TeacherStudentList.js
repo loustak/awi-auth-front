@@ -6,7 +6,7 @@ const classesOptions = [
     key: 'IG4',
     text: 'IG4',
     value: 'IG4',
-    image: { src: 'https://www.polytech.umontpellier.fr/images/formation/ig/logoig.png' },
+    image: { src: 'https://www.polytech.umontpellier.fr/images/formation/ig/logoig.png' }
   }
 ]
 

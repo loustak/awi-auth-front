@@ -5,7 +5,7 @@ const generalAverage = 9
 
 const StudentModules = () => (
   <Container>
-  <Header as='h4'>Semester 9</Header>
+    <Header as='h4'>Semester 9</Header>
     <Table celled striped>
       <Table.Header>
         <Table.Row>
@@ -28,14 +28,14 @@ const StudentModules = () => (
           </Table.Cell>
           <Table.Cell collapsing textAlign='right'>1 ECTS</Table.Cell>
           <Table.Cell collapsing textAlign='right'>
-            <Input type='number' fluid placeholder='Mark' size='mini' label={{ basic: false, content: '/20' }} labelPosition='right'/>
+            <Input type='number' fluid placeholder='Mark' size='mini' label={{ basic: false, content: '/20' }} labelPosition='right' />
           </Table.Cell>
         </Table.Row>
       </Table.Body>
     </Table>
 
     <Container textAlign='right'>
-      <Label basic color={generalAverage > 10 ? 'green' : 'red' }>Average: 12/20 </Label>
+      <Label basic color={generalAverage > 10 ? 'green' : 'red'}>Average: 12/20 </Label>
     </Container>
   </Container>
 )
