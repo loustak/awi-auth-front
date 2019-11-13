@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Message } from 'semantic-ui-react'
 import axiosInstance from '../utils/API'
 
 class LoginForm extends React.Component {
@@ -9,7 +9,7 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      messageError: ''
     }
 
     this.handleEmailChange = this.handleEmailChange.bind(this)
@@ -31,20 +31,22 @@ class LoginForm extends React.Component {
       password: this.state.password
     }
 
+    const self = this
+
     axiosInstance
       .post(
-        'login',
+        '/oauth2/auth',
         { payload },
-        { withCredentials: true }
       )
       .then(function (response) {
-        console.log(response)
         if (response.data.code === 200) {
-          console.log('Login successfull')
-        } else if (response.data.code === 204) {
-          console.log('Username password do not match')
-        } else {
-          console.log('Username does not exists')
+          self.setState({ messageError: '' })
+        }
+        else if (response.data.code === 204) {
+          self.setState({ messageError: 'Email and password do not match' })
+        }
+        else if (response.data.code === 400) {
+          self.setState({ messageError: 'Email and password are required' })
         }
       })
       .catch(function (error) {
@@ -75,6 +77,12 @@ class LoginForm extends React.Component {
           type='password'
           onChange={this.handlePasswordChange}
         />
+
+        {this.state.messageError !== '' &&
+          <Message negative size='mini'>
+            <Message.Content>{this.state.messageError}</Message.Content>
+          </Message>
+        }
 
         <Button color='teal' fluid size='large' disabled={!isEnabled}>
         Login
