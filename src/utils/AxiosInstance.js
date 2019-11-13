@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'https://mydash.igpolytech.fr/api/',
+  baseURL: 'http://localhost:3000/oauth2',
   timeout: 2000,
   responseType: 'json'
 })
