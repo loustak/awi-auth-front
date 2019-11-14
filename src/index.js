@@ -14,8 +14,7 @@ ReactDOM.render(
         <Route path='/login' component={Login} />
         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} />
         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} />
-        <Route path='/statistics' component={Dashboard} />
-        <Redirect path='/*' to='/' />
+        <Redirect path='/*' to='/login' />
       </Switch>
     </div>
   </BrowserRouter>,
