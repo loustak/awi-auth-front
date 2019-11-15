@@ -11,23 +11,18 @@ class Login extends React.Component {
     this.auth = AuthenticationService.getInstance()
   }
 
-  componentDidMount () {
-    const params = {}
+  render () {
+    const uriParams = {}
     window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (_, key, value) => {
-      params[key] = value;
+      uriParams[key] = value
     })
 
-    this.redirect_uri = params.redirect_uri
-    this.stateAuth = params.state
-  }
-
-  render () {
     return (
       <Grid centered textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 300 }}>
           <Image src={logo} size='medium' centered />
           <Divider hidden />
-          <LoginForm redirect_uri={this.redirect_uri} stateAuth={this.stateAuth} {...this.props} />
+          <LoginForm redirect_uri={uriParams.redirect_uri} stateAuth={uriParams.state} {...this.props} />
         </Grid.Column>
       </Grid>
     )
