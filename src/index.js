@@ -11,7 +11,7 @@ ReactDOM.render(
   <BrowserRouter>
     <div>
       <Switch>
-        <Route path='/login' component={Login} />
+        <Route path='/login' component={(props) => <Login {...props} />} />
         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} />
         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} />
         <Redirect path='/*' to='/login' />

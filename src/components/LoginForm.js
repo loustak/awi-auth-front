@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
     event.preventDefault()
 
     const redirectUri = this.props.redirect_uri
-    const state = this.props.stateReceived
+    const state = this.props.stateAuth
 
     this.auth
       .login(this.state.email, this.state.password)

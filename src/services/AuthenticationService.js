@@ -22,20 +22,12 @@ class AuthenticationService {
         }
       )
       .then(response => {
-        if (!response.data.authorized_code) {
+        if (!response.data.authorize_code) {
           return Promise.reject(new Error('auth fail'))
         } else {
-          return response.data.authorized_code
+          return response.data.authorize_code
         }
       })
-  }
-
-  // GET request for
-  getAuthorizeArguments () {
-    return axiosInstance
-      .get('/authorize')
-      .then(response => Promise.resolve(response))
-      .catch(error => console.log(error))
   }
 }
 

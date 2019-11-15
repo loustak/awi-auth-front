@@ -12,15 +12,13 @@ class Login extends React.Component {
   }
 
   componentDidMount () {
-    this.auth
-      .getAuthorizeArguments()
-      .then(response => {
-        this.redirect_uri = response.data.redirect_uri
-        this.stateReceived = response.data.state
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+    const params = {}
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (_, key, value) => {
+      params[key] = value;
+    })
+
+    this.redirect_uri = params.redirect_uri
+    this.stateAuth = params.state
   }
 
   render () {
@@ -29,7 +27,7 @@ class Login extends React.Component {
         <Grid.Column style={{ maxWidth: 300 }}>
           <Image src={logo} size='medium' centered />
           <Divider hidden />
-          <LoginForm redirect_uri={this.redirect_uri} stateReceived={this.stateReceived} />
+          <LoginForm redirect_uri={this.redirect_uri} stateAuth={this.stateAuth} {...this.props} />
         </Grid.Column>
       </Grid>
     )
