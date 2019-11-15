@@ -1,7 +1,6 @@
 import axiosInstance from '../utils/AxiosInstance'
 
 class AuthenticationService {
-
   static instance = null
 
   static getInstance () {
@@ -12,7 +11,7 @@ class AuthenticationService {
   }
 
   login (email, password) {
-    axiosInstance
+    return axiosInstance
       .post(
         '/auth',
         { username: email, password: password },
@@ -22,8 +21,7 @@ class AuthenticationService {
           }
         }
       )
-      .then(function (response) {
-
+      .then(response => {
         if (!response.data.authorized_code) {
           return Promise.reject(new Error('auth fail'))
         } else {
@@ -32,12 +30,12 @@ class AuthenticationService {
       })
   }
 
-  isLoggedIn () {
-    // TO DO
-  }
-
-  logout () {
-    // TO DO
+  // GET request for
+  getAuthorizeArguments () {
+    return axiosInstance
+      .get('/authorize')
+      .then(response => Promise.resolve(response))
+      .catch(error => console.log(error))
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Form, Message } from 'semantic-ui-react'
-import axiosInstance from '../utils/API'
+import AuthenticationService from '../services/AuthenticationService'
 
 class LoginForm extends React.Component {
   constructor (props) {
@@ -15,6 +15,8 @@ class LoginForm extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleSubmitLogin = this.handleSubmitLogin.bind(this)
+
+    this.auth = AuthenticationService.getInstance()
   }
 
   handleEmailChange (event) {
@@ -26,34 +28,28 @@ class LoginForm extends React.Component {
   }
 
   handleSubmitLogin (event) {
-    const payload = {
-      email: this.state.email,
-      password: this.state.password
-    }
-
-    const self = this
-
-    axiosInstance
-      .post(
-        '/oauth2/auth',
-        { payload },
-      )
-      .then(function (response) {
-        if (response.data.code === 200) {
-          self.setState({ messageError: '' })
-        }
-        else if (response.data.code === 204) {
-          self.setState({ messageError: 'Email and password do not match' })
-        }
-        else if (response.data.code === 400) {
-          self.setState({ messageError: 'Email and password are required' })
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
-
     event.preventDefault()
+
+    const redirectUri = this.props.redirect_uri
+    const state = this.props.stateReceived
+
+    this.auth
+      .login(this.state.email, this.state.password)
+      .then(function (response) {
+        this.setState({ messageError: '' })
+        this.props.history.replace(redirectUri + '?authorization_code=' + response + '&state=' + state)
+      })
+      .catch(error => {
+        console.log(error)
+
+        // Display Error Message Component
+        if (error === 'auth fail') {
+          this.setState({
+            password: '',
+            messageError: 'Email and password not matching'
+          })
+        }
+      })
   }
 
   render () {
@@ -81,11 +77,10 @@ class LoginForm extends React.Component {
         {this.state.messageError !== '' &&
           <Message negative size='mini'>
             <Message.Content>{this.state.messageError}</Message.Content>
-          </Message>
-        }
+          </Message>}
 
         <Button color='teal' fluid size='large' disabled={!isEnabled}>
-        Login
+          Login
         </Button>
       </Form>
     )
