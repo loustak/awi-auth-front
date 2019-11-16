@@ -19,7 +19,7 @@ function Modal (props) {
         {
           props.buttonText
             ? <BModal.Footer>
-              <Button onClick={props.onSuccess}>
+              <Button onClick={props.onSuccess} disabled={props.disableButton}>
                 {props.buttonText}
               </Button>
             </BModal.Footer>

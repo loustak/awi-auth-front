@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form } from 'react-bootstrap'
+import { Col, Form } from 'react-bootstrap'
 import { addMark } from '../../../store/actions/subjects.action'
 import Modal from '../../Modal/Modal'
 import styles from './StudentItem.module.css'
@@ -45,6 +45,7 @@ function StudentItem (props) {
         show={show}
         title='Ajouter une note'
         buttonText='Ajouter'
+        disableButton={!(formik.values.mark >= 0 && formik.values.coeff > 0 && formik.values.exam !== '')}
         onCancel={() => setShow(false)}
         onSuccess={() => {
           addMark(props.subjectId, props.id, {
@@ -56,21 +57,23 @@ function StudentItem (props) {
         }}
       >
         <Form>
-          <Form.Group controlId='mark'>
-            <Form.Label>Note</Form.Label>
-            <Form.Control
-              type='number'
-              {...formik.getFieldProps('mark')}
-              autoFocus
-            />
-          </Form.Group>
-          <Form.Group controlId='coeff'>
-            <Form.Label>Coefficient</Form.Label>
-            <Form.Control
-              type='number'
-              {...formik.getFieldProps('coeff')}
-            />
-          </Form.Group>
+          <Form.Row>
+            <Form.Group as={Col} controlId='mark'>
+              <Form.Label>Note</Form.Label>
+              <Form.Control
+                type='number'
+                {...formik.getFieldProps('mark')}
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId='coeff'>
+              <Form.Label>Coefficient</Form.Label>
+              <Form.Control
+                type='number'
+                {...formik.getFieldProps('coeff')}
+              />
+            </Form.Group>
+          </Form.Row>
           <Form.Group controlId='exam'>
             <Form.Label>Examen</Form.Label>
             <Form.Control
