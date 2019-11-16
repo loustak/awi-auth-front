@@ -3,7 +3,6 @@ import styles from './Collapse.module.css'
 import { Collapse as BCollapse } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import Button from '../Button/Button'
 
 function Collapse (props) {
   const [open, setOpen] = useState(true)
@@ -21,12 +20,6 @@ function Collapse (props) {
           />
           <h4 className={styles.title}>{props.title}</h4>
         </div>
-        <Button
-          shape='round'
-          onClick={props.onClick}
-        >
-          {props.buttonText}
-        </Button>
       </div>
 
       <BCollapse in={open} className={styles.contentWrapper}>
