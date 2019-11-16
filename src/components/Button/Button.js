@@ -7,7 +7,7 @@ function Button (props) {
     <BButton
       className={styles.button}
       variant={props.variant || 'blue'}
-      style={{ borderRadius: (props.shape === 'round' ? '50px' : props.shape === 'square' ? '0' : '0.25rem') }}
+      style={{ borderRadius: (props.shape === 'round' ? '33px' : props.shape === 'square' ? '0' : '33px') }}
       {...props}
     >
       {props.children}
