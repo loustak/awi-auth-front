@@ -23,7 +23,7 @@ function Collapse (props) {
       </div>
 
       <BCollapse in={open} className={styles.contentWrapper}>
-        <div id='collapse-content' className={styles.content}>
+        <div id='collapse-content'>
           {props.children}
         </div>
       </BCollapse>

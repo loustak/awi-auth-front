@@ -1,0 +1,9 @@
+.searchInput{
+    flex-shrink: 0;
+}
+
+.appsContainer {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}

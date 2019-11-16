@@ -22,7 +22,7 @@ function Modal (props) {
               <Button shape='round' onClick={props.onClick}>
                 {props.nameButton}
               </Button>
-            </BModal.Footer>
+              </BModal.Footer>
             : null}
 
         </BModal>

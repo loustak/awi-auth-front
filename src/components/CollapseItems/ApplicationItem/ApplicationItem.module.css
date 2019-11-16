@@ -1,20 +1,37 @@
 .applicationItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #D3D3D3;
-    padding: 10px;
+    position: relative;
+    border: 1px solid #D3D3D3;
+    color: #00ABB2 ;
+    border-radius: 5px;
+    margin: 15px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    cursor : pointer;
+    max-width: 300px;
 }
 
-.applicationItem:last-child {
-    border-bottom: none;
+.applicationName {
+    padding: 20px 45px;
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.left {
-}
-
-.right {
-}
 .status {
     font-weight: 500;
+}
+
+.applicationDelete {
+    position: absolute;
+    right : 5px;
+    top : 5px;
+    color: #D3D3D3;
+}
+
+.deleteConfirm {
+    color: #00ABB2;
+}
+
+.deleteCancel {
+    color : grey;
 }
