@@ -9,6 +9,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { isAuthenticated } from './services/authenticationService'
 import Dashboard from './components/pages/Dashboard'
+import DashboardTeacher from './components/pages/DashboardTeacher'
+
+
 
 import './App.css'
 
@@ -51,7 +54,8 @@ function App () {
         <div className='App'>
           <Page>
             <NonAuthenticatedRoute exact path='/login' component={Login}/>
-            <PublicRoute exact path='/' component={Dashboard}/>
+            <PublicRoute exact path='/student' component={Dashboard}/>
+            <PublicRoute exact path='/teacher' component={DashboardTeacher}/>
             {/*//         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} />*/}
             {/*//         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} />*/}
             {/*<NonAuthenticatedRoute exact path='/inscription' component={Register}/>*/}
