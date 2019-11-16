@@ -8,9 +8,9 @@ function Sidebar (props) {
     <>
       <div className={styles.sidebar + ' d-none d-md-block'}>
         <div className='Sidebar-top'>
-          <div id='logo-container' className='clickable' as={NavLink} to='/'>
+          <div id={styles.logoTop} className='clickable' as={NavLink} to='/' style={{height: '200px'}}>
             <NavLink to='/'>
-              <img src='https://poly-recrute.igpolytech.fr/logo.png' alt='logo' />
+              <img src='' alt='' />
             </NavLink>
           </div>
           <div className={styles.navigation}>
@@ -19,9 +19,6 @@ function Sidebar (props) {
             <SidebarButton name='Notes' to='/notes' />
             <SidebarButton name='Simulateur' to='/simulateur' />
           </div>
-        </div>
-        <div className={styles.sidebarBottom}>
-          <SidebarButton name='Déconnexion' to='/connexion' variant='exit' />
         </div>
       </div>
     </>
