@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Form, Message } from 'semantic-ui-react'
-import AuthenticationService from '../services/AuthenticationService'
+import OauthService from '../services/oauthService'
 
 class LoginForm extends React.Component {
   constructor (props) {
@@ -16,7 +16,7 @@ class LoginForm extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleSubmitLogin = this.handleSubmitLogin.bind(this)
 
-    this.auth = AuthenticationService.getInstance()
+    this.auth = OauthService.getInstance()
   }
 
   handleEmailChange (event) {
@@ -28,27 +28,23 @@ class LoginForm extends React.Component {
   }
 
   handleSubmitLogin (event) {
+    const self = this
     event.preventDefault()
 
-    const redirectUri = this.props.redirect_uri
-    const state = this.props.stateAuth
+    const redirectUri = self.props.redirect_uri
+    const state = self.props.stateAuth
 
-    this.auth
-      .login(this.state.email, this.state.password)
+    self.auth
+      .login(self.state.email, self.state.password)
       .then(function (response) {
-        this.setState({ messageError: '' })
-        this.props.history.replace(redirectUri + '?authorization_code=' + response + '&state=' + state)
+        window.location.replace(redirectUri + '?authorization_code=' + response + '&state=' + state)
       })
       .catch(error => {
-        console.log(error.toJSON())
-
-        // Display Error Message Component
-        if (error === 'auth fail') {
-          this.setState({
-            password: '',
-            messageError: 'Email and password not matching'
-          })
-        }
+        console.log(error)
+        self.setState({
+          password: '',
+          messageError: 'Email and password not matching'
+        })
       })
   }
 
