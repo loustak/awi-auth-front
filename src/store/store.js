@@ -26,7 +26,7 @@ const defaultCurrentUserState = {
       email: '',
       firstName: '',
       lastName: '',
-      picture: 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
+      picture: 'https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png',
       role: 'teacher'
     }
   }
