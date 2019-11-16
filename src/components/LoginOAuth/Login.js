@@ -15,7 +15,7 @@ function Login () {
         <Divider hidden />
         <Header as='h1' textAlign='center'>{uriParams.app_name ? uriParams.app_name : 'Login Page'}</Header>
         <Divider />
-        <LoginForm redirect_uri={uriParams.redirect_uri} stateAuth={uriParams.state} />
+        <LoginForm redirect_uri={uriParams.redirect_uri} stateAuth={uriParams.state} client_id={uriParams.client_id}/>
       </Grid.Column>
     </Grid>
   )
