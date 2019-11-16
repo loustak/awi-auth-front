@@ -1,13 +1,20 @@
-// import store from '../store'
+import store from '../store'
 // import { fetchUser, updateProfileActionDistant } from '../../services/User.services'
 
-// export function setConnectedUser (user) {
-//   store.dispatch({
-//     type: 'SET_USER',
-//     payload: user
-//   })
-// }
-//
+export function setCurrentUser (user) {
+  store.dispatch({
+    type: 'FETCH_CURRENT_USER_SUCCESS',
+    payload: user
+  })
+}
+
+export function setCurrentUserRole (role) {
+  store.dispatch({
+    type: 'SET_CURRENT_USER_ROLE',
+    payload: role
+  })
+}
+
 // export function setFetchedUser (id) {
 //   return new Promise((resolve, reject) => {
 //     store.dispatch({type: 'FETCH_USER_PROFILE_START'})

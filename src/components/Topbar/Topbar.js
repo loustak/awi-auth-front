@@ -37,31 +37,48 @@ function Topbar(props) {
       <Navbar.Toggle className={styles.toggleButton} aria-controls='responsive-navbar-nav'/>
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='ml-auto'>
-          <NavLink
-            as={NavLink} to='/profil'
-            className={styles.topbarButton + ' d-lg-none'}
-          >Profil
-          </NavLink>
-          <NavLink
-            as={NavLink} to='/applications'
-            className={styles.topbarButton + ' d-lg-none'}
-          >Applications
-          </NavLink>
-          <NavLink
-            as={NavLink} to='/cours'
-            className={styles.topbarButton + ' d-lg-none'}
-          >Cours
-          </NavLink>
-          <NavLink
-            as={NavLink} to='/notes'
-            className={styles.topbarButton + ' d-lg-none'}
-          >Notes
-          </NavLink>
-          <NavLink
-            as={NavLink} to='/simulateur'
-            className={styles.topbarButton + ' d-lg-none'}
-          >Simulateur
-          </NavLink>
+          {
+            props.for.role === 'student'
+              ? <>
+                <NavLink
+                  as={NavLink} to='/profil'
+                  className={styles.topbarButton + ' d-lg-none'}
+                >Profil
+                </NavLink>
+                <NavLink
+                  as={NavLink} to='/applications'
+                  className={styles.topbarButton + ' d-lg-none'}
+                >Applications
+                </NavLink>
+                <NavLink
+                  as={NavLink} to='/cours'
+                  className={styles.topbarButton + ' d-lg-none'}
+                >Cours
+                </NavLink>
+                <NavLink
+                  as={NavLink} to='/notes'
+                  className={styles.topbarButton + ' d-lg-none'}
+                >Notes
+                </NavLink>
+                <NavLink
+                  as={NavLink} to='/simulateur'
+                  className={styles.topbarButton + ' d-lg-none'}
+                >Simulateur
+                </NavLink>
+              </>
+              : <>
+                <NavLink
+                  as={NavLink} to='/dashboard'
+                  className={styles.topbarButton + ' d-lg-none'}
+                >Dashboard
+                </NavLink>
+                <NavLink
+                  as={NavLink} to='/stats'
+                  className={styles.topbarButton + ' d-lg-none'}
+                >Stats
+                </NavLink>
+              </>
+          }
           <NavLink as={NavLink} to='/login' className={styles.topbarButton}>Déconnexion</NavLink>
         </Nav>
       </Navbar.Collapse>
