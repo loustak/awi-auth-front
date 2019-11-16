@@ -1,20 +1,28 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import { useFormik } from 'formik'
-import { Button, Form, Input } from 'semantic-ui-react'
+import { Formik, useFormik } from 'formik'
+import { Button, Form, Input, Message, Label, Header } from 'semantic-ui-react'
 import OauthService from '../../services/oauthService'
+import * as Yup from 'yup'
 
-function LoginForm (props) {
-  const auth = OauthService.getInstance()
+const LoginSchema = Yup.object().shape({
+  username: Yup.string()
+    .required('Username is required'),
+  password: Yup.string()
+    .required('Password is required'),
+})
 
-  const formik = useFormik({
-    initialValues: {
+const auth = OauthService.getInstance()
+
+export const LoginForm = (props) => (
+
+  <Formik
+    initialValues={{
       username: '',
-      password: ''
-    },
-    onSubmit: values => {
-      console.log(values, props)
-
+      password: '',
+    }}
+    validationSchema={LoginSchema}
+    onSubmit={values => {
       auth
         .login(values.username, values.password)
         .then(function (response) {
@@ -22,40 +30,56 @@ function LoginForm (props) {
         })
         .catch(error => {
           console.log(error)
-          formik.setFieldValue('password', '')
-          error = 'Email and password not matching'
+
         })
-    }
-  })
+    }}
+  >
 
-  return (
-    <Form size='large' onSubmit={formik.handleSubmit}>
+    {({ handleChange, handleSubmit, values, errors, touched }) => (
+      <Form size='large' onSubmit={handleSubmit}>
 
-      <Form.Field
-        icon='user'
-        iconPosition='left'
-        control={Input}
-        label='Username'
-        placeholder='firstname.lastname'
-        {...formik.getFieldProps('username')}
-      />
-      <Form.Field
-        icon='lock'
-        iconPosition='left'
-        control={Input}
-        label='Password'
-        placeholder='password'
-        type='password'
-        {...formik.getFieldProps('password')}
-      />
+        <Form.Field>
+          <Header as='h3'>Username</Header>
+          <Input
+            icon='user'
+            iconPosition='left'
+            placeholder='firstname.lastname'
+            value={values.username}
+            onChange={handleChange('username')}
+          />
+          {errors.username && touched.username &&
+            <Label basic color='red' pointing>
+              {errors.username}
+            </Label>
+          }
 
-      <Button fluid size='large'>
-        Login
-      </Button>
+        </Form.Field>
 
-    </Form>
+        <Form.Field>
+          <Header as='h3'>Password</Header>
+          <Input
+            icon='lock'
+            iconPosition='left'
+            placeholder='password'
+            type='password'
+            value={values.password}
+            onChange={handleChange('password')}
+          />
+          {errors.password && touched.password &&
+          <Label basic color='red' pointing>
+            {errors.password}
+          </Label>
+          }
+        </Form.Field>
 
-  )
-}
+        <Button fluid size='large' onPress={handleSubmit}>
+          Login
+        </Button>
+
+      </Form>
+    )}
+  </Formik>
+
+)
 
 export default withRouter(LoginForm)
