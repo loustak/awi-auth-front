@@ -28,7 +28,7 @@ const apps = [
 class Applications extends React.Component {
   render () {
     return (
-      <div className='applicationItem'>
+      <div className={styles.applicationItem}>
         <Collapse title='Récemment ouvertes' subtitle='Cliquer sur la croix pour supprimer une application du Store.'>
           {
             apps.length > 0

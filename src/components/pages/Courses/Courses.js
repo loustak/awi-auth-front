@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Collapse from '../../Collapse/Collapse'
 import CourseItem from '../../CollapseItems/CourseItem/CourseItem'
 import Form from 'react-bootstrap/Form'
-import styles from './Courses.module.css'
 import { Col } from 'react-bootstrap'
 
 
@@ -16,20 +15,19 @@ const courses = [
 function Courses (props) {
   const [search, setSearch] = useState('')
 
-
   return (
       <div className='applicationItem'>
         <div>
           {
             courses.length > 0
               ?
-                <Form.Group as={Col} controlId='search' className={styles.divSearchBar}>
+                <Form.Group as={Col} controlId='search' className='divSearchBarDash'>
                 <Form.Label>Rechercher</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Rechercher"
                   onChange={e => setSearch(e.target.value.toLowerCase())}
-                  className={styles.searchBar}
+                  className='searchBarDash'
                 />
                 </Form.Group>
               : null
