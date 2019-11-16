@@ -33,14 +33,8 @@ function Topbar (props) {
       <Navbar.Toggle className={styles.toggleButton} aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='ml-auto'>
-          <NavLink as={NavLink} to='/profil' className={styles.topbarButton}>
-            <div className={classNames({
-              [styles.topbarProfilePicture]: true,
-              'd-none': true,
-              'd-lg-flex': true
-            })}
-            />
-            <div>NOM Prénom</div>
+          <NavLink as={NavLink} to='/login' className={styles.topbarButton}>
+            <div>Déconnexion</div>
           </NavLink>
           <NavLink
             as={NavLink} to='/candidatures'

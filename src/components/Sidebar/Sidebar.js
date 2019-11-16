@@ -14,14 +14,11 @@ function Sidebar (props) {
             </NavLink>
           </div>
           <div className={styles.navigation}>
-            <SidebarButton name='Candidatures' to='/candidatures' />
-            <SidebarButton name='Recommandations' to='/recommandations' />
-            <SidebarButton name='Calendrier' to='/calendrier' />
-            <SidebarButton name='Messages' to='/messages' />
+            <SidebarButton name='Applications' to='/candidatures' />
+            <SidebarButton name='Cours' to='/recommandations' />
+            <SidebarButton name='Notes' to='/calendrier' />
+            <SidebarButton name='Simulateur' to='/messages' />
           </div>
-        </div>
-        <div className={styles.sidebarBottom}>
-          <SidebarButton name='Déconnexion' to='/connexion' variant='exit' />
         </div>
       </div>
     </>

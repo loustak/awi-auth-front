@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../styles/App.css'
 import LoginForm from '../LoginForm.js'
 import { Grid, Image, Divider } from 'semantic-ui-react'
 import logo from '../../assets/logoMyDash.svg'

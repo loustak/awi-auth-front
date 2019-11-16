@@ -1,6 +1,4 @@
 import React from 'react'
-import logo from './assets/logo.svg'
-import './styles/App.css'
 import 'semantic-ui-css/semantic.min.css'
 import Login from './components/pages/Login'
 import { Provider } from 'react-redux'
@@ -9,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { isAuthenticated } from './services/authenticationService'
 import Dashboard from './components/pages/Dashboard'
-import DashboardTeacher from './components/pages/DashboardTeacher'
 
 import './App.css'
 
@@ -56,8 +53,7 @@ function App () {
         <div className='App'>
           <Page>
             <NonAuthenticatedRoute exact path='/login' component={Login} />
-            <PublicRoute exact path='/student' component={Dashboard} />
-            <PublicRoute exact path='/teacher' component={DashboardTeacher} />
+            <PublicRoute exact path='/' component={Dashboard} />
             {/* //         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} /> */}
             {/* //         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} /> */}
             {/* <NonAuthenticatedRoute exact path='/inscription' component={Register}/> */}

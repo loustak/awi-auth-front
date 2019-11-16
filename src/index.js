@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './styles/index.css'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from './components/pages/Login.js'
