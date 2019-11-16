@@ -29,21 +29,31 @@ function Topbar (props) {
       <Navbar.Toggle className={styles.toggleButton} aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='ml-auto'>
-          <NavLink as={NavLink} to='/profil' className={styles.topbarButton}>
-            <div>LOGOUT</div>
+            <NavLink
+                as={NavLink} to='/profil'
+                className={styles.topbarButton + ' d-lg-none'}
+            >Profil
+            </NavLink>
+          <NavLink
+            as={NavLink} to='/applications'
+            className={styles.topbarButton + ' d-lg-none'}
+          >Applications
           </NavLink>
           <NavLink
-            as={NavLink} to='/candidatures'
+            as={NavLink} to='/cours'
             className={styles.topbarButton + ' d-lg-none'}
-          >Candidatures
+          >Cours
           </NavLink>
-          <NavLink
-            as={NavLink} to='/recommandations'
-            className={styles.topbarButton + ' d-lg-none'}
-          >Recommandations
-          </NavLink>
-          <NavLink as={NavLink} to='/calendrier' className={styles.topbarButton + ' d-lg-none'}>Calendrier</NavLink>
-          <NavLink as={NavLink} to='/messages' className={styles.topbarButton + ' d-lg-none'}>Messages</NavLink>
+            <NavLink
+                as={NavLink} to='/notes'
+                className={styles.topbarButton + ' d-lg-none'}
+            >Notes
+            </NavLink>
+            <NavLink
+                as={NavLink} to='/simulateur'
+                className={styles.topbarButton + ' d-lg-none'}
+            >Simulateur
+            </NavLink>
           <NavLink as={NavLink} to='/connexion' className={styles.topbarButton + ' d-lg-none'}>Déconnexion</NavLink>
         </Nav>
       </Navbar.Collapse>

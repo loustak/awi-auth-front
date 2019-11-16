@@ -1,11 +1,10 @@
 .sidebarButton {
     width: 100%;
-    color: #083B66;
+    color: white;
 }
 
 .sidebarButton:hover {
     width: 100%;
-    color: #083B66;
-    background-color: #ebebeb;
-
+    color: white;
+    background-color: #00ABB2;
 }
