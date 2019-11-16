@@ -21,12 +21,6 @@ function Collapse (props) {
           />
           <h4 className={styles.title}>{props.title}</h4>
         </div>
-        <Button
-          shape='round'
-          onClick={props.onClick}
-        >
-          {props.buttonText}
-        </Button>
       </div>
 
       <BCollapse in={open} className={styles.contentWrapper}>

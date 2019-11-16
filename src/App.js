@@ -17,6 +17,7 @@ import Page from './components/Page/Page'
 // import Home from './components/Pages/Home/Home'
 // import Profile from './components/Pages/Profile/Profile'
 import store from './store/store'
+import Applications from "./components/pages/Applications/Applications";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -57,7 +58,8 @@ function App () {
           <Page>
             <NonAuthenticatedRoute exact path='/login' component={Login} />
             <PublicRoute exact path='/student' component={Dashboard} />
-            <PublicRoute exact path='/teacher' component={DashboardTeacher} />
+              <PublicRoute exact path='/teacher' component={DashboardTeacher} />
+              <PublicRoute exact path='/applications' component={Applications} />
             {/* //         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} /> */}
             {/* //         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} /> */}
             {/* <NonAuthenticatedRoute exact path='/inscription' component={Register}/> */}
