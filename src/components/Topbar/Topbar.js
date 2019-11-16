@@ -1,8 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink, withRouter } from 'react-router-dom'
 import classNames from 'classnames'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './Topbar.module.css'
 import Navbar from 'react-bootstrap/Navbar'
@@ -13,8 +13,13 @@ import { capitalize } from '../../Utils'
 
 function Topbar (props) {
   return (
-    <Navbar className={styles.topbar + ' justify-content-between'} collapseOnSelect expand='lg' variant='dark'>
+    <Navbar className={styles.topbar + ' justify-content-between'} collapseOnSelect expand={props.expanded ? 'lg' : 'false'} variant='dark'>
       <Navbar.Text className={styles.location}>
+        <FontAwesomeIcon
+          icon={faBars}
+          className={styles.icon}
+          onClick={props.onSidebarToggle}
+        />
         <Breadcrumb className={styles.breadcrumb}>
           <BreadcrumbItem componentClass='div'><Link to='/'>Accueil</Link></BreadcrumbItem>
           {

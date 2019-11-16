@@ -44,9 +44,6 @@ const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
 )
 
 function App () {
-  const studentDash = <Dashboard userRole='student' />
-  const teacherDash = <Dashboard userRole='teacher' />
-
   return (
     <Router>
       <Provider store={store}>

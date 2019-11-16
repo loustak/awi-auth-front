@@ -17,6 +17,8 @@
 }
 
 .location {
+    display: flex;
+    align-items: center;
     color: white !important;
     font-size: 1.25rem;
 }
@@ -46,5 +48,11 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    margin-right: 10px;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 1.5rem;
     margin-right: 10px;
 }
