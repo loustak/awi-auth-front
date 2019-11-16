@@ -24,7 +24,7 @@ function Topbar(props) {
           {
             props.location.pathname !== '/'
               ? props.location.pathname.split('/').splice(1).map((location, i) => {
-                return <BreadcrumbItem componentClass='div'>
+                return <BreadcrumbItem key={i} componentClass='div'>
                   <Link to={'/' + props.location.pathname.split('/').splice(1).slice(0, i + 1).join('/')}>
                     {capitalize(location).toUpperCase()}
                   </Link>

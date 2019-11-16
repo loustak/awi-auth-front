@@ -9,24 +9,24 @@ function Modal (props) {
   return (
     !props.show
       ? null
-      : <>
-        <BModal show={props.show}>
-          <BModal.Header>
-            <BModal.Title>{props.title}</BModal.Title>
-            <button type='button' className='close' data-dismiss='modal' onClick={props.onClick}>&times;</button>
-          </BModal.Header>
-          <BModal.Body>{props.content}</BModal.Body>
+      : <BModal show={props.show}>
+        <BModal.Header>
+          <BModal.Title>{props.title}</BModal.Title>
+          <button type='button' className='close' data-dismiss='modal' onClick={props.onCancel}>&times;</button>
+        </BModal.Header>
+        <BModal.Body>{props.children}</BModal.Body>
 
-          {props.addButton
+        {
+          props.buttonText
             ? <BModal.Footer>
-              <Button shape='round' onClick={props.onClick}>
-                {props.nameButton}
+              <Button onClick={props.onSuccess}>
+                {props.buttonText}
               </Button>
             </BModal.Footer>
-            : null}
+            : null
+        }
 
-        </BModal>
-      </>
+      </BModal>
   )
 }
 

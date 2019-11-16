@@ -16,13 +16,13 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 )
 
-export const defaultCurrentUserState = {
+const defaultCurrentUserState = {
   currentUser: {
     fetching: false,
     fetched: false,
     error: null,
     user: {
-      _id: '',
+      id: '',
       email: '',
       firstName: '',
       lastName: '',
@@ -32,5 +32,58 @@ export const defaultCurrentUserState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState)
+const defaultSubjectsState = {
+  subjects: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    subjects: [
+      {
+        id: '1',
+        name: 'AWI',
+        training: 'IG',
+        year: 4,
+        coeff: 1,
+        students: [
+          {
+            id: '1',
+            firstName: 'Alexandre',
+            lastName: 'Kueny',
+            marks: [
+              {
+                mark: 13,
+                exam: 'DS',
+                coeff: 1
+              },
+              {
+                mark: 15,
+                exam: 'DS',
+                coeff: 2
+              }
+            ]
+          },
+          {
+            id: '2',
+            firstName: 'Mahé',
+            lastName: 'Liabeuf',
+            marks: [
+              {
+                mark: 14,
+                exam: 'DS',
+                coeff: 2
+              },
+              {
+                mark: 16,
+                exam: 'DS',
+                coeff: 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState)
 export default createStore(reducer, { ...defaultState }, enhancer)
