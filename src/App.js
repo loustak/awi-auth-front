@@ -19,6 +19,7 @@ import Page from './components/Page/Page'
 import store from './store/store'
 import Applications from "./components/pages/Applications/Applications";
 import Courses from "./components/pages/Courses/Courses";
+import Marks from "./components/pages/Marks/marks";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -62,6 +63,7 @@ function App () {
               <PublicRoute exact path='/teacher' component={DashboardTeacher} />
               <PublicRoute exact path='/applications' component={Applications} />
               <PublicRoute exact path='/cours' component={Courses} />
+              <PublicRoute exact path='/notes' component={Marks} />
             {/* //         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} /> */}
             {/* //         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} /> */}
             {/* <NonAuthenticatedRoute exact path='/inscription' component={Register}/> */}

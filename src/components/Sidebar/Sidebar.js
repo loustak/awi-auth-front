@@ -16,7 +16,7 @@ function Sidebar (props) {
           <div className={styles.navigation}>
             <SidebarButton name='Application' to='/applications' />
             <SidebarButton name='Cours' to='/cours' />
-            <SidebarButton name='Notes' to='/calendrier' />
+            <SidebarButton name='Notes' to='/notes' />
             <SidebarButton name='Simulateur' to='/messages' />
           </div>
         </div>
