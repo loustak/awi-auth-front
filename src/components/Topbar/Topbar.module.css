@@ -5,7 +5,7 @@
 }
 
 .topbarButton {
-    color: black;
+    color: #00ABB2 !important;
     text-decoration: none;
     flex: 0 1 auto;
     text-align: center;
@@ -16,6 +16,13 @@
     align-items: center;
 }
 
+
+.location{
+    color: #00ABB2 !important;
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+}
 
 .location a{
     color: #00ABB2 !important;
@@ -47,5 +54,11 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    margin-right: 10px;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 1.5rem;
     margin-right: 10px;
 }
