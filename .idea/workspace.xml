@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/pages/Applications/Applications.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Collapse/Collapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Collapse/Collapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Collapse/Collapse.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Collapse/Collapse.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/ApplicationItem/ApplicationItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/ApplicationItem/ApplicationItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/ApplicationItem/ApplicationItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/ApplicationItem/ApplicationItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Applications/Applications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Applications/Applications.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,21 +17,6 @@
         <option value="CSS File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>whi</find>
-      <find>getIns</find>
-      <find>aut</find>
-      <find>toggleButton</find>
-      <find>.navbar-toggler</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/src/components/pages</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -57,6 +32,9 @@
         <option value="D:\Dev\Web\Projects\awi-auth-front\.idea" />
       </set>
     </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
