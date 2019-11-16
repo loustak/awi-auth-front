@@ -14,8 +14,8 @@ function Sidebar (props) {
             </NavLink>
           </div>
           <div className={styles.navigation}>
-            <SidebarButton name='Application' to='/Application' />
-            <SidebarButton name='Cours' to='/recommandations' />
+            <SidebarButton name='Application' to='/applications' />
+            <SidebarButton name='Cours' to='/cours' />
             <SidebarButton name='Notes' to='/calendrier' />
             <SidebarButton name='Simulateur' to='/messages' />
           </div>
