@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from '../../Modal/Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './ApplicationItem.module.css'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 function ApplicationItem (props) {
-  const color = props.status === 'VALIDE' ? '#50BC5C' : props.status === 'ATTENTE' ? '#ff961c' : '#de3b2f'
+  const [showM, setShow] = useState(false)
+  const title = `Supprimer ${props.name}`
+  const content = `Êtes vous sûr de vouloir supprimer ${props.name} de votre liste d'Applications ?`
 
   return (
-    <div className={styles.applicationItem}>
-      <div className={styles.left}>
-        {props.name}
-      </div>
-      <div className={styles.right}>
-        <p>Statut : <span className={styles.status} style={{ color: color }}>{props.status}</span></p>
-      </div>
+    <div className={styles.applicationItem} title={props.url}>
+      <div className={styles.applicationName}>{props.name}</div>
+      <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={() => setShow(!showM)}/>
+      <Modal
+        title={title}
+        content={content}
+        show={showM}
+        addButton
+        nameButton='Supprimer'
+        onClick={() => setShow(!showM)}
+      />
     </div>
   )
 }

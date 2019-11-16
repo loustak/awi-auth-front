@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Col, Form } from 'react-bootstrap'
+import { addMark } from '../../../store/actions/subjects.action'
+import Modal from '../../Modal/Modal'
 import styles from './StudentItem.module.css'
 import Collapse from '../../Collapse/Collapse'
 import MarkItem from '../MarkItem/MarkItem'
+import { useFormik } from 'formik'
 
-function StudentItem(props) {
+function StudentItem (props) {
+  const [show, setShow] = useState(false)
+
+  const formik = useFormik({
+    initialValues: {
+      mark: '',
+      coeff: '',
+      exam: ''
+    }
+  })
+
+  let avg = props.marks.reduce((total, current) => total + (current.mark * current.coeff), 0) / props.marks.reduce((total, current) => total + current.coeff, 0)
+  avg = Math.round(avg * 100) / 100
+
   return (
     <div className={styles.studentItem}>
       <Collapse
-        title={props.name}
+        title={props.firstName + ' ' + props.lastName + ' | moyenne : ' + avg}
         buttonText='Ajouter une note'
+        onClick={() => {
+          setShow(true)
+          // addMark(props.subjectId, props.id, { mark: 11, coeff: 3, exam: 'TD' })
+        }}
       >
         {
           props.marks.map((mark, i) =>
@@ -19,6 +40,49 @@ function StudentItem(props) {
           )
         }
       </Collapse>
+
+      <Modal
+        show={show}
+        title='Ajouter une note'
+        buttonText='Ajouter'
+        disableButton={!(formik.values.mark >= 0 && formik.values.coeff > 0 && formik.values.exam !== '')}
+        onCancel={() => setShow(false)}
+        onSuccess={() => {
+          addMark(props.subjectId, props.id, {
+            mark: parseInt(formik.values.mark),
+            coeff: parseInt(formik.values.coeff),
+            exam: formik.values.exam
+          })
+          setShow(false)
+        }}
+      >
+        <Form>
+          <Form.Row>
+            <Form.Group as={Col} controlId='mark'>
+              <Form.Label>Note</Form.Label>
+              <Form.Control
+                type='number'
+                {...formik.getFieldProps('mark')}
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId='coeff'>
+              <Form.Label>Coefficient</Form.Label>
+              <Form.Control
+                type='number'
+                {...formik.getFieldProps('coeff')}
+              />
+            </Form.Group>
+          </Form.Row>
+          <Form.Group controlId='exam'>
+            <Form.Label>Examen</Form.Label>
+            <Form.Control
+              type='text'
+              {...formik.getFieldProps('exam')}
+            />
+          </Form.Group>
+        </Form>
+      </Modal>
     </div>
   )
 }
