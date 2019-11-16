@@ -1,0 +1,20 @@
+.applicationItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #D3D3D3;
+    padding: 10px;
+}
+
+.applicationItem:last-child {
+    border-bottom: none;
+}
+
+.left {
+}
+
+.right {
+}
+.status {
+    font-weight: 500;
+}
