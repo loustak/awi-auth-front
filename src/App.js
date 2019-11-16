@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { isAuthenticated } from './services/authenticationService'
+import Dashboard from './components/pages/Dashboard'
 
 import './App.css'
 
@@ -40,12 +41,19 @@ const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
 )
 
 function App () {
+  const studentDash = <Dashboard userRole='student'/>
+  const teacherDash = <Dashboard userRole='teacher'/>
+
+
   return (
     <Router>
       <Provider store={store}>
         <div className='App'>
           <Page>
             <NonAuthenticatedRoute exact path='/login' component={Login}/>
+            <PublicRoute exact path='/' component={Dashboard}/>
+            {/*//         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} />*/}
+            {/*//         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} />*/}
             {/*<NonAuthenticatedRoute exact path='/inscription' component={Register}/>*/}
             {/*<NonAuthenticatedRoute exact path='/recuperation' component={Recovery}/>*/}
             {/*<PublicRoute exact path='/' component={Home}/>*/}

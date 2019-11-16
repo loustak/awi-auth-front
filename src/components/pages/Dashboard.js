@@ -20,20 +20,9 @@ const teacherTabs = [
 class Dashboard extends React.Component {
   render () {
     return (
-      <Responsive>
-        <Segment
-          inverted
-          style={{ minHeight: 300, padding: '2em 4em' }}
-        >
-
-          <MenuHeader userRole={this.props.userRole} />
-          <Divider />
-          <UserApps />
-
-        </Segment>
-
-        {this.props.userRole === 'student' ? <Tab panes={studentTabs} /> : <Tab panes={teacherTabs} />}
-      </Responsive>
+      <div>
+        sferg
+      </div>
     )
   }
 }
