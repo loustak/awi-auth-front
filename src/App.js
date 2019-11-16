@@ -17,10 +17,11 @@ import Page from './components/Page/Page'
 // import Home from './components/Pages/Home/Home'
 // import Profile from './components/Pages/Profile/Profile'
 import store from './store/store'
-import Applications from "./components/pages/Applications/Applications";
-import Courses from "./components/pages/Courses/Courses";
-import Marks from "./components/pages/Marks/marks";
+import Applications from './components/pages/Applications/Applications'
+import Courses from './components/pages/Courses/Courses'
+import Marks from './components/pages/Marks/marks'
 
+// eslint-disable-next-line no-unused-vars
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest} render={props => (
@@ -50,9 +51,6 @@ const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
 )
 
 function App () {
-  const studentDash = <Dashboard userRole='student' />
-  const teacherDash = <Dashboard userRole='teacher' />
-
   return (
     <Router>
       <Provider store={store}>
@@ -60,16 +58,10 @@ function App () {
           <Page>
             <NonAuthenticatedRoute exact path='/login' component={Login} />
             <PublicRoute exact path='/student' component={Dashboard} />
-              <PublicRoute exact path='/teacher' component={DashboardTeacher} />
-              <PublicRoute exact path='/applications' component={Applications} />
-              <PublicRoute exact path='/cours' component={Courses} />
-              <PublicRoute exact path='/notes' component={Marks} />
-            {/* //         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} /> */}
-            {/* //         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} /> */}
-            {/* <NonAuthenticatedRoute exact path='/inscription' component={Register}/> */}
-            {/* <NonAuthenticatedRoute exact path='/recuperation' component={Recovery}/> */}
-            {/* <PublicRoute exact path='/' component={Home}/> */}
-            {/* <PublicRoute exact path='/profil' component={Profile}/> */}
+            <PublicRoute exact path='/teacher' component={DashboardTeacher} />
+            <PublicRoute exact path='/applications' component={Applications} />
+            <PublicRoute exact path='/cours' component={Courses} />
+            <PublicRoute exact path='/notes' component={Marks} />
           </Page>
         </div>
       </Provider>

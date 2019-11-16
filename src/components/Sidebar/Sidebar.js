@@ -17,7 +17,7 @@ function Sidebar (props) {
             <SidebarButton name='Application' to='/applications' />
             <SidebarButton name='Cours' to='/cours' />
             <SidebarButton name='Notes' to='/notes' />
-            <SidebarButton name='Simulateur' to='/messages' />
+            <SidebarButton name='Simulateur' to='/simulateur' />
           </div>
         </div>
         <div className={styles.sidebarBottom}>
