@@ -29,30 +29,29 @@ class Applications extends React.Component {
   render () {
     return (
       <div className='applicationItem'>
-        <Collapse title='Récemment ouvertes'>
-          <div className={styles.appsContainer}>
-            {
-              recentApps.length > 0
-                ? recentApps.map((app, i) =>
-                  <ApplicationItem name={app.name} status={app.url} key={i} />
-                )
-                : <EmptyItem />
-            }
-          </div>
-        </Collapse>
-        <br />
-        <Collapse title='Toutes les applications'>
+        <Collapse title='Récemment ouvertes' subtitle='Cliquer sur la croix pour supprimer une application du Store.'>
           {
             apps.length > 0
-              ? <Form.Control
-                type='text'
-                placeholder='Rechercher'
-                className={styles.searchInput}
-                // onChange={e => setSearch(e.target.value.toLowerCase())}
-              />
-              : null
+              ? apps.map((app, i) =>
+                <ApplicationItem name={app.name} status={app.url} key={i} />
+              )
+              : <EmptyItem />
           }
-          <div className={styles.appsContainer}>
+        </Collapse>
+        <br />
+        <Collapse title='Toutes les applications' subtitle='Cliquer sur la croix pour supprimer une application du Store.'>
+          <div>
+            {
+              apps.length > 0
+                ? <div>
+                  <Form.Control
+                    type='text'
+                    placeholder='Rechercher'
+                    // onChange={e => setSearch(e.target.value.toLowerCase())}
+                  />
+                  </div>
+                : null
+            }
             {
               apps.filter(app => app.name.toLowerCase().includes('search')).map((app, i) => // TODO
                 <div key={i}>
