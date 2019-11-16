@@ -19,10 +19,10 @@ export const LoginForm = (props) => (
   <Formik
     initialValues={{
       username: '',
-      password: '',
+      password: ''
     }}
     validationSchema={LoginSchema}
-    onSubmit={values => {
+    onSubmit={(values, actions) => {
       auth
         .login(values.username, values.password, props.client_id)
         .then(function (response) {
@@ -30,6 +30,7 @@ export const LoginForm = (props) => (
         })
         .catch(error => {
           console.log(error)
+          actions.setFieldError('general', 'Username and password not matching')
         })
     }}
   >
@@ -47,7 +48,7 @@ export const LoginForm = (props) => (
             onChange={handleChange('username')}
           />
           {errors.username && touched.username &&
-            <Label basic color='red' pointing>
+            <Label basic prompt pointing>
               {errors.username}
             </Label>}
 
@@ -64,12 +65,12 @@ export const LoginForm = (props) => (
             onChange={handleChange('password')}
           />
           {errors.password && touched.password &&
-            <Label basic color='red' pointing>
+            <Label basic prompt pointing>
               {errors.password}
             </Label>}
         </Form.Field>
 
-        <Message>{values.messageError}</Message>
+        {errors.general && <Message size='mini' negative>{errors.general}</Message>}
 
         <Button fluid size='large' onPress={handleSubmit}>
           Login
