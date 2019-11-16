@@ -10,10 +10,14 @@ import Nav from 'react-bootstrap/Nav'
 import { Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
 import { capitalize } from '../../Utils'
 
-function Topbar(props) {
+function Topbar (props) {
   return (
-    <Navbar className={styles.topbar + ' justify-content-between'} collapseOnSelect
-            expand={props.expanded ? 'lg' : 'false'} variant='light'>
+    <Navbar
+      className={styles.topbar + ' justify-content-between'}
+      collapseOnSelect
+      expand={props.expanded ? 'lg' : 'false'}
+      variant='light'
+    >
       <Navbar.Text className={styles.location}>
         <FontAwesomeIcon
           icon={faBars}
@@ -34,47 +38,69 @@ function Topbar(props) {
           }
         </Breadcrumb>
       </Navbar.Text>
-      <Navbar.Toggle className={styles.toggleButton} aria-controls='responsive-navbar-nav'/>
+      <Navbar.Toggle className={styles.toggleButton} aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='ml-auto'>
+          <NavLink
+            as={NavLink}
+            to='/profil'
+            className={classNames({
+              [styles.topbarButton]: true,
+              'd-lg-none': props.expanded
+            })}
+          >Profil
+          </NavLink>
           {
             props.for.role === 'student'
               ? <>
                 <NavLink
-                  as={NavLink} to='/profil'
-                  className={styles.topbarButton + ' d-lg-none'}
-                >Profil
-                </NavLink>
-                <NavLink
                   as={NavLink} to='/applications'
-                  className={styles.topbarButton + ' d-lg-none'}
+                  className={classNames({
+                    [styles.topbarButton]: true,
+                    'd-lg-none': props.expanded
+                  })}
                 >Applications
                 </NavLink>
                 <NavLink
                   as={NavLink} to='/cours'
-                  className={styles.topbarButton + ' d-lg-none'}
+                  className={classNames({
+                    [styles.topbarButton]: true,
+                    'd-lg-none': props.expanded
+                  })}
                 >Cours
                 </NavLink>
                 <NavLink
                   as={NavLink} to='/notes'
-                  className={styles.topbarButton + ' d-lg-none'}
+                  className={classNames({
+                    [styles.topbarButton]: true,
+                    'd-lg-none': props.expanded
+                  })}
                 >Notes
                 </NavLink>
                 <NavLink
                   as={NavLink} to='/simulateur'
-                  className={styles.topbarButton + ' d-lg-none'}
+                  className={classNames({
+                    [styles.topbarButton]: true,
+                    'd-lg-none': props.expanded
+                  })}
                 >Simulateur
                 </NavLink>
               </>
               : <>
                 <NavLink
                   as={NavLink} to='/dashboard'
-                  className={styles.topbarButton + ' d-lg-none'}
+                  className={classNames({
+                    [styles.topbarButton]: true,
+                    'd-lg-none': props.expanded
+                  })}
                 >Dashboard
                 </NavLink>
                 <NavLink
                   as={NavLink} to='/stats'
-                  className={styles.topbarButton + ' d-lg-none'}
+                  className={classNames({
+                    [styles.topbarButton]: true,
+                    'd-lg-none': props.expanded
+                  })}
                 >Stats
                 </NavLink>
               </>
