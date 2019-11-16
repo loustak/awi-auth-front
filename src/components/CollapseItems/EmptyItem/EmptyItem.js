@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './EmptyItem.module.css'
-import Button from '../../Button/Button'
 
 function EmptyItem (props) {
   return (

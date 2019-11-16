@@ -1,5 +1,3 @@
-import axios from 'axios'
-import Config from '../config'
 // import { setConnectedUser } from '../store/actions/user.action'
 
 // export function storeToken(token) {

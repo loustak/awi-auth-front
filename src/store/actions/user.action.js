@@ -1,4 +1,4 @@
-import store from '../store'
+// import store from '../store'
 // import { fetchUser, updateProfileActionDistant } from '../../services/User.services'
 
 // export function setConnectedUser (user) {

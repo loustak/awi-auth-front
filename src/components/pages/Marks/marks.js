@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Collapse from '../../Collapse/Collapse'
-import ApplicationItem from '../../CollapseItems/ApplicationItem/ApplicationItem'
 import EmptyItem from '../../CollapseItems/EmptyItem/EmptyItem'
-import Form from 'react-bootstrap/Form'
 
 const courses = [
   { name: 'UE blablabla' },
