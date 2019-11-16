@@ -1,0 +1,50 @@
+.topbar {
+    width: 100%;
+    background: #009bdd;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.topbarButton {
+    color: white;
+    text-decoration: none;
+    flex: 0 1 auto;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.location {
+    color: white !important;
+    font-size: 1.25rem;
+}
+
+.breadcrumb>ol {
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb ol li::before {
+    color: white !important;
+}
+
+.toggleButton {
+    color: white !important;
+    border-color: white !important;
+}
+
+.topbarProfilePicture {
+    flex-shrink: 0;
+    border-radius: 20px;
+    height : 40px;
+    width : 40px;
+    background-image: url('https://ccivr.com/wp-content/uploads/2019/07/empty-profile-300x300.png');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-right: 10px;
+}

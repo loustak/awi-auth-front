@@ -1,0 +1,21 @@
+.emptyItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    color : #aeb6c0;
+}
+
+.emptyItem:last-child {
+    border-bottom: none;
+}
+
+.left {
+}
+
+.right {
+}
+.status {
+    font-weight: 500;
+}
