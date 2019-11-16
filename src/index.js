@@ -6,19 +6,9 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from './components/pages/Login.js'
 import Dashboard from './components/pages/Dashboard.js'
 import 'semantic-ui-css/semantic.min.css'
+import App from './App'
 
-ReactDOM.render(
-  <BrowserRouter>
-    <div>
-      <Switch>
-        <Route path='/login' component={(props) => <Login {...props} />} />
-        <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} />
-        <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} />
-        <Redirect path='/*' to='/login' />
-      </Switch>
-    </div>
-  </BrowserRouter>,
-  document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
