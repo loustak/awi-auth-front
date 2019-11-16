@@ -15,7 +15,7 @@ function Page(props) {
   }
 
   function showLayout() {
-    return location !== 'connexion' && location !== 'inscription' && location !== 'recuperation'
+    return location !== 'login' && location !== 'register' && location !== 'recovery'
   }
 
   return (
