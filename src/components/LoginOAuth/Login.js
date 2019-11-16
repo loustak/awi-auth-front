@@ -13,7 +13,7 @@ function Login () {
     <Grid centered textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 300 }}>
         <Divider hidden />
-        <Header as='h1' textAlign='center'>App Name</Header>
+        <Header as='h1' textAlign='center'>{uriParams.app_name ? uriParams.app_name : 'Login Page'}</Header>
         <Divider />
         <LoginForm redirect_uri={uriParams.redirect_uri} stateAuth={uriParams.state} />
       </Grid.Column>
