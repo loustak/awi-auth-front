@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Form, Message } from 'semantic-ui-react'
-import AuthenticationService from '../services/AuthenticationService'
+// import AuthenticationService from '../services/AuthenticationService'
 
 class LoginForm extends React.Component {
   constructor (props) {
@@ -16,7 +16,7 @@ class LoginForm extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleSubmitLogin = this.handleSubmitLogin.bind(this)
 
-    this.auth = AuthenticationService.getInstance()
+    // this.auth = AuthenticationService.getInstance()
   }
 
   handleEmailChange (event) {
