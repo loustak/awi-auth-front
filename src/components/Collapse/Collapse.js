@@ -21,7 +21,14 @@ function Collapse(props) {
             aria-expanded={open}
             className={styles.icon}
           />
-          <h4 className={styles.title}>{props.title}</h4>
+          <div>
+            <h4 className={styles.title}>{props.title}</h4>
+            {
+              props.subtitle
+              ? <label className={styles.subtitle}>{props.subtitle}</label>
+                : null
+            }
+          </div>
         </div>
         {
           props.buttonText

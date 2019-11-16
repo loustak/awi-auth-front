@@ -14,7 +14,7 @@ class Applications extends React.Component {
   render () {
     return (
       <div className='applicationItem'>
-        <Collapse title='Récemment ouvertes'>
+        <Collapse title='Récemment ouvertes' subtitle='Cliquer sur la croix pour supprimer une application du Store.'>
           {
             apps.length > 0
               ? apps.map((app, i) =>
@@ -24,7 +24,7 @@ class Applications extends React.Component {
           }
         </Collapse>
         <br />
-        <Collapse title='Toutes les applications'>
+        <Collapse title='Toutes les applications' subtitle='Cliquer sur la croix pour supprimer une application du Store.'>
           <div>
             {
               apps.length > 0

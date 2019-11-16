@@ -4,6 +4,9 @@
     justify-content: space-between;
     padding: 10px;
     border: 1px solid #D3D3D3;
+    border-radius: 33px;
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .topLeft {
@@ -22,7 +25,13 @@
 }
 
 .title {
-    margin: 0;
+    margin: 10px;
+    color : #00ABB2;
+}
+
+.subtitle{
+    margin-left: 15px;
+    color : #707070;
 }
 
 .contentWrapper {
@@ -35,9 +44,11 @@
     grid-auto-rows: 1fr;
     grid-row-gap: 20px;
     /*padding: 20px 0 20px 20px;*/
+    background-color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .collapse {
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-    background-color: white;
 }
