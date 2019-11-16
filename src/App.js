@@ -16,7 +16,7 @@ import Page from './components/Page/Page'
 import store from './store/store'
 import Applications from './components/pages/Applications/Applications'
 import Courses from './components/pages/Courses/Courses'
-import Marks from './components/pages/Marks/marks'
+import Marks from './components/pages/Marks/Marks'
 
 // eslint-disable-next-line no-unused-vars
 const PrivateRoute = ({ component: Component, ...rest }) => (

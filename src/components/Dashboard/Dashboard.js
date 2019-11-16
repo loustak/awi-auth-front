@@ -30,7 +30,7 @@ function Dashboard (props) {
     <div className={styles.dashboard}>
       <div>
         <Form>
-          <Form.Row>
+          <Form.Row className={styles.searchBar}>
             <Form.Group as={Col} controlId='search'>
               <Form.Label>Rechercher</Form.Label>
               <Form.Control
