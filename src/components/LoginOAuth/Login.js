@@ -5,7 +5,7 @@ import { Grid, Divider, Header } from 'semantic-ui-react'
 
 function Login () {
   const uriParams = {}
-  window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (_, key, value) => {
+  decodeURI(window.location.href).replace(/[?&]+([^=&]+)=([^&]*)/gi, (_, key, value) => {
     uriParams[key] = value
   })
 
