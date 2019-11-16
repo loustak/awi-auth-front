@@ -3,12 +3,12 @@ import '../../styles/App.css'
 import LoginForm from '../LoginForm.js'
 import { Grid, Image, Divider } from 'semantic-ui-react'
 import logo from '../../assets/logoMyDash.svg'
-import AuthenticationService from '../../services/AuthenticationService'
+// import AuthenticationService from '../../services/AuthenticationService'
 
 class Login extends React.Component {
   constructor (props) {
     super(props)
-    this.auth = AuthenticationService.getInstance()
+    // this.auth = AuthenticationService.getInstance()
   }
 
   render () {

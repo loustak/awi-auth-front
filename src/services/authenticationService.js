@@ -41,7 +41,7 @@
 //   storeProfileLocalStorage(profile)
 // }
 //
-export function isAuthenticated () {
+// export function isAuthenticated () {
   // if (window.localStorage.getItem('hut_access_token') !== undefined &&
   //   window.localStorage.getItem('hut_access_token') !== null) {
   //   // setTokenHeader()
@@ -49,8 +49,8 @@ export function isAuthenticated () {
   // } else {
   //   return false
   // }
-  return false
-}
+  // return false
+// }
 //
 // export function isAuthenticatedSimple() {
 //   if (window.localStorage.getItem('hut_access_token') !== undefined &&
