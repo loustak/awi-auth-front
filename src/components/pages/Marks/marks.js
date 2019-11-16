@@ -14,8 +14,8 @@ class Marks extends React.Component {
       <div className='applicationItem'>
         {
           courses.length > 0
-            ? courses.map((cours, i) =>
-              <> <Collapse title={cours.name} key={i}>
+            ? courses.map((course, i) =>
+              <> <Collapse title={course.name} key={i}>
                 {
                   <EmptyItem />
                 }
