@@ -1,11 +1,11 @@
 .topbar {
     width: 100%;
-    background: #009bdd;
+    background: white;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .topbarButton {
-    color: white;
+    color: black;
     text-decoration: none;
     flex: 0 1 auto;
     text-align: center;
@@ -16,8 +16,9 @@
     align-items: center;
 }
 
-.location {
-    color: white !important;
+
+.location a{
+    color: #00ABB2 !important;
     font-size: 1.25rem;
 }
 
@@ -28,12 +29,12 @@
 }
 
 .breadcrumb ol li::before {
-    color: white !important;
+    color: #00ABB2 !important;
 }
 
 .toggleButton {
-    color: white !important;
-    border-color: white !important;
+    color: black !important;
+    border-color: black !important;
 }
 
 .topbarProfilePicture {

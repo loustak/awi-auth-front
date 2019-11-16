@@ -7,7 +7,6 @@ import classNames from 'classnames'
 import styles from './Topbar.module.css'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import { Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
 import { capitalize } from '../../Utils'
 
@@ -16,13 +15,13 @@ function Topbar (props) {
     <Navbar className={styles.topbar + ' justify-content-between'} collapseOnSelect expand='lg' variant='dark'>
       <Navbar.Text className={styles.location}>
         <Breadcrumb className={styles.breadcrumb}>
-          <BreadcrumbItem componentClass='div'><Link to='/'>Accueil</Link></BreadcrumbItem>
+          <BreadcrumbItem componentClass='div'><Link to='/'>ACCUEIL</Link></BreadcrumbItem>
           {
             props.location.pathname !== '/'
               ? props.location.pathname.split('/').splice(1).map((location, i) => {
                 return <BreadcrumbItem componentClass='div'>
                   <Link to={'/' + props.location.pathname.split('/').splice(1).slice(0, i + 1).join('/')}>
-                    {capitalize(location)}
+                    {capitalize(location).toUpperCase()}
                   </Link>
                 </BreadcrumbItem>
               })
@@ -34,13 +33,7 @@ function Topbar (props) {
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='ml-auto'>
           <NavLink as={NavLink} to='/profil' className={styles.topbarButton}>
-            <div className={classNames({
-              [styles.topbarProfilePicture]: true,
-              'd-none': true,
-              'd-lg-flex': true
-            })}
-            />
-            <div>NOM Prénom</div>
+            <div>LOGOUT</div>
           </NavLink>
           <NavLink
             as={NavLink} to='/candidatures'
