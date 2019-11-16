@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Marktem.module.css'
-import Collapse from '../../Collapse/Collapse'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronUp, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 function MarkItem(props) {
   return (
@@ -11,8 +12,14 @@ function MarkItem(props) {
       <div>
         Coeff: {props.mark.coeff}
       </div>
-      <div>
+      <div style={{display: 'flex', flexWrap: 'wrap'}}>
         Exam: {props.mark.exam}
+      </div>
+      <div style={{justifySelf: 'center'}}>
+        <FontAwesomeIcon
+          icon={faTimes}
+          className='clickable'
+        />
       </div>
     </div>
   )

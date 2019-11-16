@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { isAuthenticated } from './services/authenticationService'
-import Dashboard from './components/pages/Dashboard'
+import Dashboard from './components/pages/Dashboard/Dashboard'
 
 import './App.css'
 
@@ -57,7 +57,7 @@ function App () {
             <PublicRoute exact path='/applications' component={Applications} />
             <PublicRoute exact path='/cours' component={Courses} />
             <PublicRoute exact path='/notes' component={Marks} />
-            <PublicRoute exact path='/' component={Dashboard} />
+            <PublicRoute exact path='/dashboard' component={Dashboard} />
           </Page>
         </div>
       </Provider>
