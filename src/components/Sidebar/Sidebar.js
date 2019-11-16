@@ -18,6 +18,8 @@ function Sidebar (props) {
             <SidebarButton name='Cours' to='/cours' />
             <SidebarButton name='Notes' to='/notes' />
             <SidebarButton name='Simulateur' to='/simulateur' />
+            <SidebarButton name='Dashboard' to='/dashboard' />
+            <SidebarButton name='Stats' to='/stats' />
           </div>
         </div>
       </div>

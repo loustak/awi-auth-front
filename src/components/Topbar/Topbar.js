@@ -21,7 +21,6 @@ function Topbar(props) {
           onClick={props.onSidebarToggle}
         />
         <Breadcrumb className={styles.breadcrumb}>
-          <BreadcrumbItem componentClass='div'><Link to='/'>ACCUEIL</Link></BreadcrumbItem>
           {
             props.location.pathname !== '/'
               ? props.location.pathname.split('/').splice(1).map((location, i) => {
@@ -63,7 +62,7 @@ function Topbar(props) {
             className={styles.topbarButton + ' d-lg-none'}
           >Simulateur
           </NavLink>
-          <NavLink as={NavLink} to='/connexion' className={styles.topbarButton}>Déconnexion</NavLink>
+          <NavLink as={NavLink} to='/login' className={styles.topbarButton}>Déconnexion</NavLink>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
