@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import styles from './SidebarButton.module.css'
 import Button from '../Button/Button'
 
-function SidebarButton(props) {
+function SidebarButton (props) {
   const { variant = '' } = props
 
   return (

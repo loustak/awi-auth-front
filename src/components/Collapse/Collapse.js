@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Button from '../Button/Button'
 
-function Collapse(props) {
+function Collapse (props) {
   const [open, setOpen] = useState(true)
 
   return (
@@ -15,7 +15,7 @@ function Collapse(props) {
           <FontAwesomeIcon
             icon={open ? faChevronUp : faChevronDown}
             onClick={() => setOpen(!open)}
-            aria-controls="collapse-content"
+            aria-controls='collapse-content'
             aria-expanded={open}
             className={styles.icon}
           />
@@ -30,7 +30,7 @@ function Collapse(props) {
       </div>
 
       <BCollapse in={open} className={styles.contentWrapper}>
-        <div id="collapse-content" className={styles.content}>
+        <div id='collapse-content' className={styles.content}>
           {props.children}
         </div>
       </BCollapse>

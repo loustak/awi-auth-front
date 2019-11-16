@@ -11,8 +11,6 @@ import { isAuthenticated } from './services/authenticationService'
 import Dashboard from './components/pages/Dashboard'
 import DashboardTeacher from './components/pages/DashboardTeacher'
 
-
-
 import './App.css'
 
 import Page from './components/Page/Page'
@@ -20,48 +18,52 @@ import Page from './components/Page/Page'
 // import Profile from './components/Pages/Profile/Profile'
 import store from './store/store'
 
-
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    isAuthenticated()
-      ? <Component {...props} {...rest} />
-      : <Redirect to={{ pathname: '/login', state: { from: props.location } }}/>
-  )}/>
+  <Route
+    {...rest} render={props => (
+      isAuthenticated()
+        ? <Component {...props} {...rest} />
+        : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+    )}
+  />
 )
 
 const PublicRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    <Component {...props} {...rest} />
-  )}/>
+  <Route
+    {...rest} render={props => (
+      <Component {...props} {...rest} />
+    )}
+  />
 )
 
 const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    isAuthenticated()
-      ? <Redirect to={{ pathname: '/' }}/>
-      : <Component {...props} {...rest} />
-  )}/>
+  <Route
+    {...rest} render={props => (
+      isAuthenticated()
+        ? <Redirect to={{ pathname: '/' }} />
+        : <Component {...props} {...rest} />
+    )}
+  />
 )
 
 function App () {
-  const studentDash = <Dashboard userRole='student'/>
-  const teacherDash = <Dashboard userRole='teacher'/>
-
+  const studentDash = <Dashboard userRole='student' />
+  const teacherDash = <Dashboard userRole='teacher' />
 
   return (
     <Router>
       <Provider store={store}>
         <div className='App'>
           <Page>
-            <NonAuthenticatedRoute exact path='/login' component={Login}/>
-            <PublicRoute exact path='/student' component={Dashboard}/>
-            <PublicRoute exact path='/teacher' component={DashboardTeacher}/>
-            {/*//         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} />*/}
-            {/*//         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} />*/}
-            {/*<NonAuthenticatedRoute exact path='/inscription' component={Register}/>*/}
-            {/*<NonAuthenticatedRoute exact path='/recuperation' component={Recovery}/>*/}
-            {/*<PublicRoute exact path='/' component={Home}/>*/}
-            {/*<PublicRoute exact path='/profil' component={Profile}/>*/}
+            <NonAuthenticatedRoute exact path='/login' component={Login} />
+            <PublicRoute exact path='/student' component={Dashboard} />
+            <PublicRoute exact path='/teacher' component={DashboardTeacher} />
+            {/* //         <Route path='/student/dashboard' component={() => <Dashboard userRole='student' />} /> */}
+            {/* //         <Route path='/teacher/dashboard' component={() => <Dashboard userRole='teacher' />} /> */}
+            {/* <NonAuthenticatedRoute exact path='/inscription' component={Register}/> */}
+            {/* <NonAuthenticatedRoute exact path='/recuperation' component={Recovery}/> */}
+            {/* <PublicRoute exact path='/' component={Home}/> */}
+            {/* <PublicRoute exact path='/profil' component={Profile}/> */}
           </Page>
         </div>
       </Provider>

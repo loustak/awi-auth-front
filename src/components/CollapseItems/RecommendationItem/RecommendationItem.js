@@ -3,7 +3,7 @@ import styles from './RecommendationItem.module.css'
 import Button from '../../Button/Button'
 import Modal from '../../Modal/Modal'
 
-function RecommendationItem(props) {
+function RecommendationItem (props) {
   const [showM, setShow] = useState(false)
 
   return (
@@ -17,7 +17,7 @@ function RecommendationItem(props) {
             ? <> <Button shape='round' onClick={() => setShow(!showM)}>
               Voir
             </Button>
-            <Modal title='Lettre de Recommandation' content='content test' show={showM} onClick={() => setShow(!showM)}/>
+              <Modal title='Lettre de Recommandation' content='content test' show={showM} onClick={() => setShow(!showM)} />
             </>
             : null
         }

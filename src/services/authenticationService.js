@@ -43,7 +43,7 @@ import Config from '../config'
 //   storeProfileLocalStorage(profile)
 // }
 //
-export function isAuthenticated() {
+export function isAuthenticated () {
   // if (window.localStorage.getItem('hut_access_token') !== undefined &&
   //   window.localStorage.getItem('hut_access_token') !== null) {
   //   // setTokenHeader()

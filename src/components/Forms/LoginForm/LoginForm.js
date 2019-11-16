@@ -8,19 +8,19 @@ import Config from '../../../config'
 import axios from 'axios'
 import { Alert } from 'react-bootstrap'
 
-function LoginForm(props) {
+function LoginForm (props) {
   const [error, setError] = useState(null)
 
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
+      password: ''
     },
     onSubmit: values => {
       console.log(values, props)
       axios.post(Config.API_URL + '/connexion', {
         email: values.email,
-        password: values.password,
+        password: values.password
       }).then(res => {
         console.log(res)
         props.history.push('/')
@@ -28,38 +28,38 @@ function LoginForm(props) {
         setError(err.response.data.error)
         console.log(err.response.data.error)
       })
-    },
+    }
   })
 
   return (
     <Form className={styles.loginForm} onSubmit={formik.handleSubmit}>
-      <Form.Group controlId="formBasicEmail">
+      <Form.Group controlId='formBasicEmail'>
         <Form.Label>Email</Form.Label>
         <Form.Control
-          type="email"
-          placeholder="Email"
+          type='email'
+          placeholder='Email'
           {...formik.getFieldProps('email')}
           autoFocus
         />
       </Form.Group>
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId='formBasicPassword'>
         <Form.Label>Mot de passe</Form.Label>
         <Form.Control
-          type="password"
-          placeholder="Mot de passe"
+          type='password'
+          placeholder='Mot de passe'
           {...formik.getFieldProps('password')}
         />
         <Form.Text className={styles.textLink} as={NavLink} to='/recuperation'>
           Mot de passe oublié ?
         </Form.Text>
       </Form.Group>
-      <Button className={styles.loginButton} type="submit">
+      <Button className={styles.loginButton} type='submit'>
         Se connecter
       </Button>
       <Form.Text className={styles.textLink} as={NavLink} to='/inscription'>
         S'inscrire
       </Form.Text>
-      <br/>
+      <br />
       {
         error !== null
           ? <Alert variant='danger'>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './ApplicationItem.module.css'
 
-function ApplicationItem(props) {
+function ApplicationItem (props) {
   const color = props.status === 'VALIDE' ? '#50BC5C' : props.status === 'ATTENTE' ? '#ff961c' : '#de3b2f'
 
   return (

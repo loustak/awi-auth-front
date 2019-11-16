@@ -45,7 +45,7 @@ export default (state = {}, action) => {
     }
 
     case 'ADD_COMMENT': {
-      let newElements = state.user.comments.slice()
+      const newElements = state.user.comments.slice()
       newElements.push(action.payload)
       return {
         ...state,
@@ -57,7 +57,7 @@ export default (state = {}, action) => {
     }
 
     case 'UPDATE_USER_COMMENT': {
-      let newElements = state.user.comments.slice()
+      const newElements = state.user.comments.slice()
       let comment = state.user.comments.filter((comment, i) => comment._id === action.payload._id)[0]
       const commentIndex = newElements.indexOf(comment)
       comment = {

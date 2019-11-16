@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Button.module.css'
 import { Button as BButton } from 'react-bootstrap'
 
-function Button(props) {
+function Button (props) {
   return (
     <BButton
       className={styles.button}
