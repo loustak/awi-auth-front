@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
         this.props.history.replace(redirectUri + '?authorization_code=' + response + '&state=' + state)
       })
       .catch(error => {
-        console.log(error)
+        console.log(error.toJSON())
 
         // Display Error Message Component
         if (error === 'auth fail') {

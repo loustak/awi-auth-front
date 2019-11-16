@@ -13,8 +13,11 @@ class AuthenticationService {
   login (email, password) {
     return axiosInstance
       .post(
-        '/auth',
-        { username: email, password: password },
+        '/oauth/auth',
+        {
+          username: email,
+          password: password
+        },
         {
           validateStatus: function (status) {
             return status >= 200 && status < 300
@@ -22,10 +25,11 @@ class AuthenticationService {
         }
       )
       .then(response => {
+        console.log(response)
         if (!response.data.authorize_code) {
           return Promise.reject(new Error('auth fail'))
         } else {
-          return response.data.authorize_code
+          return response.data.authorization_code
         }
       })
   }
