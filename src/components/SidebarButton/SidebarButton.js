@@ -1,16 +1,20 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import styles from './SidebarButton.module.css'
 import Button from '../Button/Button'
+import classNames from 'classnames'
 
 function SidebarButton (props) {
   const { variant = '' } = props
 
   return (
     <Button
-      className={styles.sidebarButton}
-      as={NavLink}
+      className={classNames({
+        [styles.sidebarButton]: true,
+        [styles.current]: props.location.pathname === props.to
+      })}
+      as={Link}
       to={props.to}
       exact
       variant={variant}
@@ -21,4 +25,4 @@ function SidebarButton (props) {
   )
 }
 
-export default SidebarButton
+export default withRouter(SidebarButton)
