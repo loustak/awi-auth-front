@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component test Matches the snapshot 1`] = `
+<button
+  className="button btn btn-blue"
+  disabled={false}
+  style={
+    Object {
+      "borderRadius": "0.25rem",
+    }
+  }
+  type="button"
+/>
+`;
