@@ -1,0 +1,854 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard component test should render without throwing an error 1`] = `
+<div
+  className="dashboard"
+>
+  <div>
+    <form
+      className=""
+    >
+      <div
+        className="form-row"
+      >
+        <div
+          className="form-group col"
+        >
+          <label
+            className="form-label"
+            htmlFor="search"
+          >
+            Rechercher
+          </label>
+          <input
+            className="form-control"
+            id="search"
+            name="search"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Rechercher"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          className="form-group col"
+        >
+          <label
+            className="form-label"
+            htmlFor="training"
+          >
+            Formation
+          </label>
+          <select
+            className="form-control"
+            id="training"
+            name="training"
+            onBlur={[Function]}
+            onChange={[Function]}
+            value=""
+          >
+            <option
+              value=""
+            >
+              Choose...
+            </option>
+            <option>
+              IG
+            </option>
+            <option>
+              MEA
+            </option>
+            <option>
+              STE
+            </option>
+            <option>
+              GBA
+            </option>
+            <option>
+              MI
+            </option>
+            <option>
+              MAT
+            </option>
+            <option>
+              PeiP
+            </option>
+          </select>
+        </div>
+        <div
+          className="form-group col"
+        >
+          <label
+            className="form-label"
+            htmlFor="year"
+          >
+            Année
+          </label>
+          <select
+            className="form-control"
+            id="year"
+            name="year"
+            onBlur={[Function]}
+            onChange={[Function]}
+            value=""
+          >
+            <option
+              value=""
+            >
+              Choose...
+            </option>
+            <option>
+              1
+            </option>
+            <option>
+              2
+            </option>
+            <option>
+              3
+            </option>
+            <option>
+              4
+            </option>
+            <option>
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div
+    className="collapse"
+  >
+    <div
+      className="top"
+    >
+      <div
+        className="topLeft"
+      >
+        <svg
+          aria-controls="collapse-content9373"
+          aria-expanded={false}
+          aria-hidden="true"
+          className="svg-inline--fa fa-chevron-down fa-w-14 icon"
+          data-icon="chevron-down"
+          data-prefix="fas"
+          focusable="false"
+          onClick={[Function]}
+          role="img"
+          style={Object {}}
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+        <h4
+          className="title"
+        >
+          Stats | IG 4 | moyenne : 14.5
+        </h4>
+      </div>
+    </div>
+    <div
+      aria-expanded={null}
+      className="contentWrapper content collapse"
+      id="collapse-content9373"
+    >
+      <div
+        style={
+          Object {
+            "display": "grid",
+            "gridRowGap": "20px",
+            "paddingBottom": "20px",
+            "paddingTop": "20px",
+          }
+        }
+      >
+        <div
+          className="studentItem"
+        >
+          <div
+            className="collapse"
+          >
+            <div
+              className="top"
+            >
+              <div
+                className="topLeft"
+              >
+                <svg
+                  aria-controls="collapse-content1710"
+                  aria-expanded={false}
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-chevron-down fa-w-14 icon"
+                  data-icon="chevron-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  onClick={[Function]}
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+                <h4
+                  className="title"
+                >
+                  Alexandre Kueny | moyenne : 14.33
+                </h4>
+              </div>
+              <button
+                className="button btn btn-blue"
+                disabled={false}
+                onClick={[Function]}
+                style={
+                  Object {
+                    "borderRadius": "0.25rem",
+                  }
+                }
+                type="button"
+              >
+                Ajouter une note
+              </button>
+            </div>
+            <div
+              aria-expanded={null}
+              className="contentWrapper content collapse"
+              id="collapse-content1710"
+            >
+              <div
+                className="markItem"
+              >
+                <div>
+                  Note: 
+                  13
+                </div>
+                <div>
+                  Coeff: 
+                  1
+                </div>
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                    }
+                  }
+                >
+                  Exam: 
+                  DS
+                </div>
+                <div
+                  style={
+                    Object {
+                      "justifySelf": "center",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-times fa-w-11 clickable"
+                    data-icon="times"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 352 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="markItem"
+              >
+                <div>
+                  Note: 
+                  15
+                </div>
+                <div>
+                  Coeff: 
+                  2
+                </div>
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                    }
+                  }
+                >
+                  Exam: 
+                  DS
+                </div>
+                <div
+                  style={
+                    Object {
+                      "justifySelf": "center",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-times fa-w-11 clickable"
+                    data-icon="times"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 352 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="studentItem"
+        >
+          <div
+            className="collapse"
+          >
+            <div
+              className="top"
+            >
+              <div
+                className="topLeft"
+              >
+                <svg
+                  aria-controls="collapse-content3894"
+                  aria-expanded={false}
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-chevron-down fa-w-14 icon"
+                  data-icon="chevron-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  onClick={[Function]}
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+                <h4
+                  className="title"
+                >
+                  Mahé Liabeuf | moyenne : 14.67
+                </h4>
+              </div>
+              <button
+                className="button btn btn-blue"
+                disabled={false}
+                onClick={[Function]}
+                style={
+                  Object {
+                    "borderRadius": "0.25rem",
+                  }
+                }
+                type="button"
+              >
+                Ajouter une note
+              </button>
+            </div>
+            <div
+              aria-expanded={null}
+              className="contentWrapper content collapse"
+              id="collapse-content3894"
+            >
+              <div
+                className="markItem"
+              >
+                <div>
+                  Note: 
+                  14
+                </div>
+                <div>
+                  Coeff: 
+                  2
+                </div>
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                    }
+                  }
+                >
+                  Exam: 
+                  DS
+                </div>
+                <div
+                  style={
+                    Object {
+                      "justifySelf": "center",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-times fa-w-11 clickable"
+                    data-icon="times"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 352 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="markItem"
+              >
+                <div>
+                  Note: 
+                  16
+                </div>
+                <div>
+                  Coeff: 
+                  1
+                </div>
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                    }
+                  }
+                >
+                  Exam: 
+                  DS
+                </div>
+                <div
+                  style={
+                    Object {
+                      "justifySelf": "center",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-times fa-w-11 clickable"
+                    data-icon="times"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 352 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="collapse"
+  >
+    <div
+      className="top"
+    >
+      <div
+        className="topLeft"
+      >
+        <svg
+          aria-controls="collapse-content3719"
+          aria-expanded={false}
+          aria-hidden="true"
+          className="svg-inline--fa fa-chevron-down fa-w-14 icon"
+          data-icon="chevron-down"
+          data-prefix="fas"
+          focusable="false"
+          onClick={[Function]}
+          role="img"
+          style={Object {}}
+          viewBox="0 0 448 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+        <h4
+          className="title"
+        >
+          RFID | MEA 5 | moyenne : 14.5
+        </h4>
+      </div>
+    </div>
+    <div
+      aria-expanded={null}
+      className="contentWrapper content collapse"
+      id="collapse-content3719"
+    >
+      <div
+        style={
+          Object {
+            "display": "grid",
+            "gridRowGap": "20px",
+            "paddingBottom": "20px",
+            "paddingTop": "20px",
+          }
+        }
+      >
+        <div
+          className="studentItem"
+        >
+          <div
+            className="collapse"
+          >
+            <div
+              className="top"
+            >
+              <div
+                className="topLeft"
+              >
+                <svg
+                  aria-controls="collapse-content6928"
+                  aria-expanded={false}
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-chevron-down fa-w-14 icon"
+                  data-icon="chevron-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  onClick={[Function]}
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+                <h4
+                  className="title"
+                >
+                  Alexandre Kueny | moyenne : 14.33
+                </h4>
+              </div>
+              <button
+                className="button btn btn-blue"
+                disabled={false}
+                onClick={[Function]}
+                style={
+                  Object {
+                    "borderRadius": "0.25rem",
+                  }
+                }
+                type="button"
+              >
+                Ajouter une note
+              </button>
+            </div>
+            <div
+              aria-expanded={null}
+              className="contentWrapper content collapse"
+              id="collapse-content6928"
+            >
+              <div
+                className="markItem"
+              >
+                <div>
+                  Note: 
+                  13
+                </div>
+                <div>
+                  Coeff: 
+                  1
+                </div>
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                    }
+                  }
+                >
+                  Exam: 
+                  DS
+                </div>
+                <div
+                  style={
+                    Object {
+                      "justifySelf": "center",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-times fa-w-11 clickable"
+                    data-icon="times"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 352 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="markItem"
+              >
+                <div>
+                  Note: 
+                  15
+                </div>
+                <div>
+                  Coeff: 
+                  2
+                </div>
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                    }
+                  }
+                >
+                  Exam: 
+                  DS
+                </div>
+                <div
+                  style={
+                    Object {
+                      "justifySelf": "center",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-times fa-w-11 clickable"
+                    data-icon="times"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 352 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="studentItem"
+        >
+          <div
+            className="collapse"
+          >
+            <div
+              className="top"
+            >
+              <div
+                className="topLeft"
+              >
+                <svg
+                  aria-controls="collapse-content4107"
+                  aria-expanded={false}
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-chevron-down fa-w-14 icon"
+                  data-icon="chevron-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  onClick={[Function]}
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 448 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+                <h4
+                  className="title"
+                >
+                  Mahé Liabeuf | moyenne : 14.67
+                </h4>
+              </div>
+              <button
+                className="button btn btn-blue"
+                disabled={false}
+                onClick={[Function]}
+                style={
+                  Object {
+                    "borderRadius": "0.25rem",
+                  }
+                }
+                type="button"
+              >
+                Ajouter une note
+              </button>
+            </div>
+            <div
+              aria-expanded={null}
+              className="contentWrapper content collapse"
+              id="collapse-content4107"
+            >
+              <div
+                className="markItem"
+              >
+                <div>
+                  Note: 
+                  14
+                </div>
+                <div>
+                  Coeff: 
+                  2
+                </div>
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                    }
+                  }
+                >
+                  Exam: 
+                  DS
+                </div>
+                <div
+                  style={
+                    Object {
+                      "justifySelf": "center",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-times fa-w-11 clickable"
+                    data-icon="times"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 352 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                className="markItem"
+              >
+                <div>
+                  Note: 
+                  16
+                </div>
+                <div>
+                  Coeff: 
+                  1
+                </div>
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexWrap": "wrap",
+                    }
+                  }
+                >
+                  Exam: 
+                  DS
+                </div>
+                <div
+                  style={
+                    Object {
+                      "justifySelf": "center",
+                    }
+                  }
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="svg-inline--fa fa-times fa-w-11 clickable"
+                    data-icon="times"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style={Object {}}
+                    viewBox="0 0 352 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+                      fill="currentColor"
+                      style={Object {}}
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
