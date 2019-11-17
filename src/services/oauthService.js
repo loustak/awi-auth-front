@@ -10,13 +10,14 @@ class OauthService {
     return this.instance
   }
 
-  login (email, password) {
+  login (email, password, client_id) {
     return axiosInstance
       .post(
         '/oauth/auth',
         {
           username: email,
-          password: password
+          password: password,
+          client_id: client_id
         },
         {
           validateStatus: function (status) {
