@@ -19,9 +19,10 @@
     min-width: 250px;
     min-height: 100px;
     padding: 15px;
+    width: 100%;
 }
 
-#announcement{
+#description{
     margin-top: 20px;
     border: 1px solid #00ABB2;
     border-radius: 5px;
