@@ -13,7 +13,7 @@ class OauthService {
   login (email, password, client_id) {
     return axiosInstance
       .post(
-        '/oauth/auth',
+        '/auth',
         {
           username: email,
           password: password,
@@ -26,8 +26,8 @@ class OauthService {
         }
       )
       .then(response => {
-        console.log(response)
-        return response.data.authorization_code
+        console.log(response.toJSON())
+        return response.data.code
       })
   }
 }
