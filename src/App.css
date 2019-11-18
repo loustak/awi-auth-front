@@ -12,13 +12,13 @@ a {
 }
 
 .btn-blue {
-  background-color: #009bdd;
-  color: white;
+  background-color: #009bdd !important;
+  color: white !important;
 }
 
 .btn-blue:hover {
-  background-color: #0088d2;
-  color: white;
+  background-color: #0088d2  !important;
+  color: white !important;
 }
 
 p {

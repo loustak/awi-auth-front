@@ -17,52 +17,22 @@ function CourseItem (props) {
           : null
         }
       </div>
-      <div className={styles.info}>
-        <div>
-          <label>COURS</label>
-          <p>
-            {
-              props.courses
-              ? props.courses.length > 0
-                ? props.courses.map((course, i) =>
-                <>
-                  <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value={i} id={"checkCourse"+i} />
-                      <label className="form-check-label" htmlFor={i} onClick={() => downloadCourse(i)}>
-                        {course}
-                      </label>
-                  </div>
-                </>
-                )
-                : <p>--</p>
-              : <p>--</p>
-            }
-          </p>
-        </div>
-        <div>
-          <label>NOTES</label>
-            {
-              props.marks
-                ? props.marks.length > 0
-                ? props.marks.map((mark, i) =>
-                  <><p>
-                    {mark}
-                </p>
-
-                  </>
-                )
-                : <p>--</p>
-                : <p>--</p>
-            }
-        </div>
+      <div className={styles.hours}>
         {
-          props.announcement
-          ? <div id={styles.announcement}>
-              <label>ANNONCE</label>
-              <p>{props.announcement}</p>
-            </div>
-          : null
+          props.coef
+            ? <p>Coefficient : {props.coef}</p>
+            : null
         }
+      </div>
+      <div className={styles.info}>
+        <div id={styles.description}>
+              <label>DESCRIPTION</label>
+          {
+            props.description
+              ? <p>{props.description}</p>
+              : <p>--</p>
+          }
+        </div>
       </div>
     </div>
   )
