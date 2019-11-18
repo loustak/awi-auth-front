@@ -12,15 +12,22 @@ function CourseItem (props) {
     <div className={styles.courseItem}>
       <div className={styles.hours}>
         {
+          props.coef
+            ? <p>Coefficient : {props.coef}</p>
+            : null
+        }
+      </div>
+      <div className={styles.hours}>
+        {
           props.hours
-          ? <p>Hours : {props.hours}</p>
+          ? <p>Nombre total d'heures : {props.hours}</p>
           : null
         }
       </div>
       <div className={styles.hours}>
         {
-          props.coef
-            ? <p>Coefficient : {props.coef}</p>
+          props.intervenants
+            ? <p>Intervenants : {props.intervenants.join(' - ')}</p>
             : null
         }
       </div>
