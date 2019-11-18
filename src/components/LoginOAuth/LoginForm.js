@@ -26,7 +26,7 @@ export const LoginForm = (props) => (
       auth
         .login(values.username, values.password, props.client_id)
         .then(function (response) {
-          window.location.replace(props.redirect_uri + '?authorization_code=' + response + '&state=' + props.stateAuth)
+          window.location.replace(props.redirect_uri + '?code=' + response + '&state=' + props.stateAuth)
         })
         .catch(error => {
           console.log(error)
