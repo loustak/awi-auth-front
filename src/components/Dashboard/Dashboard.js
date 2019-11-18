@@ -11,8 +11,8 @@ import Modal from '../Modal/Modal'
 function Dashboard (props) {
   const [show, setShow] = useState(false)
   const [subjectId, setSubjectId] = useState(null)
-  const [, updateState] = React.useState();
-  const forceUpdate = useCallback(() => updateState({}), []);
+  const [, updateState] = React.useState()
+  const forceUpdate = useCallback(() => updateState({}), [])
 
   const formikExam = useFormik({
     initialValues: {
@@ -29,16 +29,20 @@ function Dashboard (props) {
     }
   })
 
-  function matchSubject (subject, query) {
+  function matchSearch (subject, query) {
     return subject.name.toLowerCase().match(query) ||
       subject.training.toLowerCase().match(query) ||
-      subject.year.toString().match(query)
+      subject.year.toString().match(query) ||
+      subject.students.filter(student =>
+        student.firstName.toLowerCase().match(query) ||
+        student.lastName.toLowerCase().match(query)
+      ).length > 0
   }
 
   const filteredSubjects = props.subjects.subjects
     .filter(subject => formik.values.training !== '' ? subject.training === formik.values.training : true)
     .filter(subject => formik.values.year !== '' ? subject.year === parseInt(formik.values.year) : true)
-    .filter(subject => formik.values.search !== '' ? matchSubject(subject, formik.values.search.toLowerCase()) : true)
+    .filter(subject => formik.values.search !== '' ? matchSearch(subject, formik.values.search.toLowerCase()) : true)
 
   return (
     <div className={styles.dashboard}>
