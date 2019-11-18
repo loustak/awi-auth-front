@@ -40,7 +40,7 @@ const PublicRoute = ({ component: Component, ...rest }) => (
 const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest} render={props => (
-      true === true
+      true !== true
         ? <Redirect to={{ pathname: '/' }} />
         : <Component {...props} {...rest} />
     )}

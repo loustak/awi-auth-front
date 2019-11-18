@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../styles/App.css'
+import '../../../src/App.css'
 import LoginForm from './LoginForm.js'
 import { Grid, Divider, Header } from 'semantic-ui-react'
 
