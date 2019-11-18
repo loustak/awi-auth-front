@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from './serviceWorker'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import Login from './components/LoginOAuth/Login.js'
+import Dashboard from './components/pages/Dashboard.js'
 import 'semantic-ui-css/semantic.min.css'
 import App from './App'
 

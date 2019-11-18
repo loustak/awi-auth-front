@@ -1,6 +1,6 @@
 import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
-import Login from './components/pages/Login'
+import Login from './components/LoginOAuth/Login'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
