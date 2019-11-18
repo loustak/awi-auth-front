@@ -10,14 +10,7 @@ function getAverageFromSubject (subject) {
 }
 
 function getAverageFromUE (ue) {
-  if (ue.subjects) {
-    const tabAvg = ue.subjects.map(subject => [getAverageFromSubject(subject), subject.ects])
-    const sumAvg = tabAvg.reduce((accumulator, currentValue) =>
-      ((accumulator + currentValue[0] * currentValue[1])), 0)
-    const sumECTS = ue.subjects.reduce((accumulator, currentValue) => (((getAverageFromSubject(currentValue) !== null) ?  accumulator + currentValue.ects : 0)), 0)
-    return Math.round((sumAvg / sumECTS) * 100) / 100
-  }
-  return null
+  return 1
 }
 
 function getECTSFromUE (ue) {

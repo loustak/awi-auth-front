@@ -28,9 +28,9 @@ function Simulator (props) {
                 ects: 4.5,
                 tests: [
                   {
-                    mark: 13.5,
+                    mark: 13,
                     exam: 'Devoir surveillé',
-                    coeff: 10
+                    coeff: 2
                   },
                   {
                     mark: 11,
@@ -109,7 +109,7 @@ function Simulator (props) {
         <Form>
           <Form.Row className={styles.searchBar}>
             <Form.Group as={Col} controlId='semester'>
-              <Form.Label>Semestre</Form.Label>
+              <Form.Label>Année</Form.Label>
               <Form.Control
                 as='select'
                 {...formik.getFieldProps('semester')}
@@ -131,7 +131,7 @@ function Simulator (props) {
                 <Collapse
                   defaultOpen
                   title={ue.name}
-                  subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue) + ' - Moyenne: ' + markOperations.getAverageFromUE(ue)}
+                  subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue)}
                   key={i}
                 >
                   {
