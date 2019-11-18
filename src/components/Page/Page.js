@@ -26,9 +26,7 @@ function Page (props) {
   return (
     showLayout()
       ? <Row noGutters className={styles.page}>
-        <Col xs='auto' className={classNames({ ['d-none']: true, ['d-lg-block']: sidebarState })}>
-          <Sidebar for={props.currentUser.user} />
-        </Col>
+
         <Col xs className={styles.colBox}>
           <Row noGutters className={styles.topbarContainer}>
             <Topbar
