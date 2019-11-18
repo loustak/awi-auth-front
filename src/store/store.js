@@ -104,23 +104,6 @@ const defaultSubjectsState = {
                 coeff: 2
               }
             ]
-          },
-          {
-            id: '2',
-            firstName: 'Mahé',
-            lastName: 'Liabeuf',
-            marks: [
-              {
-                mark: 14,
-                exam: 'DS',
-                coeff: 2
-              },
-              {
-                mark: 16,
-                exam: 'DS',
-                coeff: 1
-              }
-            ]
           }
         ]
       }

@@ -17,6 +17,7 @@ function Topbar (props) {
       collapseOnSelect
       expand={props.expanded ? 'lg' : 'false'}
       variant='light'
+      sticky="top"
     >
       <Navbar.Text className={styles.location}>
         <FontAwesomeIcon
