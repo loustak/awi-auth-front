@@ -25,7 +25,7 @@ function StudentItem (props) {
     <div className={styles.studentItem}>
       <Collapse
         title={props.firstName + ' ' + props.lastName + ' | moyenne : ' + avg}
-        buttonText='Ajouter une note'
+        buttonText='Ajouter un note'
         onClick={() => {
           setShow(true)
           // addMark(props.subjectId, props.id, { mark: 11, coeff: 3, exam: 'TD' })
@@ -43,10 +43,13 @@ function StudentItem (props) {
 
       <Modal
         show={show}
-        title='Ajouter une note'
+        title={'Ajouter une note pour ' + props.firstName + ' ' + props.lastName}
         buttonText='Ajouter'
         disableButton={!(formik.values.mark >= 0 && formik.values.coeff > 0 && formik.values.exam !== '')}
-        onCancel={() => setShow(false)}
+        onCancel={() => {
+          setShow(false)
+          formik.resetForm()
+        }}
         onSuccess={() => {
           addMark(props.subjectId, props.id, {
             mark: parseInt(formik.values.mark),
@@ -54,16 +57,16 @@ function StudentItem (props) {
             exam: formik.values.exam
           })
           setShow(false)
+          formik.resetForm()
         }}
       >
         <Form>
           <Form.Row>
-            <Form.Group as={Col} controlId='mark'>
-              <Form.Label>Note</Form.Label>
+            <Form.Group as={Col} controlId='exam'>
+              <Form.Label>Examen</Form.Label>
               <Form.Control
-                type='number'
-                {...formik.getFieldProps('mark')}
-                autoFocus
+                type='text'
+                {...formik.getFieldProps('exam')}
               />
             </Form.Group>
             <Form.Group as={Col} controlId='coeff'>
@@ -74,11 +77,12 @@ function StudentItem (props) {
               />
             </Form.Group>
           </Form.Row>
-          <Form.Group controlId='exam'>
-            <Form.Label>Examen</Form.Label>
+          <Form.Group controlId='mark'>
+            <Form.Label>Note</Form.Label>
             <Form.Control
-              type='text'
-              {...formik.getFieldProps('exam')}
+              type='number'
+              {...formik.getFieldProps('mark')}
+              autoFocus
             />
           </Form.Group>
         </Form>
