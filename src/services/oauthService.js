@@ -26,7 +26,6 @@ class OauthService {
         }
       )
       .then(response => {
-        console.log(response.toJSON())
         return response.data.code
       })
   }
