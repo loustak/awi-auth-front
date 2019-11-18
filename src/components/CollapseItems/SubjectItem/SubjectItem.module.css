@@ -1,0 +1,107 @@
+.subjectContainer {
+    display: flex;
+    padding: 0 15px;
+    border-bottom: 1px solid #D3D3D3;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.subjectContainer:last-child {
+    border: none;
+}
+
+.subjectContainer>div {
+    padding:  5px 10px 3px;
+}
+
+.subjectECTS {
+    text-align: center;
+    font-size: 22px;
+    width: 70px;
+    flex: initial;
+}
+
+.subjectUnderDescription {
+    color: #959794;
+    font-size: 0.75rem;
+}
+
+.subjectName {
+    font-size: 16px;
+    padding: 8px 0 0 20px;
+}
+
+.subjectAverage {
+    text-align: center;
+    font-size: 22px;
+    width: 70px;
+    flex: initial;
+}
+
+.testContainer {
+    flex : initial;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    background-color: #f9f9fa;
+    margin: 20px 10px 10px;
+}
+
+.testContainer>div {
+    padding: 10px 15px 4px;
+}
+
+.testName {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    position: absolute;
+    top: -12px;
+    left: 6px;
+    padding: 3px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.testNumberInfo {
+    text-align: center;
+    font-size: 22px;
+}
+
+.noTest {
+    color: #959794;
+}
+
+.addMarkBtn {
+    flex : initial;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    background-color: #f9f9fa;
+    margin: 20px 10px 10px;
+    padding: 5px 10px;
+    color: #00ABB2;
+    cursor: pointer;
+}
+
+.averageMissing {
+    color: #D3D3D3;
+}
+
+.averageValid {
+    color: green;
+}
+
+.averageRisk {
+    color: orange;
+}
+
+.averageDanger {
+    color: red;
+}

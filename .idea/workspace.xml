@@ -2,21 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/CourseItem/CourseItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/CourseItem/CourseItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Courses/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Courses/Courses.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/Applications/Applications.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Simulator/Simulator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/ErrorPage/ErrorPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/ErrorPage/ErrorPage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pages/Simulator/Simulator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pages/Simulator/Simulator.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/reducers/simulator.reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/MarksOperations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Collapse/Collapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Collapse/Collapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Collapse/Collapse.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Collapse/Collapse.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/ApplicationItem/ApplicationItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/ApplicationItem/ApplicationItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/ApplicationItem/ApplicationItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/ApplicationItem/ApplicationItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/Modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Applications/Applications.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Applications/Applications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Page/Page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/Courses/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Courses/Courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,23 +28,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>whi</find>
-      <find>getIns</find>
-      <find>aut</find>
-      <find>toggleButton</find>
-      <find>.navbar-toggler</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/src/components/pages</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -74,7 +60,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/CollapseItems/UEComponentItem" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -87,17 +73,19 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="standardjs.codestyle.accepted" value="true" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/common/ErrorPage" />
+      <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/CollapseItems/UEComponentItem" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/components/CollapseItems" />
       <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components\pages" />
       <recent name="D:\Dev\Web\Projects\awi-auth-front\src" />
-      <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -136,6 +124,7 @@
       <updated>1573893342085</updated>
       <workItem from="1573893344758" duration="2195000" />
       <workItem from="1573904169474" duration="7514000" />
+      <workItem from="1574095420251" duration="7980000" />
     </task>
     <servers />
   </component>

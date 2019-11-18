@@ -1,0 +1,22 @@
+.errorImage {
+    font-size: 80px;
+}
+
+.errorContainer {
+    display: flex;
+    justify-content: center;
+    color : #959794;
+}
+
+.errorTextContainer {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.errorText {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+}

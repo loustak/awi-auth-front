@@ -16,35 +16,33 @@ function Courses (props) {
   const [search, setSearch] = useState('')
 
   return (
-      <div className='applicationItem'>
-        <div>
-          {
-            courses.length > 0
-              ?
-                <Form.Group as={Col} controlId='search' className='divSearchBarDash'>
-                <Form.Label>Rechercher</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Rechercher"
-                  onChange={e => setSearch(e.target.value.toLowerCase())}
-                  className='searchBarDash'
-                />
-                </Form.Group>
-              : null
-          }
-          {
-            courses.filter(course => course.name.toLowerCase().includes(search)).map((course, i) => // TODO
-              <> <Collapse title={course.name} subtitle={course.teacher ? course.teacher : ''} key={i}>
-                  <CourseItem hours={course.hours} description={course.description} coef={course.coef} key={i} />
-                </Collapse>
-                <br />
-              </>
-            )
-          }
-        </div>
+    <div className='applicationItem'>
+      <div>
+        {
+          courses.length > 0
+            ? <Form.Group as={Col} controlId='search' className='divSearchBarDash'>
+              <Form.Label>Rechercher</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Rechercher'
+                onChange={e => setSearch(e.target.value.toLowerCase())}
+                className='searchBarDash'
+              />
+              </Form.Group>
+            : null
+        }
+        {
+          courses.filter(course => course.name.toLowerCase().includes(search)).map((course, i) => // TODO
+            <> <Collapse title={course.name} subtitle={course.teacher ? course.teacher : ''} key={i}>
+              <CourseItem hours={course.hours} description={course.description} coef={course.coef} key={i} />
+               </Collapse>
+              <br />
+            </>
+          )
+        }
       </div>
-    )
-
+    </div>
+  )
 }
 
 export default Courses

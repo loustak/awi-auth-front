@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import styles from './Page.module.css'
-import Sidebar from '../Sidebar/Sidebar'
 import Topbar from '../Topbar/Topbar'
 import { Col, Row } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom'
 import { capitalize } from '../../Utils'
-import classNames from 'classnames'
 import { connect } from 'react-redux'
 
 function Page (props) {

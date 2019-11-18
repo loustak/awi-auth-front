@@ -18,6 +18,7 @@ import store from './store/store'
 import Applications from './components/pages/Applications/Applications'
 import Courses from './components/pages/Courses/Courses'
 import Marks from './components/pages/Marks/Marks'
+import Simulator from './components/pages/Simulator/Simulator'
 
 import { auth } from './services/oauth2Service'
 
@@ -63,6 +64,7 @@ function App () {
             <PublicRoute exact path='/applications' component={Applications}/>
             <PublicRoute exact path='/cours' component={Courses}/>
             <PublicRoute exact path='/notes' component={Marks}/>
+            <PublicRoute exact path='/simulateur' component={Simulator} />
             <PublicRoute exact path='/dashboard' component={Dashboard}/>
           </Page>
         </div>
