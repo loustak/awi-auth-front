@@ -25,7 +25,7 @@ function StudentItem (props) {
     <div className={styles.studentItem}>
       <Collapse
         title={props.firstName + ' ' + props.lastName + ' | moyenne : ' + avg}
-        buttonText='Ajouter un note'
+        buttonText='Ajouter une note'
         onClick={() => {
           setShow(true)
           // addMark(props.subjectId, props.id, { mark: 11, coeff: 3, exam: 'TD' })
