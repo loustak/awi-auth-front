@@ -2,30 +2,52 @@ import React, { useState } from 'react'
 import Collapse from '../../Collapse/Collapse'
 import CourseItem from '../../CollapseItems/CourseItem/CourseItem'
 import Form from 'react-bootstrap/Form'
+import UEItem from '../../CollapseItems/UEItem/UEItem'
 
 const courses = [
   {
     name: 'Cours 1',
     teacher: 'Arnaud Castelltort',
     hours: '33',
-    coef: '1',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    credit: '1',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    content: ''
   },
   {
     name: 'Cours 2',
-    teacher: 'Arnaud Castelltort',
+    teacher: 'Anne Laurent',
     hours: '33',
-    coef: '1',
-    intervenants: ['Intervenant 1', 'Intervenant 2']
+    credit: '1',
+    description: '',
+    content: ''
   },
   {
     name: 'Cours 3',
     teacher: 'Arnaud Castelltort',
     hours: '33',
-    coef: '1',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ma'
+    credit: '1',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ma',
+    content: ''
+  }
+]
+
+const UE1 =
+  {
+    name: 'UE-TEST',
+    credit: '9',
+    courses: courses
+  }
+
+
+const semestres = [
+  {
+    name: 'Semestre 1',
+    ue: [UE1,UE1]
   },
-  { name: 'Cours 4' }
+  {
+    name: 'Semestre 2',
+    ue: [UE1,UE1]
+  }
 ]
 
 function Courses (props) {
@@ -35,32 +57,18 @@ function Courses (props) {
     <div className='applicationItem'>
       <div>
         {
-          courses.length > 0
-            ? <Form.Group controlId='search' className='divSearchBarDash'>
-              <Form.Label>Rechercher</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Rechercher"
-                onChange={e => setSearch(e.target.value.toLowerCase())}
-                className='searchBarDash'
-              />
-            </Form.Group>
-            : null
-        }
-        {
-          courses.filter(course => course.name.toLowerCase().match(search)).map((course, i) => // TODO
-            <React.Fragment key={i}>
-              <Collapse title={course.name} subtitle={course.teacher ? course.teacher : ''}>
-                <CourseItem
-                  hours={course.hours}
-                  description={course.description}
-                  coef={course.coef}
-                  intervenants={course.intervenants}
-                />
-              </Collapse>
-              <br />
-            </React.Fragment>
-          )
+          semestres.length > 0
+          ? semestres.map((semestre, i) =>
+              <React.Fragment key={i}>
+                <Collapse title={semestre.name} defaultOpen={i === 0}>
+                  <UEItem
+                    ue={semestre.ue}
+                  />
+                </Collapse>
+                <br />
+              </React.Fragment>
+            )
+            :null
         }
       </div>
     </div>
