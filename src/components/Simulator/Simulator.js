@@ -131,7 +131,7 @@ function Simulator (props) {
                 <Collapse
                   defaultOpen
                   title={ue.name}
-                  subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue)}
+                  subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue) + ' - Moyenne: ' + markOperations.getAverageFromUE(ue)}
                   key={i}
                 >
                   {

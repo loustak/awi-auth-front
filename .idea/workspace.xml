@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Simulator/Simulator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/ErrorPage/ErrorPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/ErrorPage/ErrorPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/Simulator/Simulator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/Simulator/Simulator.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/simulator.reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/MarksOperations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Page/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Page/Page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Courses/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Courses/Courses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Simulator/Simulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Simulator/Simulator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/MarksOperations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/MarksOperations.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
