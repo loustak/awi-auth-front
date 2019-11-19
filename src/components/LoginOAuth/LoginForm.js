@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Formik } from 'formik'
-import { Button, Form, Input, Message, Label, Header, Segment } from 'semantic-ui-react'
+import { Button, Form, Input, Message, Label, Header } from 'semantic-ui-react'
 import OauthService from '../../services/oauthService'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
@@ -31,7 +31,7 @@ export const LoginForm = (props) => (
         })
         .catch(error => {
           console.log(error)
-          actions.setFieldError('general', 'Username and password not matching')
+          actions.setFieldError('general', 'Username or password is incorrect')
         })
     }}
   >
