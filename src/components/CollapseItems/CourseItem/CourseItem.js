@@ -3,44 +3,36 @@ import styles from './CourseItem.module.css'
 
 function CourseItem (props) {
   // eslint-disable-next-line no-unused-vars
-  function downloadCourse (index) {
-    console.log('TODO')
-    console.log(index)
-    // TODO
-  }
 
   return (
     <div className={styles.courseItem}>
       <div className={styles.hours}>
         {
-          props.coef
-            ? <p>Coefficient : {props.coef}</p>
-            : null
+          props.credit
+            ? <><p>ECTS : <span className={styles.variable}>{props.credit}</span></p></>
+            : <p>ETCS: <span className={styles.variable}>--</span></p>
         }
       </div>
       <div className={styles.hours}>
         {
           props.hours
-            ? <p>Nombre total d'heures : {props.hours}</p>
-            : null
+            ? <p>Heures : <span className={styles.variable}>{props.hours}h</span></p>
+            : <p>Heures : <span className={styles.variable}>--</span></p>
         }
       </div>
       <div className={styles.hours}>
         {
-          props.intervenants
-            ? <p>Intervenants : {props.intervenants.join(' - ')}</p>
-            : null
+          props.description
+            ? <p>Description : <span className={styles.variable}>{props.description}</span></p>
+            : <p>Description : <span className={styles.variable}>--</span></p>
         }
       </div>
-      <div className={styles.info}>
-        <div id={styles.description}>
-          <label>DESCRIPTION</label>
-          {
-            props.description
-              ? <p>{props.description}</p>
-              : <p>--</p>
-          }
-        </div>
+      <div className={styles.hours}>
+        {
+          props.content
+            ? <p>Contenu : <span className={styles.variable}>{props.content}</span></p>
+            : <p>Contenu : <span className={styles.variable}>--</span></p>
+        }
       </div>
     </div>
   )
