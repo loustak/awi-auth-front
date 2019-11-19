@@ -53,10 +53,14 @@ export function getPeriodSubjects (formationName, stepNumber, periodNumber) {
     getFormation(formationName)
       .then(formation => {
         const step = formation.steps.filter(s => s.title.includes(stepNumber))
-        const s = getStep(step[0].id)
-
-        formation.steps[0] = [formation.steps[0], s]
-        console.log(formation)
+        getStep(step[0].id)
+          .then(step => {
+            delete step.id
+            delete step.title
+            formation.steps[0] = [formation.steps[0], step]
+            return formation
+          })
+        return formation
       })
       .catch(err => reject(err))
   })
