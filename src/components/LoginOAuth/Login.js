@@ -14,8 +14,7 @@ const MessageMissingParam = (props) => (
       Warning
     </Message.Header>
     Your login will fail because the url does not contain
-    the parameter{props.params.length > 1 && 's'}
-    {' ' + props.params.join(', ')}.
+    {' ' + props.params.join(' and ')} parameter{props.params.length > 1 && 's'}.
   </Message>
 )
 
