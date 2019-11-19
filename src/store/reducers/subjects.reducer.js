@@ -6,25 +6,49 @@ export default (state = {}, action) => {
         subjects: action.payload
       }
     }
-    case 'ADD_MARK': {
+    case 'ADD_EXAM': {
       const newSubjects = state.subjects.slice()
-      let subject = state.subjects.filter(subject => subject.id === action.payload.subjectId)[0]
+      const subject = state.subjects.filter(s => s.id === action.payload.subjectId)[0]
       const subjectIndex = newSubjects.indexOf(subject)
 
-      const newStudents = subject.students.slice()
-      let student = subject.students.filter(student => student.id === action.payload.studentId)[0]
-      const studentIndex = newStudents.indexOf(student)
+      const newExams = subject.exams.slice()
 
-      student.marks.push(action.payload.mark)
+      const id = subject.exams.length + 1
+      const exam = {
+        id: id,
+        name: action.payload.name,
+        coeff: action.payload.coeff,
+        marks: action.payload.marks
+      }
 
-      newStudents[studentIndex] = student
-      subject.students = newStudents
+      newExams.push(exam)
+
+      subject.exams = newExams
       newSubjects[subjectIndex] = subject
 
       return {
         ...state,
         subjects: newSubjects
       }
+
+      // const newSubjects = state.subjects.slice()
+      // let subject = state.subjects.filter(subject => subject.id === action.payload.subjectId)[0]
+      // const subjectIndex = newSubjects.indexOf(subject)
+      //
+      // const newStudents = subject.students.slice()
+      // let student = subject.students.filter(student => student.id === action.payload.studentId)[0]
+      // const studentIndex = newStudents.indexOf(student)
+      //
+      // student.marks.push(action.payload.mark)
+      //
+      // newStudents[studentIndex] = student
+      // subject.students = newStudents
+      // newSubjects[subjectIndex] = subject
+      //
+      // return {
+      //   ...state,
+      //   subjects: newSubjects
+      // }
     }
     // case 'ADD_COMMENT': {
     //   const newElements = state.user.comments.slice()
@@ -54,7 +78,6 @@ export default (state = {}, action) => {
     //     }
     //   }
     // }
-
 
     // case 'FETCH_USER_PROFILE_ERROR': {
     //   return {
