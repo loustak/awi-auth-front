@@ -52,14 +52,15 @@ export function getPeriodSubjects (formationName, stepNumber, periodNumber) {
   return new Promise((resolve, reject) => {
     getFormation(formationName)
       .then(formation => {
-        const step = formation.steps.filter(s => s.title.includes(stepNumber))
-        getStep(step[0].id)
+        formation.steps = formation.steps.filter(s => s.title.includes(stepNumber))
+        getStep(formation.steps[0].id)
           .then(step => {
             delete step.id
             delete step.title
-            formation.steps[0] = [formation.steps[0], step]
+            Object.assign(formation.steps[0], step)
             return formation
           })
+        console.log(formation)
         return formation
       })
       .catch(err => reject(err))
