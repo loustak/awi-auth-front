@@ -39,7 +39,12 @@ function Login () {
 
   const missingParams = requiredParams.filter(p => !Object.keys(uriParams).includes(p))
 
-  const color = getColor(uriParams.app_name)
+  let appName = 'Login Page'
+  if (uriParams.app_name) {
+    appName = uriParams.app_name
+  }
+
+  const color = getColor(appName)
 
   return (
 
