@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import axios from 'axios'
+// eslint-disable-next-line no-unused-vars
 import Config from '../config'
 // import { setConnectedUser } from '../store/actions/user.action'
 
