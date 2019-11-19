@@ -1,9 +1,10 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Formik } from 'formik'
-import { Button, Form, Input, Message, Label, Header } from 'semantic-ui-react'
+import { Button, Form, Input, Message, Label, Header, Segment } from 'semantic-ui-react'
 import OauthService from '../../services/oauthService'
 import * as Yup from 'yup'
+import PropTypes from 'prop-types'
 
 const LoginSchema = Yup.object().shape({
   username: Yup.string()
@@ -79,7 +80,12 @@ export const LoginForm = (props) => (
       </Form>
     )}
   </Formik>
-
 )
+
+LoginForm.propTypes = {
+  redirect_uri: PropTypes.string,
+  stateAuth: PropTypes.string,
+  client_id: PropTypes.string
+}
 
 export default withRouter(LoginForm)
