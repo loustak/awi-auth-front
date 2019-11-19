@@ -8,10 +8,6 @@ export function getFormation (formation) {
   })
 }
 
-export function test () {
-  getPeriodSubjects('IG', 3, 5)
-}
-
 export function getStep (idStep) {
   return new Promise((resolve, reject) => {
     axios.get(`https://test-api-formatech.igpolytech.fr/sagesse/step/${idStep}`)
@@ -52,17 +48,44 @@ export function getPeriodSubjects (formationName, stepNumber, periodNumber) {
   return new Promise((resolve, reject) => {
     getFormation(formationName)
       .then(formation => {
-        formation.steps = formation.steps.filter(s => s.title.includes(stepNumber))
-        getStep(formation.steps[0].id)
-          .then(step => {
-            delete step.id
-            delete step.title
-            Object.assign(formation.steps[0], step)
-            return formation
-          })
-        console.log(formation)
-        return formation
+        const step = formation.steps.filter(s => s.title.includes(stepNumber))[0]
+        return getStep(step.id)
       })
+      .then(step => {
+        const period = step.periods.filter(p => p.title.includes(periodNumber))[0]
+        return getPeriod(period.id)
+      })
+      .then(period => {
+        period.modules.map(m => {
+          getModule(m.id)
+            .then(module => {
+              delete module.id
+              delete module.title
+              Object.assign(m, module)
+            })
+        })
+        return period
+      })
+      .then(period2 => {
+        console.log(period2)
+        // period2.modules.map(m => {
+        //   m.subjects.map(s => {
+        //     getSubject(s.id)
+        //       .then(subject => {
+        //         delete subject.id
+        //         delete subject.title
+        //         Object.assign(s, subject)
+        //       })
+        //   })
+        // })
+        // console.log(period2)
+        return period2
+      })
+      .then(response => resolve(response.data))
       .catch(err => reject(err))
   })
+}
+
+export function test () {
+  getPeriodSubjects('IG', 3, 5)
 }
