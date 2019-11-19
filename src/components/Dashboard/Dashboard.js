@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import styles from './Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
@@ -11,8 +11,6 @@ import Modal from '../Modal/Modal'
 function Dashboard (props) {
   const [show, setShow] = useState(false)
   const [subjectId, setSubjectId] = useState(null)
-  const [, updateState] = React.useState()
-  const forceUpdate = useCallback(() => updateState({}), [])
 
   const formikExam = useFormik({
     initialValues: {
@@ -191,14 +189,12 @@ function Dashboard (props) {
                 <Form.Group controlId={'mark_' + student.id} key={i}>
                   <Form.Label>{'Note ' + student.firstName + ' ' + student.lastName}</Form.Label>
                   <Form.Control
-                    inline
                     type='number'
                     autoFocus
                     {...formikExam.getFieldProps('note_' + student.id)}
                     disabled={formikExam.values['nn_' + student.id] && formikExam.values['nn_' + student.id].length}
                   />
                   <Form.Check
-                    inline
                     type='checkbox'
                     label='Non noté'
                     {...formikExam.getFieldProps('nn_' + student.id)}

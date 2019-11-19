@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './CourseItem.module.css'
 
 function CourseItem (props) {
-  function downloadCourse(index) {
+  // eslint-disable-next-line no-unused-vars
+  function downloadCourse (index) {
     console.log('TODO')
     console.log(index)
     // TODO
@@ -20,8 +21,8 @@ function CourseItem (props) {
       <div className={styles.hours}>
         {
           props.hours
-          ? <p>Nombre total d'heures : {props.hours}</p>
-          : null
+            ? <p>Nombre total d'heures : {props.hours}</p>
+            : null
         }
       </div>
       <div className={styles.hours}>
@@ -33,7 +34,7 @@ function CourseItem (props) {
       </div>
       <div className={styles.info}>
         <div id={styles.description}>
-              <label>DESCRIPTION</label>
+          <label>DESCRIPTION</label>
           {
             props.description
               ? <p>{props.description}</p>
