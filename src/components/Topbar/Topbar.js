@@ -1,19 +1,15 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link, NavLink, withRouter } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import classNames from 'classnames'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './Topbar.module.css'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import { Breadcrumb, BreadcrumbItem } from 'react-bootstrap'
-import { capitalize } from '../../Utils'
 import { setCurrentUserRole } from '../../store/actions/currentUser.action'
 
 function Topbar (props) {
   return (
-    <Navbar className={styles.topbar + ' justify-content-between'} collapseOnSelect expand={props.expanded ? 'md' : 'false'} variant='dark' sticky="top">
+    <Navbar className={styles.topbar + ' justify-content-between'} collapseOnSelect expand='md' variant='dark' sticky="top">
 
       <Navbar.Toggle className={styles.toggleButton} aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
