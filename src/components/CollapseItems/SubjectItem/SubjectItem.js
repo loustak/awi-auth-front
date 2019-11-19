@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './SubjectItem.module.css'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Button, Col, Form } from 'react-bootstrap'
 
 function SubjectItem (props) {
   return (
@@ -44,11 +45,18 @@ function SubjectItem (props) {
             )
             : <div className={styles.noTest}>Pas encore évalué</div>
         }
-        <div className={styles.addMarkBtn}>
-          <FontAwesomeIcon
-            icon={faPlus}
-          />
-        </div>
+        <Form className={styles.testContainer}><Form.Label>Rechercher</Form.Label>
+          <Form.Control value='Devoir' type='text' className={styles.testName} />
+          <div>
+            <div className={styles.testNumberInfo}>10</div>
+            <div className={styles.subjectUnderDescription}>/20</div>
+          </div>
+          <div>
+            <div className={styles.testNumberInfo}>1</div>
+            <div className={styles.subjectUnderDescription}>Coeff</div>
+          </div>
+          <Button type='submit' value='Envoyer' className={styles.addMarkBtn} />
+        </Form>
       </div>
     </>
   )

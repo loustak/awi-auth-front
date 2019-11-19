@@ -77,15 +77,12 @@
 }
 
 .addMarkBtn {
-    flex : initial;
-    display: flex;
-    align-items: center;
-    position: relative;
+    position: absolute;
+    bottom: 5px;
     border-radius: 5px;
     border: 1px solid #D3D3D3;
     background-color: #f9f9fa;
-    margin: 20px 10px 10px;
-    padding: 5px 10px;
+    padding: 5px;
     color: #00ABB2;
     cursor: pointer;
 }
