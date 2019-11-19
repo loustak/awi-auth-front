@@ -52,14 +52,19 @@ function Login () {
         </Message>
         <Divider hidden />
 
-        {!missingParams.isEmpty && <MessageMissingParam params={missingParams} />}
+        {missingParams.length !== 0 && <MessageMissingParam params={missingParams} />}
 
         <Segment>
           <Header as='h1' color={color} textAlign='center'>
             {uriParams.app_name ? uriParams.app_name : 'Login Page'}
           </Header>
           <Divider />
-          <LoginForm redirect_uri={uriParams.redirect_uri} stateAuth={uriParams.state} client_id={uriParams.client_id} buttonColor={color} />
+          <LoginForm
+            redirect_uri={uriParams.redirect_uri}
+            stateAuth={uriParams.state}
+            client_id={uriParams.client_id}
+            buttonColor={color}
+          />
         </Segment>
       </Grid.Column>
     </Grid>
