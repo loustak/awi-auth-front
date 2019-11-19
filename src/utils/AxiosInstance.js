@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: 'http://oauth-dev.igpolytech.fr',
+  baseURL: 'http://oauth.igpolytech.fr',
   timeout: 2000,
   responseType: 'json'
 })
