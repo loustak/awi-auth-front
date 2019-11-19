@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Formik } from 'formik'
-import { Button, Form, Input, Message, Label, Header } from 'semantic-ui-react'
+import { Button, Form, Input, Message, Label, Header, Divider } from 'semantic-ui-react'
 import OauthService from '../../services/oauthService'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
@@ -38,7 +38,7 @@ export const LoginForm = (props) => (
 
     {({ handleChange, handleSubmit, values, errors, touched }) => (
       <Form size='large' onSubmit={handleSubmit}>
-
+        <Divider hidden />
         <Form.Field>
           <Header as='h3'>Username</Header>
           <Input
@@ -54,7 +54,7 @@ export const LoginForm = (props) => (
             </Label>}
 
         </Form.Field>
-
+        <Divider hidden />
         <Form.Field>
           <Header as='h3'>Password</Header>
           <Input
@@ -73,7 +73,8 @@ export const LoginForm = (props) => (
 
         {errors.general && <Message size='mini' negative>{errors.general}</Message>}
 
-        <Button fluid size='large' onPress={handleSubmit}>
+        <Divider hidden />
+        <Button fluid size='large' onClick={handleSubmit} color={props.buttonColor}>
           Login
         </Button>
 
@@ -85,7 +86,8 @@ export const LoginForm = (props) => (
 LoginForm.propTypes = {
   redirect_uri: PropTypes.string,
   stateAuth: PropTypes.string,
-  client_id: PropTypes.string
+  client_id: PropTypes.string,
+  buttonColor: PropTypes.string
 }
 
 export default withRouter(LoginForm)
