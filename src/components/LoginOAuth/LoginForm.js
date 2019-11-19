@@ -74,7 +74,7 @@ export const LoginForm = (props) => (
         {errors.general && <Message size='mini' negative>{errors.general}</Message>}
 
         <Divider hidden />
-        <Button fluid size='large' onClick={handleSubmit} color={props.buttonColor}>
+        <Button fluid size='large' onClick={handleSubmit} color={props.buttonColor} type='submit'>
           Login
         </Button>
 
