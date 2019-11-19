@@ -12,13 +12,13 @@ a {
 }
 
 .btn-blue {
-  background-color: #009bdd;
-  color: white;
+  background-color: #009bdd !important;
+  color: white !important;
 }
 
 .btn-blue:hover {
-  background-color: #0088d2;
-  color: white;
+  background-color: #0088d2  !important;
+  color: white !important;
 }
 
 p {
@@ -32,4 +32,13 @@ p {
 .btn-exit:hover {
   color:red !important;
   background-color: #ebebeb;
+}
+
+.searchBarDash{
+  width: 30%;
+}
+
+.divSearchBarDash{
+  margin: 10px 0 30px 0;
+  padding-left: 5px;
 }
