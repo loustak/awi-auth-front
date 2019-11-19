@@ -9,7 +9,7 @@ export function getFormation (formation) {
 }
 
 export function test () {
-  getPeriodSubjects('IG', 3, 5)
+  getTeacherSubjects('IG', 3, 5)
 }
 
 export function getStep (idStep) {
@@ -44,8 +44,24 @@ export function getSubject (idSubject) {
   })
 }
 
-export function getTeacherSubjects (formation, teacher) {
-  // TODO
+export function getTeacherSubjects (formationName, stepNumber, teacher) {
+  return new Promise((resolve, reject) => {
+    getFormation(formationName)
+      .then(formation => {
+        const step = formation.steps.filter(s => s.title.includes(stepNumber))
+        getStep(step[0].id)
+          .then(step => {
+            delete step.id
+            delete step.title
+            formation.steps[0] = [formation.steps[0], step]
+
+            return formation
+          })
+        console.log(formation)
+        return formation
+      })
+      .catch(err => reject(err))
+  })
 }
 
 export function getPeriodSubjects (formationName, stepNumber, periodNumber) {
