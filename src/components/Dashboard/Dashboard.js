@@ -1,19 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import styles from './Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
-import StudentItem from '../CollapseItems/StudentItem/StudentItem'
-import { Button, ButtonGroup, Col, DropdownButton, Form, Row, Dropdown } from 'react-bootstrap'
+import { Button, ButtonGroup, Col, Form} from 'react-bootstrap'
 import { useFormik } from 'formik'
-import { addMark } from '../../store/actions/subjects.action'
-import Modal from '../Modal/Modal'
 import ExamItem from '../CollapseItems/ExamItem/ExamItem'
 import { withRouter } from 'react-router-dom'
-import { CSVLink, CSVDownload } from 'react-csv'
+import { CSVLink} from 'react-csv'
+import { setTeacherSubjects } from '../../store/actions/subjects.action'
 
 function Dashboard (props) {
   const [show, setShow] = useState(false)
   const [subjectId, setSubjectId] = useState(null)
+
+  useEffect(() => {
+    if (!props.subjects.fetched) {
+      setTeacherSubjects('Corinne','Seguin')
+    }
+  },[])
+
 
   const formik = useFormik({
     initialValues: {
@@ -24,7 +29,7 @@ function Dashboard (props) {
   })
 
   function matchSearch (subject, query) {
-    return subject.name.toLowerCase().match(query) ||
+    return subject.title.toLowerCase().match(query) ||
       subject.training.toLowerCase().match(query) ||
       subject.year.toString().match(query)
   }
@@ -107,7 +112,6 @@ function Dashboard (props) {
                 const data = subject.exams.flatMap(exam => {
                   return exam.marks.map(mark => {
                     const student = props.students.students.filter(s => s.id === mark.student)[0]
-                    console.log(mark, student)
                     return {
                       name: exam.name,
                       coeff: exam.coeff,
@@ -118,11 +122,10 @@ function Dashboard (props) {
                     }
                   })
                 })
-                console.log(data)
 
                 return (
                   <Collapse
-                    title={subject.name + ' | ' + subject.training + ' ' + subject.year + ' | moyenne : TODO'}
+                    title={subject.title + ' | ' + subject.training + ' ' + subject.year + ' | moyenne : TODO'}
                     key={i}
                     button={
                       <ButtonGroup className='roundedButtonGroup'>
@@ -132,7 +135,7 @@ function Dashboard (props) {
                         >
                           Ajouter un examen
                         </Button>
-                        <CSVLink data={data} headers={headers} filename={subject.name + '_' + subject.training + '_' + subject.year + '.csv'} className='btn btn-blue'>Exporter</CSVLink>
+                        <CSVLink data={data} headers={headers} filename={subject.title + '_' + subject.training + '_' + subject.year + '.csv'} className='btn btn-blue'>Exporter</CSVLink>
                       </ButtonGroup>
                     }
                     onClick={() => {
