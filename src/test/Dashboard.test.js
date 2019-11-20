@@ -14,21 +14,14 @@ describe('Dashboard component test', () => {
     expect(collapse.toJSON()).toMatchSnapshot()
   })
 
-  // test('it shows collapsed students content when clicked', () => {
-  //   const children = 'ChildrenTest'
-  //   let component = null
-  //   act(() => {
-  //     component = create(
-  //       <Collapse title='Title Test' defaultOpen buttonText='ButtonText'>
-  //         {children}
-  //       </Collapse>)
-  //   })
-  //   const instance = component.root
-  //   // console.log(instance.props)
-  //   // const expandIcon = instance.findByType(FontAwesomeIcon)
-  //   // console.log(expandIcon.props.onClick)
-  //   // act(() => expandIcon.props.onClick())
-  //   const collapse = instance.findByProps({ className: 'contentWrapper' })
-  //   expect(collapse.props.children.props.children).toBe(children)
-  // })
+  test('it shows collapsed students content when clicked', () => {
+
+    let component = null
+    act(() => {
+      component = create(
+        <Provider store={store}>
+          <DashboardPage />
+        </Provider>)
+    })
+  })
 })
