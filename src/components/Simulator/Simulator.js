@@ -15,92 +15,7 @@ function Simulator (props) {
     }
   })
 
-  const semesters =
-    [
-      {
-        name: 'Semestre 8',
-        ue: [
-          {
-            name: 'Architecture des Systemes d\'Information',
-            subjects: [
-              {
-                name: 'Applications Web et Interopérabilité',
-                ects: 4.5,
-                tests: [
-                  {
-                    mark: 13,
-                    exam: 'Devoir surveillé',
-                    coeff: 2
-                  },
-                  {
-                    mark: 11,
-                    exam: 'Quizz',
-                    coeff: 1
-                  }
-                ]
-              },
-              {
-                name: 'Tests des Systèmes d\'Information',
-                ects: 0.5,
-                tests: [
-                  {
-                    mark: 13,
-                    exam: 'Oral',
-                    coeff: 2
-                  }
-                ]
-              },
-              {
-                name: 'Urbanisation des SI',
-                ects: 1,
-                tests: [
-                  {
-                    mark: 4,
-                    exam: 'DS',
-                    coeff: 2
-                  },
-                  {
-                    mark: 3,
-                    exam: 'Quizz',
-                    coeff: 1
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            name: 'Traitement des données et sécurité',
-            subjects: [
-              {
-                name: 'Sécurité des SI',
-                ects: 1
-              },
-              {
-                name: 'Data Science Avancée',
-                ects: 1,
-                tests: [
-                  {
-                    mark: 11,
-                    exam: 'DS',
-                    coeff: 2
-                  },
-                  {
-                    mark: 6,
-                    exam: 'Quizz',
-                    coeff: 1
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: 'Semestre 9'
-      }
-    ]
-
-  const filteredSemesters = semesters
+  const filteredSemesters = props.simulator.semesters
     .filter(semester => formik.values.semester !== '' ? semester.name === formik.values.semester : true)
 
   return (
@@ -109,7 +24,7 @@ function Simulator (props) {
         <Form>
           <Form.Row className={styles.searchBar}>
             <Form.Group as={Col} controlId='semester'>
-              <Form.Label>Année</Form.Label>
+              <Form.Label>Semestre</Form.Label>
               <Form.Control
                 as='select'
                 {...formik.getFieldProps('semester')}
@@ -131,7 +46,7 @@ function Simulator (props) {
                 <Collapse
                   defaultOpen
                   title={ue.name}
-                  subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue)}
+                  subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue) + ' - Moyenne: ' + markOperations.getAverageFromUE(ue)}
                   key={i}
                 >
                   {
