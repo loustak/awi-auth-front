@@ -90,7 +90,7 @@ export function getTeacherSubjects (teacherFirstName, teacherLastName) {
               if (subject.nomFormateur === teacherLastName && subject.prenomFormateur === teacherFirstName) {
                 delete subject.id
                 delete subject.title
-                res.push({ ...s, ...subject, idModule: mo.id})
+                res.push({ ...s, ...subject, idModule: mo.id, exams: [], year: '', training:''})
               }
             }))
           }))
