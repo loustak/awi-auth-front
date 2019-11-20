@@ -15,7 +15,6 @@ class DashboardPage extends React.Component {
   render() {
     return (
       <>
-        {test.test()}
         <Dashboard />
       </>
     )
