@@ -9,7 +9,7 @@ export function getFormation (formation) {
 }
 
 export function test () {
-  getTeacherSubjects('Castelltort')
+  getTeacherSubjects('Arnaud', 'Castelltort' )
 }
 
 export function getStep (idStep) {
@@ -44,15 +44,14 @@ export function getSubject (idSubject) {
   })
 }
 
-export function getTeacherSubjects (teacherName) {
-  const trainings = ['IG','MEA']
+export function getTeacherSubjects (teacherFirstName, teacherLastName) {
+  const trainings = ['IG']
   const steps = ['3','4','5']
   const periods = ['5','6','7','8','9','10']
-  const res = {}
-  return new Promise((resolve, reject) => {
+  let res = []
+  const allJSON = new Promise((resolve, reject) => {
     trainings.map(training => {
-      const resTraining = {}
-      getFormation(training)
+      return getFormation(training)
         .then(formation => {
           steps.map(stepNumber => {
             const step = formation.steps.filter(s => s.title.includes(stepNumber))[0]
@@ -62,34 +61,56 @@ export function getTeacherSubjects (teacherName) {
                 delete step.title
                 Object.assign(formation.steps[stepNumber-3], step)
 
-                periods.map(periodNumber => { // PERIODE DONE
+                const periodMap = periods.map(periodNumber => { // PERIODE DONE
+
                   const period = step.periods.filter(p => p.title.includes(periodNumber))[0]
                   if (period) {
-                    return getPeriod(period.id).then( p => {
-                      Object.assign(step.periods.find(element => element.id === period.id), p)
+                     return getPeriod(period.id)
+                       .then( p => {
 
-                      p.modules.map(module => {
-                        getModule(module.id)
-                          .then( m => {
-                            Object.assign(p.modules.find(element => element.id === module.id), m)
+                         Object.assign(step.periods.find(element => element.id === period.id), p)
+                         const moduleMap = p.modules.map(module => { // MODULE DONE
 
-                            module.subjects.map( subject => {
-                              getSubject(subject.id)
-                                .then( s => {
-                                  Object.assign( module.subjects.find(element => element.id === subject.id), s)
-                                })
+                           return getModule(module.id)
+                            .then( m => {
+                              Object.assign(p.modules.find(element => element.id === module.id), m)
+
+                              const SubjectMap = module.subjects.map( subject => { // SUBJECT DONE
+                                return getSubject(subject.id)
+                                  .then( s => {
+                                    Object.assign( module.subjects.find(element => element.id === subject.id), s)
+                                    // console.log(res)
+                                    if (s.nomFormateur === teacherLastName && s.prenomFormateur === teacherFirstName){
+                                      console.log(s)
+                                      res.push(s)
+                                    }
+                                  })
+
+
+                                //Promise.all(test).then(() => {console.log('MAL')});
+
+                              })
+
+                              Promise.all(SubjectMap).then(() => {console.log('TRAITE TOUS LES SUJETS DE ' + p.title)});
                             })
                           })
-                      })
+                         Promise.all(moduleMap).then(() => {console.log('TRAITE TOUS LES MODULES DE ' + p.title)});
                     })
-                  }
+                  } else {return null}
                 })
+
+                Promise.all(periodMap).then(() => {console.log('FIN PERIODE BIS')});
               })
           })
-          console.log(formation)
+          console.log(res)
         })
         .catch(err => reject(err))
     })
+
+  }).then( t => {
+    console.log('FINITO')
+    console.log(t)
+    console.log('FINITO')
 
   })
 }
