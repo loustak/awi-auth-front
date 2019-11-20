@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import axios from 'axios'
+// eslint-disable-next-line no-unused-vars
 import Config from '../config'
 // import { setConnectedUser } from '../store/actions/user.action'
 
@@ -43,15 +45,15 @@ import Config from '../config'
 //   storeProfileLocalStorage(profile)
 // }
 //
-export function isAuthenticated () {
-  // if (window.localStorage.getItem('hut_access_token') !== undefined &&
-  //   window.localStorage.getItem('hut_access_token') !== null) {
-  //   // setTokenHeader()
-  //   return true
-  // } else {
-  //   return false
-  // }
-  return false
+export function isAuthenticated (role) {
+  if (window.localStorage.getItem('tokens') !== undefined &&
+    window.localStorage.getItem('tokens') !== null) {
+    // setTokenHeader()
+    return true
+  } else {
+    return false
+  }
+  // return true
 }
 //
 // export function isAuthenticatedSimple() {

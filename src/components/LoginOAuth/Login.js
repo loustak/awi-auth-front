@@ -14,8 +14,7 @@ const MessageMissingParam = (props) => (
       Warning
     </Message.Header>
     Your login will fail because the url does not contain
-    the parameter{props.params.length > 1 && 's'}
-    {' ' + props.params.join(', ')}.
+    {' ' + props.params.join(' and ')} parameter{props.params.length > 1 && 's'}.
   </Message>
 )
 
@@ -39,10 +38,14 @@ function Login () {
 
   const missingParams = requiredParams.filter(p => !Object.keys(uriParams).includes(p))
 
-  const color = getColor(uriParams.app_name)
+  let appName = 'Login Page'
+  if (uriParams.app_name) {
+    appName = uriParams.app_name
+  }
+
+  const color = getColor(appName)
 
   return (
-
     <Grid centered textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 350 }}>
         <Divider hidden />

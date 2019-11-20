@@ -2,10 +2,10 @@ import store from '../store'
 
 // import { fetchUser, updateProfileActionDistant } from '../../services/User.services'
 
-export function addMark (subjectId, studentId, mark) {
+export function addExam (subjectId, name, coeff, marks) {
   store.dispatch({
-    type: 'ADD_MARK',
-    payload: { subjectId: subjectId, studentId: studentId, mark: mark }
+    type: 'ADD_EXAM',
+    payload: { subjectId: subjectId, name: name, coeff: coeff, marks: marks }
   })
 }
 

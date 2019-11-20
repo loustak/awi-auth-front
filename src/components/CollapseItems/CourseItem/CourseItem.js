@@ -1,38 +1,38 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './CourseItem.module.css'
 
 function CourseItem (props) {
-  function downloadCourse(index) {
-    console.log('TODO')
-    console.log(index)
-    // TODO
-  }
+  // eslint-disable-next-line no-unused-vars
 
   return (
     <div className={styles.courseItem}>
       <div className={styles.hours}>
         {
-          props.hours
-          ? <p>Hours : {props.hours}</p>
-          : null
+          props.credit
+            ? <><p>ECTS : <span className={styles.variable}>{props.credit}</span></p></>
+            : <p>ETCS: <span className={styles.variable}>--</span></p>
         }
       </div>
       <div className={styles.hours}>
         {
-          props.coef
-            ? <p>Coefficient : {props.coef}</p>
-            : null
+          props.hours
+            ? <p>Heures : <span className={styles.variable}>{props.hours}h</span></p>
+            : <p>Heures : <span className={styles.variable}>--</span></p>
         }
       </div>
-      <div className={styles.info}>
-        <div id={styles.description}>
-              <label>DESCRIPTION</label>
-          {
-            props.description
-              ? <p>{props.description}</p>
-              : <p>--</p>
-          }
-        </div>
+      <div className={styles.hours}>
+        {
+          props.description
+            ? <p>Description : <span className={styles.variable}>{props.description}</span></p>
+            : <p>Description : <span className={styles.variable}>--</span></p>
+        }
+      </div>
+      <div className={styles.hours}>
+        {
+          props.content
+            ? <p>Contenu : <span className={styles.variable}>{props.content}</span></p>
+            : <p>Contenu : <span className={styles.variable}>--</span></p>
+        }
       </div>
     </div>
   )

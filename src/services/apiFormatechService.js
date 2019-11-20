@@ -26,6 +26,7 @@ export function getStep (idStep) {
   })
 }
 
+
 /**
  * Get a period using the Formatech API
  * @param idPeriod the period ID

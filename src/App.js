@@ -5,31 +5,52 @@ import Login from './components/pages/Login/Login'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-// import { isAuthenticated } from './services/authenticationService'
 import Dashboard from './components/pages/Dashboard/Dashboard'
-
 import './App.css'
-
 import Page from './components/Page/Page'
-// import Home from './components/pages/Home/Home'
-// import Profile from './components/pages/Profile/Profile'
 import store from './store/store'
 import Applications from './components/pages/Applications/Applications'
+import AddMarkPage from './components/pages/AddMark/AddMark'
 import Courses from './components/pages/Courses/Courses'
-import Marks from './components/pages/Marks/Marks'
-
+import { isAuthenticated } from './services/AuthenticationService'
 import { auth } from './services/oauth2Service'
 
-console.log(auth.code.getUri())
+export class AbsoluteRedirect extends React.Component {
+  componentDidMount () {
+    window.location = this.props.to
+  }
 
-// eslint-disable-next-line no-unused-vars
+  render () {
+    return null
+  }
+}
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest} render={props => (
-    true === true
+    isAuthenticated('any')
       ? <Component {...props} {...rest} />
-      : <Redirect to={{ pathname: '/login', state: { from: props.location } }}/>
+      : <AbsoluteRedirect to={auth.code.getUri()} />
+  )}
+  />
+)
+
+const StudentRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest} render={props => (
+    isAuthenticated('student')
+      ? <Component {...props} {...rest} />
+      : <AbsoluteRedirect to={auth.code.getUri()} />
+  )}
+  />
+)
+
+const TeachereRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest} render={props => (
+    isAuthenticated('teacher')
+      ? <Component {...props} {...rest} />
+      : <AbsoluteRedirect to={auth.code.getUri()} />
   )}
   />
 )
@@ -45,8 +66,8 @@ const PublicRoute = ({ component: Component, ...rest }) => (
 const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest} render={props => (
-    true !== true
-      ? <Redirect to={{ pathname: '/' }}/>
+    isAuthenticated()
+      ? <Redirect to={{ pathname: '/' }} />
       : <Component {...props} {...rest} />
   )}
   />
@@ -58,12 +79,12 @@ function App () {
       <Provider store={store}>
         <div className='App'>
           <Page>
-            <NonAuthenticatedRoute exact path='/login' component={OauthLogin}/>
-            <NonAuthenticatedRoute exact path='/connexion' component={Login}/>
-            <PublicRoute exact path='/applications' component={Applications}/>
-            <PublicRoute exact path='/cours' component={Courses}/>
-            <PublicRoute exact path='/notes' component={Marks}/>
-            <PublicRoute exact path='/dashboard' component={Dashboard}/>
+            <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
+            <NonAuthenticatedRoute exact path='/token' component={Login} />
+            <StudentRoute exact path='/applications' component={Applications} />
+            <StudentRoute exact path='/cours' component={Courses} />
+            <TeachereRoute exact path='/dashboard' component={Dashboard} />
+            <TeachereRoute exact path='/notes' component={AddMarkPage} />
           </Page>
         </div>
       </Provider>

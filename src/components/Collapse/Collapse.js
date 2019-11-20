@@ -6,7 +6,7 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import Button from '../Button/Button'
 import { getRandomInt } from '../../Utils'
 
-function Collapse(props) {
+function Collapse (props) {
   const [open, setOpen] = useState(props.defaultOpen || false)
   const randomID = getRandomInt(9999)
 
@@ -25,7 +25,7 @@ function Collapse(props) {
             <h4 className={styles.title}>{props.title}</h4>
             {
               props.subtitle
-              ? <label className={styles.subtitle}>{props.subtitle}</label>
+                ? <label className={styles.subtitle}>{props.subtitle}</label>
                 : null
             }
           </div>
@@ -37,6 +37,8 @@ function Collapse(props) {
             >
               {props.buttonText}
             </Button>
+            : props.button
+            ? props.button
             : null
         }
       </div>
