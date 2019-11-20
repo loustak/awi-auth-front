@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/services/apiFormatechService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/apiFormatechService.js" afterDir="false" />
+    <list default="true" id="f6d3fe00-c46b-42e7-9c23-8aa54e64dc05" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/pages/AddMark/addMark.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/ExamItem/ExamItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/ExamItem/ExamItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/AddMark/AddMark.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/AddMark/AddMark.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/AuthenticationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/AuthenticationService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,21 +118,6 @@
         <option value="CSS File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>whi</find>
-      <find>getIns</find>
-      <find>aut</find>
-      <find>toggleButton</find>
-      <find>.navbar-toggler</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/src/components/pages</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -252,7 +246,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/store/reducers" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -264,17 +258,19 @@
     <property name="node.js.selected.package.standard" value="$PROJECT_DIR$/node_modules/standard" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
     <property name="standardjs.codestyle.accepted" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets" />
-      <recent name="$PROJECT_DIR$/src/components/CollapseItems" />
+      <recent name="D:\Dev\Web\Projects\awi-auth-front\src\store\reducers" />
       <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components\pages" />
-      <recent name="D:\Dev\Web\Projects\awi-auth-front\src" />
-      <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components" />
+      <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components\CollapseItems" />
+      <recent name="D:\Dev\Web\Projects\awi-auth-front\public" />
+      <recent name="$PROJECT_DIR$/src/assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dev\Web\Projects\awi-auth-front\public" />
       <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components" />
     </key>
   </component>
@@ -307,13 +303,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="" />
+      <changelist id="f6d3fe00-c46b-42e7-9c23-8aa54e64dc05" name="Default Changelist" comment="" />
       <created>1573893342085</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573893342085</updated>
       <workItem from="1573893344758" duration="2195000" />
       <workItem from="1573904169474" duration="7514000" />
+      <workItem from="1574239770855" duration="3643000" />
     </task>
     <servers />
   </component>

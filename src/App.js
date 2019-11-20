@@ -10,17 +10,48 @@ import './App.css'
 import Page from './components/Page/Page'
 import store from './store/store'
 import Applications from './components/pages/Applications/Applications'
+import AddMarkPage from './components/pages/AddMark/AddMark'
 import Courses from './components/pages/Courses/Courses'
-import Marks from './components/pages/Marks/Marks'
 import { isAuthenticated } from './services/AuthenticationService'
+import { auth } from './services/oauth2Service'
 
-// eslint-disable-next-line no-unused-vars
+export class AbsoluteRedirect extends React.Component {
+  componentDidMount () {
+    window.location = this.props.to
+  }
+
+  render () {
+    return null
+  }
+}
+
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest} render={props => (
-    isAuthenticated()
+    isAuthenticated('any')
       ? <Component {...props} {...rest} />
-      : <Redirect to={{ pathname: '/login', state: { from: props.location } }}/>
+      : <AbsoluteRedirect to={auth.code.getUri()} />
+  )}
+  />
+)
+
+const StudentRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest} render={props => (
+    isAuthenticated('student')
+      ? <Component {...props} {...rest} />
+      : <AbsoluteRedirect to={auth.code.getUri()} />
+  )}
+  />
+)
+
+const TeachereRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest} render={props => (
+    isAuthenticated('teacher')
+      ? <Component {...props} {...rest} />
+      : <AbsoluteRedirect to={auth.code.getUri()} />
   )}
   />
 )
@@ -37,7 +68,7 @@ const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest} render={props => (
     isAuthenticated()
-      ? <Redirect to={{ pathname: '/' }}/>
+      ? <Redirect to={{ pathname: '/' }} />
       : <Component {...props} {...rest} />
   )}
   />
@@ -49,12 +80,12 @@ function App () {
       <Provider store={store}>
         <div className='App'>
           <Page>
-            <NonAuthenticatedRoute exact path='/login' component={OauthLogin}/>
-            <NonAuthenticatedRoute exact path='/connexion' component={Login}/>
-            <PublicRoute exact path='/applications' component={Applications}/>
-            <PublicRoute exact path='/cours' component={Courses}/>
-            <PublicRoute exact path='/notes' component={Marks}/>
-            <PublicRoute exact path='/dashboard' component={Dashboard}/>
+            <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
+            <NonAuthenticatedRoute exact path='/token' component={Login} />
+            <StudentRoute exact path='/applications' component={Applications} />
+            <StudentRoute exact path='/cours' component={Courses} />
+            <TeachereRoute exact path='/dashboard' component={Dashboard} />
+            <TeachereRoute exact path='/notes' component={AddMarkPage} />
           </Page>
         </div>
       </Provider>

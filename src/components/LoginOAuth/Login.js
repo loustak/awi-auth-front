@@ -46,7 +46,6 @@ function Login () {
   const color = getColor(appName)
 
   return (
-
     <Grid centered textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 350 }}>
         <Divider hidden />
