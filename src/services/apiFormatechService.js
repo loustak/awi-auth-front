@@ -68,7 +68,19 @@ export function getSubject (idSubject) {
 
 
 export function getTeacherSubjects (teacherFirstName, teacherLastName) {
-  const trainings = ['IG']
+  return getTrainingTeacherSubjects(['IG'], teacherFirstName, teacherLastName).then(r1 => {
+    return r1
+    /*return getTrainingTeacherSubjects(['IG'], teacherFirstName, teacherLastName).then( r2 => {
+      return r1.concat(r2)
+      /*return getTrainingTeacherSubjects(['GBA'], teacherFirstName, teacherLastName).then( r3 => {
+        return r1.concat(r2.concat(r3))
+      })
+    })*/
+  })
+}
+
+export function getTrainingTeacherSubjects (trainings, teacherFirstName, teacherLastName) {
+
   const res = []
 
   return Promise.all(trainings.map(async (t) => {
@@ -117,7 +129,9 @@ export function getTeacherSubjects (teacherFirstName, teacherLastName) {
           }))
         }))
       }))
-    }).then(() => {return res})
+    }).then(() => {
+      return res
+    })
 
 }
 

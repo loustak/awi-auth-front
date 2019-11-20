@@ -15,7 +15,7 @@ function Dashboard (props) {
 
   useEffect(() => {
     if (!props.subjects.fetched) {
-      setTeacherSubjects('Corinne','Seguin')
+      setTeacherSubjects('Arnaud','Castelltort')
     }
   },[])
 

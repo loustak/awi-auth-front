@@ -13,7 +13,7 @@ export function addExam (subjectId, name, coeff, marks) {
 export function setTeacherSubjects (teacherFirstName, teacherLastName) {
   store.dispatch({type: 'SET_SUBJECTS_START'})
 
-  apiFormatechService.getTeacherSubjects(teacherFirstName, teacherLastName)
+  apiFormatechService.getTeacherSubjects( teacherFirstName, teacherLastName)
     .then(res => {
       store.dispatch({
         type: 'SET_SUBJECTS_SUCCESS',
