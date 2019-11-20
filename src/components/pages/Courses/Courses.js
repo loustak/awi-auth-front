@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Collapse from '../../Collapse/Collapse'
 import CourseItem from '../../CollapseItems/CourseItem/CourseItem'
 import Form from 'react-bootstrap/Form'
 import UEItem from '../../CollapseItems/UEItem/UEItem'
+import { setPeriodsSubjects } from '../../store/actions/periods.action'
 
 const courses = [
   {
@@ -52,6 +53,12 @@ const semestres = [
 
 function Courses (props) {
   const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    if (!props.periods.fetched) {
+      setPeriodsSubjects('IG', 4)
+    }
+  }, [])
 
   return (
     <div className='applicationItem'>
