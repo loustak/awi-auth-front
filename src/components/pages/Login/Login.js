@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter, useLocation, Redirect } from 'react-router-dom'
+
 import Button from '../../Button/Button'
 import { auth } from '../../../services/oauth2Service'
 import { AbsoluteRedirect } from '../../../App'

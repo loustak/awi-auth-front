@@ -66,6 +66,62 @@ export function getSubject (idSubject) {
   })
 }
 
+
+export function getTeacherSubjects (teacherFirstName, teacherLastName) {
+  const trainings = ['IG']
+  const res = []
+
+  return Promise.all(trainings.map(async (t) => {
+    const formation = await getFormation(t)
+    // console.log(formation.steps)
+    return formation.steps
+  }))
+    .then(steps => {
+      return Promise.all(steps[0].map(async (s) => {
+        const step = getStep(s.id)
+        return step
+      }))
+    })
+    .then(step => {
+      return Promise.all(step.map(s => {
+        return Promise.all(s.periods.map(async (p) => {
+          const period = await getPeriod(p.id)
+          return { ...p, ...period }
+        }))
+      }))
+    })
+    .then(period => {
+      return Promise.all(period.map(p => {
+        return Promise.all(p.map(peri => {
+          return Promise.all(peri.modules.map(async (m) => {
+            const module = await getModule(m.id)
+            delete module.id
+            delete module.title
+            return { ...m, ...module }
+          }))
+        }))
+      }))
+    })
+    .then(module => {
+      return Promise.all(module.map(m => {
+        return Promise.all(m.map(mod => {
+          return Promise.all(mod.map(async (mo) => { // MO + UE
+            return Promise.all(mo.subjects.map(async (s) => {
+              const subject = await getSubject(s.id)
+              if (subject.nomFormateur === teacherLastName && subject.prenomFormateur === teacherFirstName) {
+                delete subject.id
+                delete subject.title
+                res.push({ ...s, ...subject, idModule: mo.id, exams: [], year: '', training:''})
+              }
+            }))
+          }))
+        }))
+      }))
+    }).then(() => {return res})
+
+}
+
+
 /**
  * Get all the modules and subjects from a period given
  * @param formationName a string which is the formation name (IG, DI, MEA, etc.)
@@ -120,6 +176,7 @@ function getSubjectsInModule (module) {
   }))
     .then(subjects => {
       // Add the subjects data in the JSON
+
       module.subjects = subjects
       return module
     })

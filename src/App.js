@@ -25,6 +25,7 @@ export class AbsoluteRedirect extends React.Component {
   }
 }
 
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest} render={props => (

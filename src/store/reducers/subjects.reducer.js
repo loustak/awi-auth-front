@@ -1,5 +1,19 @@
 export default (state = {}, action) => {
   switch (action.type) {
+    case 'SET_SUBJECTS_START': {
+      return {
+        ...state,
+        fetching: true
+      }
+    }
+    case 'SET_SUBJECTS_SUCCESS': {
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        subjects: action.payload
+      }
+    }
     case 'SET_SUBJECTS': {
       return {
         ...state,
