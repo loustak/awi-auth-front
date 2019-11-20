@@ -3,7 +3,7 @@ import Collapse from '../../Collapse/Collapse'
 import CourseItem from '../../CollapseItems/CourseItem/CourseItem'
 import Form from 'react-bootstrap/Form'
 import UEItem from '../../CollapseItems/UEItem/UEItem'
-import { setPeriodsSubjects } from '../../store/actions/periods.action'
+import { setPeriodsSubjects } from '../../../store/actions/periods.action'
 
 const courses = [
   {
@@ -65,7 +65,7 @@ function Courses (props) {
       <div>
         {
           semestres.length > 0
-          ? semestres.map((semestre, i) =>
+            ? semestres.map((semestre, i) =>
               <React.Fragment key={i}>
                 <Collapse title={semestre.name} defaultOpen={i === 0}>
                   <UEItem
@@ -75,12 +75,11 @@ function Courses (props) {
                 <br />
               </React.Fragment>
             )
-            :null
+            : null
         }
       </div>
     </div>
   )
-
 }
 
 export default Courses

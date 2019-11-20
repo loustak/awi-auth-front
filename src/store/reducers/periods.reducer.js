@@ -14,5 +14,17 @@ export default (state = {}, action) => {
         periods: action.payload
       }
     }
+    case 'SET_PERIODS_ERROR': {
+      return {
+        ...state,
+        fetching: false,
+        fetched: false,
+        err: action.payload
+      }
+    }
+    default:
+      return {
+        ...state
+      }
   }
 }
