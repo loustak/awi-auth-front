@@ -31,8 +31,8 @@ class Applications extends React.Component {
       <div className={styles.applicationItem}>
         <Collapse title='Récemment ouvertes' subtitle='Cliquer sur la croix pour supprimer une application du Store.' defaultOpen={true}>
           {
-            apps.length > 0
-              ? apps.map((app, i) =>
+            recentApps.length > 0
+              ? recentApps.map((app, i) =>
                 <ApplicationItem name={app.name} status={app.url} key={i} />
               )
               : <EmptyItem />
