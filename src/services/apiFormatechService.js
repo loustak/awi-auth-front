@@ -10,6 +10,7 @@ export function getFormation (formation) {
 
 export function test () {
   getTeacherSubjects('Corinne', 'Seguin' ).then(res => console.log(res))
+  getPeriodSubjects('IG',3,5).then(res => console.log(res))
 }
 
 export function getStep (idStep) {
@@ -105,24 +106,27 @@ export async function getPeriodSubjects (formationName, stepNumber, periodNumber
   const step = await getStep(s.id)
 
   const p = step.periods.filter(p => p.title.includes(periodNumber))[0]
-  const period = await getPeriod(p.id)
+  if (p){
+    const period = await getPeriod(p.id)
 
-  Promise.all(period.modules.map(async (m) => {
-    const module = await getModule(m.id)
-    delete module.id
-    delete module.title
-    return { ...m, ...module }
-  }))
-    .then(modules => {
-      return Promise.all(modules.map(async (m) => getSubjectsInModule(m)))
-    })
-    .then(modules => {
-      period.modules = modules
-    })
+    Promise.all(period.modules.map(async (m) => {
+      const module = await getModule(m.id)
+      delete module.id
+      delete module.title
+      return { ...m, ...module }
+    }))
+      .then(modules => {
+        return Promise.all(modules.map(async (m) => getSubjectsInModule(m)))
+      })
+      .then(modules => {
+        period.modules = modules
+      })
 
-  console.log(period)
-
-  return period
+    return period
+    
+  } else {
+    return null
+  }
 }
 
 function getSubjectsInModule (module) {
@@ -131,23 +135,6 @@ function getSubjectsInModule (module) {
     delete subject.id
     delete subject.title
     return { ...s, ...subject }
-  }))
-    .then(subjects => {
-      module.subjects = subjects
-      return module
-    })
-}
-
-function getSubjectsInModuleForTeacher (module, lastName, firstName) {
-  return Promise.all(module.subjects.map(async (s) => {
-    const subject = await getSubject(s.id)
-    if (subject.nomFormateur === lastName && subject.prenomFormateur === firstName) {
-      delete subject.id
-      delete subject.title
-      return { ...s, ...subject }
-    } else {
-      return null
-    }
   }))
     .then(subjects => {
       module.subjects = subjects
