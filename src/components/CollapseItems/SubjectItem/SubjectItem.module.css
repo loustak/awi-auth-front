@@ -1,18 +1,24 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
 .subjectContainer {
     display: flex;
     padding: 0 15px;
     border-bottom: 1px solid #D3D3D3;
     align-items: center;
     flex-wrap: wrap;
-
 }
 
-.subjectContainer:last-child {
-    border: none;
-}
-
-.subjectContainer>div {
-    padding:  5px 10px 3px;
+.subjectTests>* {
+    padding:  15px 10px 3px;
 }
 
 .subjectECTS {
@@ -29,7 +35,38 @@
 
 .subjectName {
     font-size: 16px;
-    padding: 8px 0 0 20px;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.subjectInfosDetails {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+.subjectTests {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+    .subjectName {
+        text-align: left;
+        font-size: 16px;
+        padding: 8px 0 0 20px;
+    }
+
+    .subjectInfosDetails {
+        display: block;
+        width: inherit;
+    }
+
+    .subjectTests {
+        width: inherit;
+    }
 }
 
 .subjectAverage {
@@ -51,7 +88,11 @@
 }
 
 .testContainer>div {
-    padding: 10px 15px 4px;
+    padding: 10px 0px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .testName {
@@ -60,31 +101,59 @@
     border: 1px solid #D3D3D3;
     position: absolute;
     top: -12px;
+    max-width: 108px;
     left: 6px;
     padding: 3px 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.markFieldContainer {
+    margin-right: 8px;
 }
 
 .testNumberInfo {
     text-align: center;
-    font-size: 22px;
+    font-size: 16px;
+    width: 60px;
+    background: white;
+    background-clip: padding-box;
+    border: 1px solid #D3D3D3;
+    padding: .1rem .3rem;
+    color: #212529;
+}
+
+.newTestContainer {
+    border-style: dashed;
+    background-color: white;
 }
 
 .noTest {
     color: #959794;
 }
 
-.addMarkBtn {
+.testButton {
     position: absolute;
-    bottom: 5px;
     border-radius: 5px;
     border: 1px solid #D3D3D3;
-    background-color: #f9f9fa;
-    padding: 5px;
-    color: #00ABB2;
+    background-color: white;
+    color: #959794;
     cursor: pointer;
+    top: -12px;
+    right: 6px;
+    padding: 3px 6px;
+}
+
+.newTestContainer .testButton {
+    color: #00ABB2;
+}
+
+.testButtonIcon {
+    font-size: 12px;
+    line-height: 12px;
 }
 
 .averageMissing {
