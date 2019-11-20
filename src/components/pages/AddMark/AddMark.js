@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import { connect } from 'react-redux'
@@ -7,8 +7,6 @@ import { addExam } from '../../../store/actions/subjects.action'
 import styles from './addMark.module.css'
 
 function AddMarkPage (props) {
-  console.log(props)
-
   const formikInitialValues = {
     name: '',
     coeff: ''
@@ -21,15 +19,12 @@ function AddMarkPage (props) {
   const formikExam = useFormik({
     initialValues: formikInitialValues,
     onSubmit: values => {
-      console.log(values)
 
       const emptyIds = Object.keys(values).filter(k => values[k] === '').map(k => parseInt(k.substring(5)))
-      console.log(emptyIds)
       const emptyNames = emptyIds.map(id => {
         const student = props.students.students.filter(s => s.id === id)[0]
         return student.lastName + ' ' + student.firstName
       })
-      console.log(emptyNames)
 
       if (emptyNames.length === 0 || window.confirm('Des étudiants n\'ont pas de note :\n' + emptyNames.join("\n"))) {
         const exam = {
@@ -40,7 +35,6 @@ function AddMarkPage (props) {
           })
         }
 
-        console.log(exam)
         addExam(props.location.state.subject.id, exam.name, exam.coeff, exam.marks)
         props.history.push('/dashboard')
       }

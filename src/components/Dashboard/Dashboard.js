@@ -1,20 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import styles from './Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
-import StudentItem from '../CollapseItems/StudentItem/StudentItem'
-import { Button, ButtonGroup, Col, DropdownButton, Form, Row, Dropdown } from 'react-bootstrap'
+import { Button, ButtonGroup, Col, Form } from 'react-bootstrap'
 import { useFormik } from 'formik'
-import { addMark } from '../../store/actions/subjects.action'
-import Modal from '../Modal/Modal'
 import ExamItem from '../CollapseItems/ExamItem/ExamItem'
 import { withRouter } from 'react-router-dom'
-import { CSVLink, CSVDownload } from 'react-csv'
+import { CSVLink } from 'react-csv'
 
 function Dashboard (props) {
-  const [show, setShow] = useState(false)
-  const [subjectId, setSubjectId] = useState(null)
-
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -107,7 +101,6 @@ function Dashboard (props) {
                 const data = subject.exams.flatMap(exam => {
                   return exam.marks.map(mark => {
                     const student = props.students.students.filter(s => s.id === mark.student)[0]
-                    console.log(mark, student)
                     return {
                       name: exam.name,
                       coeff: exam.coeff,
@@ -118,7 +111,6 @@ function Dashboard (props) {
                     }
                   })
                 })
-                console.log(data)
 
                 return (
                   <Collapse
@@ -132,13 +124,16 @@ function Dashboard (props) {
                         >
                           Ajouter un examen
                         </Button>
-                        <CSVLink data={data} headers={headers} filename={subject.name + '_' + subject.training + '_' + subject.year + '.csv'} className='btn btn-blue'>Exporter</CSVLink>
+                        <CSVLink
+                          data={data}
+                          headers={headers}
+                          filename={subject.name + '_' + subject.training + '_' + subject.year + '.csv'}
+                          className='btn btn-blue'
+                        >
+                          Exporter
+                        </CSVLink>
                       </ButtonGroup>
                     }
-                    onClick={() => {
-                      setShow(true)
-                      setSubjectId(subject.id)
-                    }}
                   >
                     <div
                       style={{
@@ -162,42 +157,6 @@ function Dashboard (props) {
                 )
               })
             }
-            {/*<Modal*/}
-            {/*  show={show}*/}
-            {/*  title={'Ajouter une note pour ' + (props.subjects.subjects.filter(s => s.id === subjectId)[0] !== undefined ? props.subjects.subjects.filter(s => s.id === subjectId)[0].name : '')}*/}
-            {/*  buttonText='Ajouter'*/}
-            {/*  onCancel={() => {*/}
-            {/*    setShow(false)*/}
-            {/*    formikExam.resetForm()*/}
-            {/*  }}*/}
-            {/*  onSuccess={() => {*/}
-            {/*    console.log(formikExam.values)*/}
-            {/*    setShow(false)*/}
-            {/*    props.subjects.subjects.filter(s => s.id === subjectId)[0].students.forEach(student => {*/}
-            {/*      if (!(('nn_' + student.id) in formikExam.values) || formikExam.values['nn_' + student.id].length === 0) {*/}
-            {/*        addMark(subjectId, student.id, {*/}
-            {/*          mark: parseInt(formikExam.values['note_' + student.id]),*/}
-            {/*          coeff: parseInt(formikExam.values.coeff),*/}
-            {/*          exam: formikExam.values.exam*/}
-            {/*        })*/}
-            {/*      }*/}
-            {/*    })*/}
-            {/*    formikExam.resetForm()*/}
-            {/*    // forceUpdate()*/}
-            {/*  }}*/}
-            {/*  disableButton={*/}
-            {/*    props.subjects.subjects.filter(s => s.id === subjectId)[0]*/}
-            {/*      ? props.subjects.subjects.filter(s => s.id === subjectId)[0].students.filter(student =>*/}
-            {/*      (!(('nn_' + student.id) in formikExam.values) || formikExam.values['nn_' + student.id].length === 0) &&*/}
-            {/*      (!(('note_' + student.id) in formikExam.values) || formikExam.values['note_' + student.id] === '' || formikExam.values['note_' + student.id] < 0)*/}
-            {/*      ).length > 0 ||*/}
-            {/*      formikExam.values.coeff <= 0 ||*/}
-            {/*      formikExam.values.coeff === '' ||*/}
-            {/*      formikExam.values.exam === ''*/}
-            {/*      : true*/}
-            {/*  }*/}
-            {/*>*/}
-            {/*</Modal>*/}
           </div>
       }
     </>

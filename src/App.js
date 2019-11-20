@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import OauthLogin from './components/LoginOAuth/Login'
 import Login from './components/pages/Login/Login'
@@ -12,7 +12,7 @@ import store from './store/store'
 import Applications from './components/pages/Applications/Applications'
 import AddMarkPage from './components/pages/AddMark/AddMark'
 import Courses from './components/pages/Courses/Courses'
-import { isAuthenticated } from './services/AuthenticationService'
+import { isAuthenticated, isAuthenticatedAs, logout, setProfile } from './services/AuthenticationService'
 import { auth } from './services/oauth2Service'
 
 export class AbsoluteRedirect extends React.Component {
@@ -25,66 +25,136 @@ export class AbsoluteRedirect extends React.Component {
   }
 }
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest} render={props => (
-    isAuthenticated('any')
-      ? <Component {...props} {...rest} />
-      : <AbsoluteRedirect to={auth.code.getUri()} />
-  )}
+const RedirectToHome = ({ ...rest }) => {
+  return <Route
+    {...rest}
+    render={() => (
+      !isAuthenticated()
+        ? <AbsoluteRedirect to={auth.code.getUri()} />
+        : (isAuthenticatedAs() === 'student'
+          ? <Redirect to='/applications' />
+          : <Redirect to='/dashboard' />
+        )
+    )}
   />
-)
+}
+
+// class StudentRoute extends React.Component {
+//   componentDidMount () {
+//     if (!isAuthenticatedAs('student')) {
+//       console.log('logout student')
+//       logout()
+//       window.location.href = auth.code.getUri()
+//     }
+//   }
+//
+//   render () {
+//     const Component = this.props.component
+//
+//     return (
+//       <Route
+//         exact={this.props.exact}
+//         path={this.props.path}
+//         render={props => {
+//           return <Component {...this.props} />
+//         }}
+//       />
+//     )
+//   }
+// }
+
+// class TeacherRoute extends React.Component {
+//   componentDidMount () {
+//     if (!isAuthenticatedAs('teacher')) {
+//       console.log('logout student')
+//       logout()
+//       window.location.href = auth.code.getUri()
+//     }
+//   }
+//
+//   render () {
+//     const Component = this.props.component
+//
+//     return (
+//       <Route
+//         exact={this.props.exact}
+//         path={this.props.path}
+//         render={props => {
+//           return <Component {...this.props} />
+//         }}
+//       />
+//     )
+//   }
+// }
 
 const StudentRoute = ({ component: Component, ...rest }) => (
   <Route
-    {...rest} render={props => (
-    isAuthenticated('student')
-      ? <Component {...props} {...rest} />
-      : <AbsoluteRedirect to={auth.code.getUri()} />
-  )}
+    {...rest}
+    render={props => {
+      if (!isAuthenticatedAs('student')) {
+        logout()
+      }
+
+      return isAuthenticated('student')
+        ? <Component {...props} {...rest} />
+        : <AbsoluteRedirect to={auth.code.getUri()} />
+    }}
   />
 )
 
-const TeachereRoute = ({ component: Component, ...rest }) => (
+const TeacherRoute = ({ component: Component, ...rest }) => (
   <Route
-    {...rest} render={props => (
-    isAuthenticated('teacher')
-      ? <Component {...props} {...rest} />
-      : <AbsoluteRedirect to={auth.code.getUri()} />
-  )}
+    {...rest}
+    render={props => {
+      if (!isAuthenticatedAs('teacher')) {
+        logout()
+      }
+
+      return isAuthenticated('teacher')
+        ? <Component {...props} {...rest} />
+        : <AbsoluteRedirect to={auth.code.getUri()} />
+    }}
   />
 )
 
-const PublicRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest} render={props => (
-    <Component {...props} {...rest} />
-  )}
-  />
-)
+// const PublicRoute = ({ component: Component, ...rest }) => (
+//   <Route
+//     {...rest}
+//     render={props => (
+//       <Component {...props} {...rest} />
+//     )}
+//   />
+// )
 
 const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
-    {...rest} render={props => (
-    isAuthenticated()
-      ? <Redirect to={{ pathname: '/' }} />
-      : <Component {...props} {...rest} />
-  )}
+    {...rest}
+    render={props => (
+      isAuthenticated()
+        ? <Redirect to={{ pathname: '/' }} />
+        : <Component {...props} {...rest} />
+    )}
   />
 )
 
 function App () {
+  useEffect(() => {
+    setProfile()
+  }, [])
+
   return (
     <Router>
       <Provider store={store}>
         <div className='App'>
           <Page>
             <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
-            <NonAuthenticatedRoute exact path='/token' component={Login} />
             <StudentRoute exact path='/applications' component={Applications} />
             <StudentRoute exact path='/cours' component={Courses} />
-            <TeachereRoute exact path='/dashboard' component={Dashboard} />
-            <TeachereRoute exact path='/notes' component={AddMarkPage} />
+            <TeacherRoute exact path='/dashboard' component={Dashboard} />
+            <TeacherRoute exact path='/notes' component={AddMarkPage} />
+            <RedirectToHome exact path='/' />
+            <NonAuthenticatedRoute exact path='/token' component={Login} />
+
           </Page>
         </div>
       </Provider>

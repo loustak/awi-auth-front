@@ -236,14 +236,7 @@ const defaultCurrentUserState = {
     fetching: false,
     fetched: false,
     error: null,
-    user: {
-      id: '',
-      email: '',
-      firstName: '',
-      lastName: '',
-      picture: 'https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png',
-      role: 'teacher'
-    }
+    user: null
   }
 }
 
