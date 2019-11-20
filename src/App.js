@@ -36,14 +36,6 @@ const RedirectToHome = ({ ...rest }) => {
           : <Redirect to='/dashboard' />
         )
     )}
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest} render={props => (
-    isAuthenticated('any')
-      ? <Component {...props} {...rest} />
-      : <AbsoluteRedirect to={auth.code.getUri()} />
-  )}
   />
 }
 
