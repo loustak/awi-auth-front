@@ -4,6 +4,7 @@ import { useFormik } from 'formik'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { addExam } from '../../../store/actions/subjects.action'
+import styles from './addMark.module.css'
 
 function AddMarkPage (props) {
   console.log(props)
@@ -30,7 +31,7 @@ function AddMarkPage (props) {
       })
       console.log(emptyNames)
 
-      if (window.confirm('Des étudiants n\'ont pas de note :\n' + emptyNames.join("\n"))) {
+      if (emptyNames.length === 0 || window.confirm('Des étudiants n\'ont pas de note :\n' + emptyNames.join("\n"))) {
         const exam = {
           name: values.name,
           coeff: values.coeff,
@@ -40,20 +41,22 @@ function AddMarkPage (props) {
         }
 
         console.log(exam)
-        addExam(props.location.state.subjectId, exam.name, exam.coeff, exam.marks)
+        addExam(props.location.state.subject.id, exam.name, exam.coeff, exam.marks)
         props.history.push('/dashboard')
       }
     }
   })
 
   return (
-    <>
-      <Form onSubmit={formikExam.handleSubmit}>
+    <div className={styles.addMark}>
+      <h2 className='pageTitle'>Nouvel examen pour {props.location.state.subject.name}</h2>
+      <Form onSubmit={formikExam.handleSubmit} className={styles.form}>
         <Form.Row>
           <Form.Group as={Col} controlId='exam'>
             <Form.Label>Examen</Form.Label>
             <Form.Control
               type='text'
+              autoFocus
               {...formikExam.getFieldProps('name')}
             />
           </Form.Group>
@@ -66,14 +69,13 @@ function AddMarkPage (props) {
           </Form.Group>
         </Form.Row>
         {
-          props.location.state.subjectId
+          props.location.state.subject.id
             ? props.students.students.map((student, i) =>
               <Form.Group as={Row} controlId={'mark_' + student.id} key={i}>
-                <Form.Label column xs>{student.firstName + ' ' + student.lastName}</Form.Label>
-                <Col xs>
+                <Form.Label column xs='6'>{student.firstName + ' ' + student.lastName}</Form.Label>
+                <Col xs='6'>
                   <Form.Control
                     type='number'
-                    autoFocus
                     {...formikExam.getFieldProps('note_' + student.id)}
                   />
                 </Col>
@@ -89,7 +91,7 @@ function AddMarkPage (props) {
           Enregistrer
         </Button>
       </Form>
-    </>
+    </div>
   )
 }
 

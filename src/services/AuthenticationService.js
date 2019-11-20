@@ -46,14 +46,11 @@ import Config from '../config'
 // }
 //
 export function isAuthenticated (role) {
-  console.log('tokens : ' + window.localStorage.getItem('tokens'))
   if (window.localStorage.getItem('tokens') !== undefined &&
     window.localStorage.getItem('tokens') !== null) {
     // setTokenHeader()
-    console.log('authenticated true')
     return true
   } else {
-    console.log('authenticated false')
     return false
   }
   // return true

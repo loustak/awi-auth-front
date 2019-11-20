@@ -2,33 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6d3fe00-c46b-42e7-9c23-8aa54e64dc05" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/logoMyDash.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logoMyDash.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/ExamItem/ExamItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/ExamItem/ExamItem.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/AddMark/AddMark.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/students.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pages/AddMark/addMark.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/logoMyDash.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Collapse/Collapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Collapse/Collapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/MarkItem/MarkItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/MarkItem/MarkItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/StudentItem/StudentItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/StudentItem/StudentItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/ExamItem/ExamItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/ExamItem/ExamItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginOAuth/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginOAuth/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Topbar/Topbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Topbar/Topbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Topbar/Topbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Topbar/Topbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/MenuHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/MenuHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/AddMark/AddMark.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/AddMark/AddMark.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/AuthenticationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/AuthenticationService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/oauth2Service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/oauth2Service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/subjects.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/subjects.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/subjects.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/subjects.reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -129,13 +111,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="" />
+      <changelist id="f6d3fe00-c46b-42e7-9c23-8aa54e64dc05" name="Default Changelist" comment="" />
       <created>1573893342085</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573893342085</updated>
       <workItem from="1573893344758" duration="2195000" />
       <workItem from="1573904169474" duration="7514000" />
+      <workItem from="1574239770855" duration="3643000" />
     </task>
     <servers />
   </component>

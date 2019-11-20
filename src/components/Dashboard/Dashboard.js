@@ -9,6 +9,7 @@ import { addMark } from '../../store/actions/subjects.action'
 import Modal from '../Modal/Modal'
 import ExamItem from '../CollapseItems/ExamItem/ExamItem'
 import { withRouter } from 'react-router-dom'
+import { CSVLink, CSVDownload } from 'react-csv'
 
 function Dashboard (props) {
   const [show, setShow] = useState(false)
@@ -94,6 +95,31 @@ function Dashboard (props) {
                 // }, 0) / subject.students.length
                 // avg = Math.round(avg * 100) / 100
 
+                const headers = [
+                  { label: 'examName', key: 'name' },
+                  { label: 'examCoeff', key: 'coeff' },
+                  { label: 'studentID', key: 'student' },
+                  { label: 'studentFirstName', key: 'firstName' },
+                  { label: 'studentLastName', key: 'lastName' },
+                  { label: 'note', key: 'mark' }
+                ]
+
+                const data = subject.exams.flatMap(exam => {
+                  return exam.marks.map(mark => {
+                    const student = props.students.students.filter(s => s.id === mark.student)[0]
+                    console.log(mark, student)
+                    return {
+                      name: exam.name,
+                      coeff: exam.coeff,
+                      student: mark.student,
+                      firstName: student.firstName,
+                      lastName: student.lastName,
+                      mark: mark.mark
+                    }
+                  })
+                })
+                console.log(data)
+
                 return (
                   <Collapse
                     title={subject.name + ' | ' + subject.training + ' ' + subject.year + ' | moyenne : TODO'}
@@ -102,11 +128,11 @@ function Dashboard (props) {
                       <ButtonGroup className='roundedButtonGroup'>
                         <Button
                           variant='blue'
-                          onClick={() => props.history.push({ pathname: '/notes', state: { subjectId: subject.id } })}
+                          onClick={() => props.history.push({ pathname: '/notes', state: { subject: subject } })}
                         >
                           Ajouter un examen
                         </Button>
-                        <Button variant='blue'>Exporter</Button>
+                        <CSVLink data={data} headers={headers} filename={subject.name + '_' + subject.training + '_' + subject.year + '.csv'} className='btn btn-blue'>Exporter</CSVLink>
                       </ButtonGroup>
                     }
                     onClick={() => {
