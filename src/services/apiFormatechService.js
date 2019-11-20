@@ -9,7 +9,7 @@ export function getFormation (formation) {
 }
 
 export function test () {
-  getTeacherSubjects('Arnaud', 'Castelltort' )
+  getTeacherSubjects('Corinne', 'Seguin' ).then(res => console.log(res))
 }
 
 export function getStep (idStep) {
@@ -46,100 +46,111 @@ export function getSubject (idSubject) {
 
 export function getTeacherSubjects (teacherFirstName, teacherLastName) {
   const trainings = ['IG']
-  const steps = ['3','4','5']
-  const periods = ['5','6','7','8','9','10']
-  let res = []
-  const allJSON = new Promise((resolve, reject) => {
-    trainings.map(training => {
-      return getFormation(training)
-        .then(formation => {
-          steps.map(stepNumber => {
-            const step = formation.steps.filter(s => s.title.includes(stepNumber))[0]
-            return getStep(step.id)
-              .then(step => { // STEP DONE
-                delete step.id
-                delete step.title
-                Object.assign(formation.steps[stepNumber-3], step)
+  const res = []
 
-                const periodMap = periods.map(periodNumber => { // PERIODE DONE
-
-                  const period = step.periods.filter(p => p.title.includes(periodNumber))[0]
-                  if (period) {
-                     return getPeriod(period.id)
-                       .then( p => {
-
-                         Object.assign(step.periods.find(element => element.id === period.id), p)
-                         const moduleMap = p.modules.map(module => { // MODULE DONE
-
-                           return getModule(module.id)
-                            .then( m => {
-                              Object.assign(p.modules.find(element => element.id === module.id), m)
-
-                              const SubjectMap = module.subjects.map( subject => { // SUBJECT DONE
-                                return getSubject(subject.id)
-                                  .then( s => {
-                                    Object.assign( module.subjects.find(element => element.id === subject.id), s)
-                                    // console.log(res)
-                                    if (s.nomFormateur === teacherLastName && s.prenomFormateur === teacherFirstName){
-                                      console.log(s)
-                                      res.push(s)
-                                    }
-                                  })
-
-
-                                //Promise.all(test).then(() => {console.log('MAL')});
-
-                              })
-
-                              Promise.all(SubjectMap).then(() => {console.log('TRAITE TOUS LES SUJETS DE ' + p.title)});
-                            })
-                          })
-                         Promise.all(moduleMap).then(() => {console.log('TRAITE TOUS LES MODULES DE ' + p.title)});
-                    })
-                  } else {return null}
-                })
-
-                Promise.all(periodMap).then(() => {console.log('FIN PERIODE BIS')});
-              })
-          })
-          console.log(res)
-        })
-        .catch(err => reject(err))
+  return Promise.all(trainings.map(async (t) => {
+    const formation = await getFormation(t)
+    // console.log(formation.steps)
+    return formation.steps
+  }))
+    .then(steps => {
+      return Promise.all(steps[0].map(async (s) => {
+        const step = getStep(s.id)
+        return step
+      }))
     })
+    .then(step => {
+      return Promise.all(step.map(s => {
+        return Promise.all(s.periods.map(async (p) => {
+          const period = await getPeriod(p.id)
+          return { ...p, ...period }
+        }))
+      }))
+    })
+    .then(period => {
+      return Promise.all(period.map(p => {
+        return Promise.all(p.map(peri => {
+          return Promise.all(peri.modules.map(async (m) => {
+            const module = await getModule(m.id)
+            delete module.id
+            delete module.title
+            return { ...m, ...module }
+          }))
+        }))
+      }))
+    })
+    .then(module => {
+      return Promise.all(module.map(m => {
+        return Promise.all(m.map(mod => {
+          return Promise.all(mod.map(async (mo) => { // MO + UE
+            return Promise.all(mo.subjects.map(async (s) => {
+              const subject = await getSubject(s.id)
+              if (subject.nomFormateur === teacherLastName && subject.prenomFormateur === teacherFirstName) {
+                delete subject.id
+                delete subject.title
+                res.push({ ...s, ...subject, idModule: mo.id})
+              }
+            }))
+          }))
+        }))
+      }))
+    }).then(() => {return res})
 
-  }).then( t => {
-    console.log('FINITO')
-    console.log(t)
-    console.log('FINITO')
-
-  })
 }
 
-export function getPeriodSubjects (formationName, stepNumber, periodNumber) {
-  return new Promise((resolve, reject) => {
-    return new Promise((resolve, reject) => {
-      getFormation(formationName)
-        .then(formation => {
-          const step = formation.steps.filter(s => s.title.includes(stepNumber))[0]
-          return getStep(step.id)
-        })
-        .then(step => {
-          const period = step.periods.filter(p => p.title.includes(periodNumber))[0]
-          return getPeriod(period.id)
-        })
-        .then(period => {
-          period.modules.map(m => {
-            getModule(m.id)
-              .then(module => {
-                delete module.id
-                delete module.title
-                Object.assign(m, module)
-              })
-          })
+export async function getPeriodSubjects (formationName, stepNumber, periodNumber) {
+  const formation = await getFormation(formationName)
 
-          return period
-        })
-      .catch(err => reject(err))
+  const s = formation.steps.filter(s => s.title.includes(stepNumber))[0]
+  const step = await getStep(s.id)
+
+  const p = step.periods.filter(p => p.title.includes(periodNumber))[0]
+  const period = await getPeriod(p.id)
+
+  Promise.all(period.modules.map(async (m) => {
+    const module = await getModule(m.id)
+    delete module.id
+    delete module.title
+    return { ...m, ...module }
+  }))
+    .then(modules => {
+      return Promise.all(modules.map(async (m) => getSubjectsInModule(m)))
     })
-  })
+    .then(modules => {
+      period.modules = modules
+    })
+
+  console.log(period)
+
+  return period
+}
+
+function getSubjectsInModule (module) {
+  return Promise.all(module.subjects.map(async (s) => {
+    const subject = await getSubject(s.id)
+    delete subject.id
+    delete subject.title
+    return { ...s, ...subject }
+  }))
+    .then(subjects => {
+      module.subjects = subjects
+      return module
+    })
+}
+
+function getSubjectsInModuleForTeacher (module, lastName, firstName) {
+  return Promise.all(module.subjects.map(async (s) => {
+    const subject = await getSubject(s.id)
+    if (subject.nomFormateur === lastName && subject.prenomFormateur === firstName) {
+      delete subject.id
+      delete subject.title
+      return { ...s, ...subject }
+    } else {
+      return null
+    }
+  }))
+    .then(subjects => {
+      module.subjects = subjects
+      return module
+    })
 }
