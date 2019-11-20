@@ -65,10 +65,6 @@ export function getSubject (idSubject) {
   })
 }
 
-export function getTeacherSubjects (formation, teacher) {
-  // TODO
-}
-
 /**
  * Get all the modules and subjects from a period given
  * @param formationName a string which is the formation name (IG, DI, MEA, etc.)
