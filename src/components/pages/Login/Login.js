@@ -1,32 +1,48 @@
 import React from 'react'
-import { withRouter, useLocation, Redirect } from 'react-router-dom'
-
-import Button from '../../Button/Button'
+import { withRouter, Redirect } from 'react-router-dom'
 import { auth } from '../../../services/oauth2Service'
 import { AbsoluteRedirect } from '../../../App'
+import jwtDecode from 'jwt-decode'
+import { setCurrentUser } from '../../../store/actions/currentUser.action'
+import { logout } from '../../../services/AuthenticationService'
 
-function useQuery () {
-  return new URLSearchParams(useLocation().search)
-}
+class LoginPage extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      loading: true,
+      ok: false
+    }
+  }
 
-function LoginPage (props) {
-  const query = useQuery()
-  const code = query.get('code')
+  async componentDidMount () {
+    const query = new URLSearchParams(this.props.location.search)
+    const code = query.get('code')
 
-  console.log('code : ' + code)
+    if (code !== undefined && code !== null) {
+      try {
+        const response = await auth.code.getToken(this.props.location.pathname + this.props.location.search)
+        logout()
+        window.localStorage.setItem('accessToken', response.accessToken)
+        window.localStorage.setItem('refreshToken', response.refreshToken)
+        setCurrentUser(jwtDecode(response.accessToken))
+        this.setState({ loading: false, ok: true })
+      } catch (e) {
+        this.setState({ loading: false, ok: false })
+      }
+    } else {
+      this.setState({ loading: false, ok: false })
+    }
+  }
 
-  if (code !== undefined && code !== null) {
-    auth.code.getToken(props.location.pathname + props.location.search).then(a => {
-      console.log({ access_token: a.accessToken, refresh_token: a.refreshToken })
-      window.localStorage.setItem('tokens', JSON.stringify({ access_token: a.accessToken, refresh_token: a.refreshToken }))
-    }).catch(e => console.log(e))
-
+  render () {
     return (
-      <Redirect to='/' />
-    )
-  } else {
-    return (
-      <AbsoluteRedirect to={auth.code.getUri()} />
+      this.state.loading
+        ? <div>loading</div>
+        : (this.state.ok
+          ? <Redirect to='/' />
+          : <AbsoluteRedirect to={auth.code.getUri()} />
+        )
     )
   }
 }

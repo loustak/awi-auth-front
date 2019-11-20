@@ -143,13 +143,16 @@ function Dashboard (props) {
                         >
                           Ajouter un examen
                         </Button>
-                        <CSVLink data={data} headers={headers} filename={subject.title + '_' + subject.training + '_' + subject.year + '.csv'} className='btn btn-blue'>Exporter</CSVLink>
+                        <CSVLink
+                          data={data}
+                          headers={headers}
+                          filename={subject.name + '_' + subject.training + '_' + subject.year + '.csv'}
+                          className='btn btn-blue'
+                        >
+                          Exporter
+                        </CSVLink>
                       </ButtonGroup>
                     }
-                    onClick={() => {
-                      setShow(true)
-                      setSubjectId(subject.id)
-                    }}
                   >
                     <div
                       style={{

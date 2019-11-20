@@ -7,8 +7,9 @@ import { connect } from 'react-redux'
 
 function Page (props) {
   const location = props.location.pathname.substring(1)
+
   function showLayout () {
-    return location !== 'login' && location !== 'register' && location !== 'recovery' && location !== 'connexion'
+    return location !== 'login' && location !== 'register' && location !== 'recovery' && location !== 'connexion' && location !== 'token'
   }
 
   return (
@@ -18,7 +19,7 @@ function Page (props) {
         <Col xs className={styles.colBox}>
           <Row noGutters className={styles.topbarContainer}>
             <Topbar
-              for={props.currentUser.user}
+              for={props.currentUser.user || 'none'}
             />
           </Row>
           <Row noGutters className={styles.pageContentWrapper}>
@@ -36,7 +37,7 @@ function Page (props) {
 
 const stateMap = (state) => {
   return {
-    currentUser: state.currentUser,
+    currentUser: state.currentUser
   }
 }
 

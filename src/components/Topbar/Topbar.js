@@ -5,13 +5,15 @@ import classNames from 'classnames'
 import styles from './Topbar.module.css'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import { setCurrentUserRole } from '../../store/actions/currentUser.action'
 import { auth } from '../../services/oauth2Service'
+import { logout } from '../../services/AuthenticationService'
+import { connect } from 'react-redux'
+import { capitalize } from '../../Utils'
 
 function Topbar (props) {
 
   function handleLogout () {
-    window.localStorage.removeItem('tokens')
+    logout()
     window.location.href = auth.code.getUri()
   }
 
@@ -47,10 +49,19 @@ function Topbar (props) {
                 <><Nav.Link as={NavLink} className={styles.topBarLink} to="/dashboard">DASHBOARD</Nav.Link></>
               </>
           }
-          <Nav.Link style={{ color: '#00ABB2' }} onClick={() => setCurrentUserRole('student')}>Student</Nav.Link>
-          <Nav.Link style={{ color: '#00ABB2' }} onClick={() => setCurrentUserRole('teacher')}>Teacher</Nav.Link>
         </Nav>
         <Nav>
+          {
+            props.currentUser.user
+              ? <div
+                style={{
+                  color: '#00ABB2',
+                  marginRight: '30px'
+                }}>
+                {capitalize(props.currentUser.user.firstname)} {props.currentUser.user.lastname.toUpperCase()}
+              </div>
+              : null
+          }
           <div onClick={handleLogout} className={styles.topbarButton}>Déconnexion</div>
         </Nav>
       </Navbar.Collapse>
@@ -58,4 +69,10 @@ function Topbar (props) {
   )
 }
 
-export default withRouter(Topbar)
+const stateMap = (state) => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(stateMap)(withRouter(Topbar))

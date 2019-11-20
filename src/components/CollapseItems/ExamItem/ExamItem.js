@@ -1,14 +1,9 @@
-import React, { useRef, useState } from 'react'
-import { Col, Form } from 'react-bootstrap'
-import { addMark } from '../../../store/actions/subjects.action'
-import Modal from '../../Modal/Modal'
+import React from 'react'
 import styles from './ExamItem.module.css'
 import Collapse from '../../Collapse/Collapse'
 import MarkItem from '../MarkItem/MarkItem'
-import { useFormik } from 'formik'
 import { connect } from 'react-redux'
-import { CSVLink, CSVDownload } from 'react-csv'
-import Button from '../../Button/Button'
+import { CSVLink } from 'react-csv'
 
 function ExamItem (props) {
 

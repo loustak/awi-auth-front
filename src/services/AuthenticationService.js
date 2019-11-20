@@ -1,7 +1,10 @@
+import jwtDecode from 'jwt-decode'
+
 // eslint-disable-next-line no-unused-vars
 import axios from 'axios'
 // eslint-disable-next-line no-unused-vars
 import Config from '../config'
+import { setCurrentUser } from '../store/actions/currentUser.action'
 // import { setConnectedUser } from '../store/actions/user.action'
 
 // export function storeToken(token) {
@@ -30,31 +33,36 @@ import Config from '../config'
 //   })
 // }
 //
-// export function setProfile(forced = false) {
-//   if (profileIsInLocalStorage() && !forced) {
-//     setConnectedUser(loadProfileFromLocalStorage())
-//   } else {
-//     fetchProfile().then(profile => {
-//       setConnectedUser(profile)
-//       storeProfileLocalStorage(profile)
-//     })
-//   }
-// }
+export function setProfile (forced = false) {
+  if (isAuthenticated() && !forced) {
+    const accessToken = window.localStorage.getItem('accessToken')
+    setCurrentUser(jwtDecode(accessToken))
+  }
+}
+
 //
 // export function updateProfileLocalStorage(profile) {
 //   storeProfileLocalStorage(profile)
 // }
 //
-export function isAuthenticated (role) {
-  if (window.localStorage.getItem('tokens') !== undefined &&
-    window.localStorage.getItem('tokens') !== null) {
-    // setTokenHeader()
-    return true
+export function isAuthenticated (role = 'any') {
+  const accessToken = window.localStorage.getItem('accessToken')
+  if (accessToken !== undefined && accessToken !== null) {
+    return jwtDecode(accessToken).role === role || role === 'any'
   } else {
     return false
   }
-  // return true
 }
+
+export function isAuthenticatedAs () {
+  const accessToken = window.localStorage.getItem('accessToken')
+  if (accessToken !== undefined && accessToken !== null) {
+    return jwtDecode(accessToken).role
+  } else {
+    return 'none'
+  }
+}
+
 //
 // export function isAuthenticatedSimple() {
 //   if (window.localStorage.getItem('hut_access_token') !== undefined &&
@@ -78,11 +86,13 @@ export function isAuthenticated (role) {
 //   window.localStorage.removeItem('hut_access_token')
 // }
 //
-// export function logout() {
-//   removeToken()
-//   deleteProfileLocalStorage()
-//   window.location = '/'
-// }
+export function logout () {
+  console.log('logout')
+  window.localStorage.removeItem('accessToken')
+  window.localStorage.removeItem('refreshToken')
+  setCurrentUser({})
+}
+
 //
 // export function login(email, password) {
 //   return new Promise((resolve, reject) => {
