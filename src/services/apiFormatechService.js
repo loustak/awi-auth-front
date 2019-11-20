@@ -8,11 +8,6 @@ export function getFormation (formation) {
   })
 }
 
-export function test () {
-  getTeacherSubjects('Corinne', 'Seguin' ).then(res => console.log(res))
-  getPeriodSubjects('IG',3,5).then(res => console.log(res))
-}
-
 export function getStep (idStep) {
   return new Promise((resolve, reject) => {
     axios.get(`https://test-api-formatech.igpolytech.fr/sagesse/step/${idStep}`)
