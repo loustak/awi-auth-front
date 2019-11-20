@@ -1,4 +1,5 @@
 import store from '../store'
+import * as apiFormatechService from '../../services/apiFormatechService'
 
 // import { fetchUser, updateProfileActionDistant } from '../../services/User.services'
 
@@ -8,6 +9,45 @@ export function addExam (subjectId, name, coeff, marks) {
     payload: { subjectId: subjectId, name: name, coeff: coeff, marks: marks }
   })
 }
+
+export function setTeacherSubjects (teacherFirstName, teacherLastName) {
+  store.dispatch({type: 'SET_SUBJECTS_START'})
+
+  apiFormatechService.getTeacherSubjects(teacherFirstName, teacherLastName)
+    .then(res => {
+      store.dispatch({
+        type: 'SET_SUBJECTS_SUCCESS',
+        payload: res
+      })
+    })
+    .catch(err => {
+      store.dispatch({
+        type: 'SET_SUBJECTS_ERROR',
+        payload: err
+      })
+    })
+}
+
+
+// export function setFetchedUser (id) {
+//   return new Promise((resolve, reject) => {
+//     store.dispatch({type: 'FETCH_USER_PROFILE_START'})
+//     fetchUser(id).then(user => {
+//       store.dispatch({
+//         type: 'FETCH_USER_PROFILE_SUCCESS',
+//         payload: user
+//       })
+//       resolve(user)
+//     }).catch(err => {
+//       store.dispatch({
+//         type: 'FETCH_USER_PROFILE_ERROR',
+//         payload: err
+//       })
+//       reject(err)
+//     })
+//   })
+// }
+
 
 // export function setFetchedUser (id) {
 //   return new Promise((resolve, reject) => {

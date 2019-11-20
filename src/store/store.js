@@ -33,199 +33,24 @@ const defaultStudentsState = {
         lastName: 'France'
       },
       {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
+        id: 3,
+        firstName: 'Audrey',
+        lastName: 'Samson'
       },
       {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
+        id: 4,
+        firstName: 'Antoine',
+        lastName: 'Sanchez'
       },
       {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
+        id: 5,
+        firstName: 'Aubin',
+        lastName: 'Abadie'
       },
       {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
-      },
-      {
-        id: 2,
-        firstName: 'Quentin',
-        lastName: 'France'
+        id: 6,
+        firstName: 'Delton',
+        lastName: 'Vaz'
       }
     ]
   }
@@ -245,52 +70,7 @@ const defaultSubjectsState = {
     fetching: false,
     fetched: false,
     error: null,
-    subjects: [
-      {
-        id: '1',
-        name: 'Stats',
-        training: 'IG',
-        year: 4,
-        coeff: 1,
-        exams: [
-          {
-            id: 1,
-            name: 'Exam 1',
-            coeff: 2,
-            marks: [
-              {
-                student: 1,
-                mark: 12
-              }
-            ]
-          }
-        ]
-      },
-      {
-        id: '2',
-        name: 'AWI',
-        training: 'IG',
-        year: 5,
-        coeff: 2,
-        exams: [
-          {
-            id: 1,
-            name: 'Exam 1',
-            coeff: 1,
-            marks: [
-              {
-                student: 1,
-                mark: 12
-              },
-              {
-                student: 2,
-                mark: 13
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    subjects: []
   }
 }
 

@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './Marktem.module.css'
 import { connect } from 'react-redux'
 
-
 function MarkItem(props) {
   const student = props.students.students.filter(s => s.id === props.student)[0]
 

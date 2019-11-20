@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import styles from './Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
-import { Button, ButtonGroup, Col, Form } from 'react-bootstrap'
+import { Button, ButtonGroup, Col, Form} from 'react-bootstrap'
 import { useFormik } from 'formik'
 import ExamItem from '../CollapseItems/ExamItem/ExamItem'
 import { withRouter } from 'react-router-dom'
-import { CSVLink } from 'react-csv'
+import { CSVLink} from 'react-csv'
+import { setTeacherSubjects } from '../../store/actions/subjects.action'
 
 function Dashboard (props) {
+  const [show, setShow] = useState(false)
+  const [subjectId, setSubjectId] = useState(null)
+
+  useEffect(() => {
+    if (!props.subjects.fetched) {
+      setTeacherSubjects('Corinne','Seguin')
+    }
+  },[])
+
+
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -18,7 +29,7 @@ function Dashboard (props) {
   })
 
   function matchSearch (subject, query) {
-    return subject.name.toLowerCase().match(query) ||
+    return subject.title.toLowerCase().match(query) ||
       subject.training.toLowerCase().match(query) ||
       subject.year.toString().match(query)
   }
@@ -31,8 +42,16 @@ function Dashboard (props) {
   return (
     <>
       {
-        (!props.students.students)
-          ? <div>loading</div>
+        (!props.subjects.fetched)
+          ? <div  className={styles.loading}>
+              <div className="spinner-border text-info" role="status">
+                <span className="sr-only"/>
+              </div>
+              <div className={styles.loadingText}>
+                <h4>Chargement en cours</h4>
+              </div>
+
+            </div>
           : <div className={styles.dashboard}>
             <div>
               <Form>
@@ -114,7 +133,7 @@ function Dashboard (props) {
 
                 return (
                   <Collapse
-                    title={subject.name + ' | ' + subject.training + ' ' + subject.year + ' | moyenne : TODO'}
+                    title={subject.title + ' | ' + subject.training + ' ' + subject.year + ' | moyenne : TODO'}
                     key={i}
                     button={
                       <ButtonGroup className='roundedButtonGroup'>
