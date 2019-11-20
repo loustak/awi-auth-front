@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/NewTestForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/TestForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/actions/simulator.action.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Simulator/Simulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Simulator/Simulator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/simulator.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/simulator.reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
-    </list>
+    <list default="true" id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +110,7 @@
       <workItem from="1573904169474" duration="7514000" />
       <workItem from="1574095420251" duration="7980000" />
       <workItem from="1574168897072" duration="3119000" />
-      <workItem from="1574240586607" duration="18438000" />
+      <workItem from="1574240586607" duration="19168000" />
     </task>
     <task id="LOCAL-00001" summary="Small changes on simulator page">
       <created>1574181757953</created>
@@ -136,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574260766541</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Simulator State">
+      <created>1574271188509</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574271188512</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +169,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Small changes on simulator page" />
     <MESSAGE value="Simulator Inputs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simulator Inputs" />
+    <MESSAGE value="Simulator State" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simulator State" />
   </component>
 </project>
