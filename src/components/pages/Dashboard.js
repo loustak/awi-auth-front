@@ -1,5 +1,4 @@
 import React from 'react'
-import * as test from '../../services/castelstoreService'
 import MenuHeader from '../common/MenuHeader.js'
 import UserApps from '../UserApps'
 import { Divider, Responsive, Segment, Tab } from 'semantic-ui-react'
