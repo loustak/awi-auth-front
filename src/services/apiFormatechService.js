@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getFormation (formation) {
   return new Promise((resolve, reject) => {
-    axios.get(`https://test-api-formatech.igmontpellier.fr/sagesse/${formation}`)
+    axios.get(`https://test-api-formatech.igpolytech.fr/sagesse/${formation}`)
       .then(response => resolve(response.data))
       .catch(err => reject(err))
   })
