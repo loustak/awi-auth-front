@@ -3,7 +3,7 @@ import axios from 'axios'
 /**
  * Get a formation using the Formatech API
  * @param formation A string which is the formation name (IG, DO, MEA, etc.)
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getFormation (formation) {
   return new Promise((resolve, reject) => {
@@ -16,7 +16,7 @@ export function getFormation (formation) {
 /**
  * Get a step using the Formatech API
  * @param idStep the step ID
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getStep (idStep) {
   return new Promise((resolve, reject) => {
@@ -26,11 +26,10 @@ export function getStep (idStep) {
   })
 }
 
-
 /**
  * Get a period using the Formatech API
  * @param idPeriod the period ID
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getPeriod (idPeriod) {
   return new Promise((resolve, reject) => {
@@ -43,7 +42,7 @@ export function getPeriod (idPeriod) {
 /**
  * Get a module using the Formatech API
  * @param idModule the module ID
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getModule (idModule) {
   return new Promise((resolve, reject) => {
@@ -56,7 +55,7 @@ export function getModule (idModule) {
 /**
  * Get a subject using the Formatech API
  * @param idSubject the subject ID
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getSubject (idSubject) {
   return new Promise((resolve, reject) => {
@@ -67,13 +66,12 @@ export function getSubject (idSubject) {
 }
 
 /**
- * Get all the modules and subjects from a period given
- * @param formationName a string which is the formation name (IG, DI, MEA, etc.)
+ * Get all the periods, modules and subjects from a grade level given
+ * @param formationName a string which is the formation name
  * @param stepNumber an integer which is the grade level number
- * @param periodNumber an integer which is the semester number
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<[unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown]>} a Promise which contains a JSON
  */
-export async function getPeriodSubjects (formationName, stepNumber, periodNumber) {
+export async function getPeriodsSubjects (formationName, stepNumber) {
   // Get the formation
   const formation = await getFormation(formationName)
 
@@ -81,10 +79,26 @@ export async function getPeriodSubjects (formationName, stepNumber, periodNumber
   const s = formation.steps.filter(s => s.title.includes(stepNumber))[0]
   const step = await getStep(s.id)
 
-  // Filter and get the period
-  const p = step.periods.filter(p => p.title.includes(periodNumber))[0]
-  const period = await getPeriod(p.id)
+  console.log(step)
 
+  return Promise.all(step.periods.map(async (p) => {
+    const period = await getPeriod(p.id)
+    delete period.id
+    delete period.title
+    return { ...p, ...period }
+  }))
+    .then(periods => {
+      // Add the subjects data in the JSON
+      return Promise.all(periods.map(async (p) => getPeriodSubjects(p)))
+    })
+}
+
+/**
+ * Get all the modules and subjects from a period given
+ * @param period the period JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
+ */
+function getPeriodSubjects (period) {
   // Get all the modules of the period
   Promise.all(period.modules.map(async (m) => {
     // Get a module
@@ -107,7 +121,7 @@ export async function getPeriodSubjects (formationName, stepNumber, periodNumber
 
 /**
  * Get all the subjects from a module given
- * @param module the module ID
+ * @param module the module JSON
  * @returns {Promise<[unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown]>} a Promise which contains a JSON
  */
 function getSubjectsInModule (module) {
