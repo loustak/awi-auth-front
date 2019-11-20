@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/logoMyDash.svg'
+import logo from '../../../public/logoMyDash.svg'
 import { Button, Icon, Image, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 

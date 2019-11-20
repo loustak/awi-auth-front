@@ -16,6 +16,221 @@ const enhancer = composeEnhancers(
   // other store enhancers if any
 )
 
+const defaultStudentsState = {
+  students: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    students: [
+      {
+        id: 1,
+        firstName: 'Alexandre',
+        lastName: 'Kueny'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      },
+      {
+        id: 2,
+        firstName: 'Quentin',
+        lastName: 'France'
+      }
+    ]
+  }
+}
+
 const defaultCurrentUserState = {
   currentUser: {
     fetching: false,
@@ -44,64 +259,39 @@ const defaultSubjectsState = {
         training: 'IG',
         year: 4,
         coeff: 1,
-        students: [
+        exams: [
           {
-            id: '1',
-            firstName: 'Alexandre',
-            lastName: 'Kueny',
+            id: 1,
+            name: 'Exam 1',
+            coeff: 2,
             marks: [
               {
-                mark: 13,
-                exam: 'DS',
-                coeff: 1
-              },
-              {
-                mark: 15,
-                exam: 'DS',
-                coeff: 2
-              }
-            ]
-          },
-          {
-            id: '2',
-            firstName: 'Mahé',
-            lastName: 'Liabeuf',
-            marks: [
-              {
-                mark: 14,
-                exam: 'DS',
-                coeff: 2
-              },
-              {
-                mark: 16,
-                exam: 'DS',
-                coeff: 1
+                student: 1,
+                mark: 12
               }
             ]
           }
         ]
       },
       {
-        id: '1',
-        name: 'RFID',
-        training: 'MEA',
+        id: '2',
+        name: 'AWI',
+        training: 'IG',
         year: 5,
-        coeff: 1,
-        students: [
+        coeff: 2,
+        exams: [
           {
-            id: '1',
-            firstName: 'Alexandre',
-            lastName: 'Kueny',
+            id: 1,
+            name: 'Exam 1',
+            coeff: 1,
             marks: [
               {
-                mark: 13,
-                exam: 'DS',
-                coeff: 1
+                student: 1,
+                mark: 12
               },
               {
-                mark: 15,
-                exam: 'DS',
-                coeff: 2
+                student: 2,
+                mark: 13
               }
             ]
           }
@@ -111,5 +301,5 @@ const defaultSubjectsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState, defaultStudentsState)
 export default createStore(reducer, { ...defaultState }, enhancer)
