@@ -44,46 +44,44 @@ export function getTeacherSubjects (formation, teacher) {
   // TODO
 }
 
-export function getPeriodSubjects (formationName, stepNumber, periodNumber) {
-  return new Promise((resolve, reject) => {
-    getFormation(formationName)
-      .then(formation => {
-        const step = formation.steps.filter(s => s.title.includes(stepNumber))[0]
-        return getStep(step.id)
-      })
-      .then(step => {
-        const period = step.periods.filter(p => p.title.includes(periodNumber))[0]
-        return getPeriod(period.id)
-      })
-      .then(period => {
-        period.modules.map(m => {
-          getModule(m.id)
-            .then(module => {
-              delete module.id
-              delete module.title
-              Object.assign(m, module)
-            })
-        })
-        return period
-      })
-      .then(period2 => {
-        console.log(period2)
-        // period2.modules.map(m => {
-        //   m.subjects.map(s => {
-        //     getSubject(s.id)
-        //       .then(subject => {
-        //         delete subject.id
-        //         delete subject.title
-        //         Object.assign(s, subject)
-        //       })
-        //   })
-        // })
-        // console.log(period2)
-        return period2
-      })
-      .then(response => resolve(response.data))
-      .catch(err => reject(err))
-  })
+export async function getPeriodSubjects (formationName, stepNumber, periodNumber) {
+  const formation = await getFormation(formationName)
+
+  const s = formation.steps.filter(s => s.title.includes(stepNumber))[0]
+  const step = await getStep(s.id)
+
+  const p = step.periods.filter(p => p.title.includes(periodNumber))[0]
+  const period = await getPeriod(p.id)
+
+  Promise.all(period.modules.map(async (m) => {
+    const module = await getModule(m.id)
+    delete module.id
+    delete module.title
+    return { ...m, ...module }
+  }))
+    .then(modules => {
+      return Promise.all(modules.map(async (m) => getSubjectsInModule(m)))
+    })
+    .then(modules => {
+      period.modules = modules
+    })
+
+  console.log(period)
+
+  return period
+}
+
+function getSubjectsInModule (module) {
+  return Promise.all(module.subjects.map(async (s) => {
+    const subject = await getSubject(s.id)
+    delete subject.id
+    delete subject.title
+    return { ...s, ...subject }
+  }))
+    .then(subjects => {
+      module.subjects = subjects
+      return module
+    })
 }
 
 export function test () {
