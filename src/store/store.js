@@ -302,7 +302,7 @@ const defaultSubjectsState = {
 }
 
 const defaultPeriodsState = {
-  subjects: {
+  periods: {
     fetching: false,
     fetched: false,
     error: null,

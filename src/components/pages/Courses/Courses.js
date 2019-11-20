@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Collapse from '../../Collapse/Collapse'
-import CourseItem from '../../CollapseItems/CourseItem/CourseItem'
-import Form from 'react-bootstrap/Form'
 import UEItem from '../../CollapseItems/UEItem/UEItem'
 import { setPeriodsSubjects } from '../../../store/actions/periods.action'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+
 
 const courses = [
   {
@@ -54,6 +55,8 @@ const semestres = [
 function Courses (props) {
   const [search, setSearch] = useState('')
 
+  const periods = props.periods.periods
+
   useEffect(() => {
     if (!props.periods.fetched) {
       setPeriodsSubjects('IG', 4)
@@ -61,25 +64,41 @@ function Courses (props) {
   }, [])
 
   return (
-    <div className='applicationItem'>
-      <div>
-        {
-          semestres.length > 0
-            ? semestres.map((semestre, i) =>
-              <React.Fragment key={i}>
-                <Collapse title={semestre.name} defaultOpen={i === 0}>
-                  <UEItem
-                    ue={semestre.ue}
-                  />
-                </Collapse>
-                <br />
-              </React.Fragment>
-            )
-            : null
-        }
+    <>
+      {
+        (!props.periods.fetched)
+        ? <h2>NO DATA</h2>
+        : <div className='applicationItem'>
+        <div>
+          {
+            periods.length > 0
+              ? periods.map((p, i) => {
+                const mod = p.modules
+                  //console.log('MODULE')
+                  console.log(p)
+                  console.log(mod)
+                  return (p.modules && p.modules.length > 0
+                    ? <React.Fragment key={i}>
+                        <Collapse title={p.title} defaultOpen={i === 0}>
+                          <UEItem  ue={p.modules} />
+                        </Collapse>
+                        <br />
+                      </React.Fragment>
+                      : null)
+                })
+              : null
+          }
+        </div>
       </div>
-    </div>
+    }
+    </>
   )
 }
 
-export default Courses
+const stateMap = (state) => {
+  return {
+    periods: state.periods
+  }
+}
+
+export default connect(stateMap)(withRouter(Courses))
