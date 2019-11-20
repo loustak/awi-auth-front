@@ -42,8 +42,16 @@ function Dashboard (props) {
   return (
     <>
       {
-        (!props.students.students)
-          ? <div>loading</div>
+        (!props.subjects.fetched)
+          ? <div  className={styles.loading}>
+              <div className="spinner-border text-info" role="status">
+                <span className="sr-only"/>
+              </div>
+              <div className={styles.loadingText}>
+                <h4>Chargement en cours</h4>
+              </div>
+
+            </div>
           : <div className={styles.dashboard}>
             <div>
               <Form>
