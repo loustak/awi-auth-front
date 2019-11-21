@@ -13,6 +13,7 @@ import Applications from './components/pages/Applications/Applications'
 import AddMarkPage from './components/pages/AddMark/AddMark'
 import Courses from './components/pages/Courses/Courses'
 import { isAuthenticated, isAuthenticatedAs, logout, setProfile } from './services/AuthenticationService'
+import Simulator from './components/pages/Simulator/Simulator'
 import { auth } from './services/oauth2Service'
 
 export class AbsoluteRedirect extends React.Component {

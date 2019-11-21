@@ -8,17 +8,19 @@ import { getRandomInt } from '../../Utils'
 
 function Collapse (props) {
   const [open, setOpen] = useState(props.defaultOpen || false)
-  const randomID = getRandomInt(9999)
+  const randomID = getRandomInt(99999)
 
   return (
     <div className={props.special ? styles.specialCollapse : styles.collapse}>
-      <div className={styles.top}>
+      <div
+        className={styles.top}
+        onClick={() => setOpen(!open)}
+        aria-controls={'collapse-content' + randomID}
+        aria-expanded={open}
+      >
         <div className={styles.topLeft}>
           <FontAwesomeIcon
             icon={open ? faChevronUp : faChevronDown}
-            onClick={() => setOpen(!open)}
-            aria-controls={'collapse-content' + randomID}
-            aria-expanded={open}
             className={styles.icon}
           />
           <div>
@@ -34,7 +36,7 @@ function Collapse (props) {
           props.buttonText
             ? <Button
               onClick={props.onClick}
-            >
+              >
               {props.buttonText}
             </Button>
             : props.button

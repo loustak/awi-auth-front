@@ -1,0 +1,187 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+.subjectContainer {
+    display: flex;
+    padding: 0 15px;
+    border-bottom: 1px solid #D3D3D3;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.subjectContainer>* {
+    padding:  15px 10px 3px;
+}
+
+.subjectECTS {
+    text-align: center;
+    font-size: 22px;
+    width: 70px;
+    flex: initial;
+}
+
+.subjectUnderDescription {
+    color: #959794;
+    font-size: 0.75rem;
+}
+
+.subjectName {
+    font-size: 16px;
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.subjectInfosDetails {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .subjectName {
+        text-align: left;
+        font-size: 16px;
+        padding: 8px 0 0 20px;
+    }
+
+    .subjectInfosDetails {
+        display: block;
+        width: inherit;
+    }
+
+    .subjectContainer {
+        width: inherit;
+        justify-content: left;
+    }
+}
+
+.subjectAverage {
+    text-align: center;
+    font-size: 22px;
+    width: 70px;
+    flex: initial;
+}
+
+.testContainer {
+    flex : initial;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    background-color: #f9f9fa;
+    margin: 20px 10px 10px;
+}
+
+.testContainer>div {
+    padding: 10px 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.testName {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    position: absolute;
+    top: -12px;
+    max-width: 108px;
+    left: 6px;
+    padding: 3px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.markFieldContainer {
+    margin-right: 8px;
+}
+
+.testNumberInfo {
+    text-align: center;
+    font-size: 16px;
+    width: 60px;
+    background: white;
+    background-clip: padding-box;
+    border: 1px solid #D3D3D3;
+    padding: .1rem .3rem;
+    color: #212529;
+}
+
+.newTestContainer {
+    border-style: dashed;
+    background-color: white;
+}
+
+.noTest {
+    color: #959794;
+}
+
+.testButton {
+    position: absolute;
+    border-radius: 5px;
+    color: red!important;
+    cursor: pointer;
+    top: -12px;
+    right: 6px;
+    padding: 3px 6px;
+    background-color: white;
+    border-color: #D3D3D3;
+    width: 23px;
+}
+
+.testButton:hover {
+    color: white!important;
+    background-color: red;
+    border-color: red;
+}
+
+.newTestContainer .testButton:hover {
+    background-color: #00858a;
+}
+
+.newTestContainer .testButton {
+    color: white!important;
+    background: #00ABB2;
+    border: 1px solid #00ABB2;
+}
+
+.newTestContainer .testButton {
+    color: #00ABB2;
+}
+
+.testButtonIcon {
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.averageMissing {
+    color: #D3D3D3;
+}
+
+.averageValid {
+    color: green;
+}
+
+.averageRisk {
+    color: orange;
+}
+
+.averageDanger {
+    color: red;
+}
