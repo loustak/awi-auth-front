@@ -14,7 +14,7 @@ function MarkItem(props) {
         {student.lastName} {student.firstName}
       </div>
       <div>
-        Note: {props.mark || 'Non noté'}
+        Note: {isNaN(props.mark)  ? 'Non noté' : props.mark }
       </div>
     </div>
   )
