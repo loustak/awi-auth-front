@@ -23,7 +23,7 @@
       "sizes": "1000x1000"
     }
   ],
-  "start_url": "https://https://mydash-dev.igpolytech.fr/login?client_id=o1-g3&redirect_uri=https://mydash-dev.igpolytech.fr/token&state=monState&app_name=O1%20-%20G3%20Dashboard",
+  "start_url": "https://mydash-dev.igpolytech.fr/login?client_id=o1-g3&redirect_uri=https://mydash-dev.igpolytech.fr/token&state=monState&app_name=O1%20-%20G3%20Dashboard",
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff"
