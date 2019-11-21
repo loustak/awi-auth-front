@@ -11,6 +11,11 @@
       "src": "logo200x200.png",
       "type": "image/png",
       "sizes": "200x200"
+    },
+    {
+      "src": "logo1000x1000.png",
+      "type": "image/png",
+      "sizes": "1000x1000"
     }
   ],
   "start_url": "/",
