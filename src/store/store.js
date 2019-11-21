@@ -83,7 +83,6 @@ const defaultPeriodsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState, defaultStudentsState, defaultPeriodsState)
 const defaultSimulatorState = {
   simulator: {
     semesters: [
@@ -136,5 +135,5 @@ const defaultSimulatorState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState, defaultSimulatorState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState, defaultStudentsState, defaultPeriodsState, defaultSimulatorState)
 export default createStore(reducer, { ...defaultState }, enhancer)

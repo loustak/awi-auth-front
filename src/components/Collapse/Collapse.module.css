@@ -53,6 +53,8 @@
     box-shadow: none;
     border: none;
     padding: 0px 0px 0px 10px;
+}
+
 @media (min-width: 768px) {
     .top {
         padding: 10px;
