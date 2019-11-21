@@ -29,10 +29,13 @@ function SubjectItem (props) {
         </div>
         {
           props.tests !== undefined
-            ? props.tests.map((test) => <TestForm test={test} />)
+            ? props.tests.map((test, i) => {
+              console.log(test)
+              return <TestForm test={test} semesterName={props.semesterName} ueId={props.ueId} subjectId={props.id} key={Math.random()} id={'test' + i + test.name} />
+            })
             : null
         }
-        <NewTestForm />
+        <NewTestForm semesterName={props.semesterName} ueId={props.ueId} subjectId={props.id} />
       </div>
     </>
   )

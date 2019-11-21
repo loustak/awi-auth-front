@@ -41,26 +41,27 @@ function Simulator (props) {
         filteredSemesters.length === 1
           ? filteredSemesters[0].ue !== undefined
             ? filteredSemesters[0].ue.map((ue, i) =>
-
-              <>
+              <div key={'ue' + i}>
                 <Collapse
                   defaultOpen
                   title={ue.name}
+                  key={Math.random()}
                   subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue) + ' - Moyenne: ' + markOperations.getAverageFromUE(ue)}
-                  key={i}
                 >
                   {
                     ue.subjects.map((subject, j) =>
                       <SubjectItem
+                        semesterName={filteredSemesters[0].name}
+                        ueId={ue.id}
                         {...subject}
                         average={markOperations.getAverageFromSubject(subject)}
-                        key={j}
+                        key={Math.random()}
                       />
                     )
                   }
                 </Collapse>
                 <br />
-              </>
+              </div>
             )
             : <ErrorPage errorMessage='Aucune UE associée' />
           : <ErrorPage errorMessage='Aucun semestre sélectionné' />

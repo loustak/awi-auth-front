@@ -10,14 +10,13 @@ import classNames from 'classnames'
 function NewTestForm (props) {
   const formik = useFormik({
     initialValues: {
-      exam: 'Devoirs',
+      exam: 'Partiel',
       mark: 10,
       coeff: 1
     }
   })
-
   function handleSubmit (e) {
-    addTest('Semestre 8', 1, 1, formik.values.exam, formik.values.mark, formik.values.coeff)
+    addTest(props.semesterName, props.ueId, props.subjectId, formik.values.exam, formik.values.mark, formik.values.coeff)
     formik.resetForm()
     e.preventDefault()
   }
@@ -30,6 +29,9 @@ function NewTestForm (props) {
           className={styles.testNumberInfo}
           type='number'
           step='0.01'
+          max={20}
+          min={0}
+          required
         />
         <div className={styles.subjectUnderDescription}>/20</div>
       </div>
@@ -39,6 +41,8 @@ function NewTestForm (props) {
           className={styles.testNumberInfo}
           type='number'
           step='0.5'
+          min={0}
+          required
         />
         <div className={styles.subjectUnderDescription}>Coeff</div>
       </div>

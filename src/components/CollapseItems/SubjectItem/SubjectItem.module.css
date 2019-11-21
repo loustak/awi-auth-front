@@ -85,7 +85,7 @@ input[type=number] {
 }
 
 .testContainer>div {
-    padding: 10px 0px 4px;
+    padding: 10px 0 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,13 +135,30 @@ input[type=number] {
 .testButton {
     position: absolute;
     border-radius: 5px;
-    border: 1px solid #D3D3D3;
-    background-color: white;
-    color: #959794;
+    color: red!important;
     cursor: pointer;
     top: -12px;
     right: 6px;
     padding: 3px 6px;
+    background-color: white;
+    border-color: #D3D3D3;
+    width: 23px;
+}
+
+.testButton:hover {
+    color: white!important;
+    background-color: red;
+    border-color: red;
+}
+
+.newTestContainer .testButton:hover {
+    background-color: #00858a;
+}
+
+.newTestContainer .testButton {
+    color: white!important;
+    background: #00ABB2;
+    border: 1px solid #00ABB2;
 }
 
 .newTestContainer .testButton {
