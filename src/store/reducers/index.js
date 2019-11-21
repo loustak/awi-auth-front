@@ -9,6 +9,6 @@ export default combineReducers({
   currentUser,
   subjects,
   students,
-  periods
+  periods,
   simulator
 })
