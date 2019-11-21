@@ -17,7 +17,7 @@ function CourseItem (props) {
         {
           props.hours
             ? <p>Heures : <span className={styles.variable}>{props.hours}h</span></p>
-            : <p>Heures : <span className={styles.variable}>--</span></p>
+            : null
         }
       </div>
       <div className={styles.hours}>

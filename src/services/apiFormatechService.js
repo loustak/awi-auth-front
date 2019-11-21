@@ -84,7 +84,6 @@ export function getTrainingTeacherSubjects (trainings, teacherFirstName, teacher
 
   return Promise.all(trainings.map(async (t) => {
     const formation = await getFormation(t)
-    // console.log(formation.steps)
     return formation.steps
   }))
     .then(steps => {
@@ -152,7 +151,6 @@ export function getPeriodsSubjects (formationName, stepNumber) {
           Promise.all(periods.map(p => {
             return getPeriodSubjects(p)
           })).then(subjects => {
-            console.log(subjects)
             resolve(subjects)
           })
         })
@@ -174,7 +172,6 @@ function getPeriodSubjects (period) {
       Promise.all(modules.map(m => {
         return getSubjectsInModule(m)
       })).then(subjects => {
-        console.log(subjects)
         const newPeriod = JSON.parse(JSON.stringify(period))
         newPeriod.modules = subjects
         resolve(newPeriod)

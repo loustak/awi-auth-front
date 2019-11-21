@@ -10,19 +10,26 @@ function UEItem (props) {
           modules && modules.length > 0
           ? modules.map((u, i) =>
                 <>
-                <h4 className={styles.title}> {u.title} || {u.credit} ETCS </h4>
+                <h4 className={styles.title}> {u.title} - {u.credit} ETCS </h4>
                 {
                   u.subjects && u.subjects.length > 0
-                  ? u.subjects.map((course, i) =>
-                    <React.Fragment key={i}>
+                  ? u.subjects.map((course, j) =>
+                    <React.Fragment key={j}>
                       <div className={styles.courseInfo}>
-                        <h4 className={styles.titleCourse}>{course.title} - NOM PROF</h4>
+                        <h4 className={styles.titleCourse}>
+                          {course.title}
+                          {course.prenomFormateur ?
+                            <span id={styles.teacherName}>{"   "+course.prenomFormateur+" "+
+                              (course.nomFormateur ? course.nomFormateur : '' )}
+                            </span>
+                            : ''
+                          }
+                        </h4>
                         <CourseItem
-                          hours=''
-                          description={course.description}
+                          hours={parseFloat(course.cm) + parseFloat(course.cmtd)}
+                          description={course.description ? course.description.replace(/<(.|\n)*?>/g, '') : ''}
                           credit={course.credit}
-                          teacher={course.prenomFormateur+" "+course.nomFormateur}
-                          content={course.content}
+                          content={course.content ? course.content.replace(/<(.|\n)*?>/g, '') : ''}
                         />
                       </div>
                     </React.Fragment>
