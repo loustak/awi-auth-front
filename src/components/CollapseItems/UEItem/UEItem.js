@@ -23,12 +23,12 @@ function UEItem (props) {
         {
           modules && modules.length > 0
           ? filteredModules.map((u, i) =>
-                <>
+                <><React.Fragment key={'ue'+i}>
                 <h4 className={styles.title}> {u.title} </h4>
                 {
                   u.subjects && u.subjects.length > 0
                   ? u.subjects.filter(s => filterSubjectName ? s.title.toLowerCase().match(props.query) : true).map((course, j) =>
-                    <Collapse title={course.title} special={true} defaultOpen={true}>
+                    <Collapse title={course.title} special={true} defaultOpen={true} key={'a'+i+j}>
                       <div className={styles.courseInfo}>
                           {course.prenomFormateur ?
                             <h4 className={styles.titleCourse}>
@@ -45,19 +45,15 @@ function UEItem (props) {
                           content={course.content ? course.content.replace(/<(.|\n)*?>/g, '') : ''}
                         />
                       </div>
-
                     </Collapse>
-
                   )
                     : null
-
                 }
-
+                </React.Fragment>
                 </>
             )
             : null
         }
-
     </div>
   )
 
