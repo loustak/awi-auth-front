@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './UEItem.module.css'
 import CourseItem from '../CourseItem/CourseItem'
+import Collapse from '../../Collapse/Collapse'
 
 function UEItem (props) {
   const modules = props.ue
@@ -14,17 +15,14 @@ function UEItem (props) {
                 {
                   u.subjects && u.subjects.length > 0
                   ? u.subjects.map((course, j) =>
-                    <React.Fragment key={j}>
+                    <Collapse title={course.title} special={true} defaultOpen={true}>
                       <div className={styles.courseInfo}>
-                        <h4 className={styles.titleCourse}>
-                          {course.title}
                           {course.prenomFormateur ?
-                            <span id={styles.teacherName}>{"   "+course.prenomFormateur+" "+
+                            <h4 className={styles.titleCourse}><span id={styles.teacherName}>{"   "+course.prenomFormateur+" "+
                               (course.nomFormateur ? course.nomFormateur : '' )}
-                            </span>
-                            : ''
+                            </span></h4>
+                            : null
                           }
-                        </h4>
                         <CourseItem
                           hours={parseFloat(course.cm) + parseFloat(course.cmtd)}
                           description={course.description ? course.description.replace(/<(.|\n)*?>/g, '') : ''}
@@ -32,10 +30,14 @@ function UEItem (props) {
                           content={course.content ? course.content.replace(/<(.|\n)*?>/g, '') : ''}
                         />
                       </div>
-                    </React.Fragment>
+
+                    </Collapse>
+
                   )
                     : null
+
                 }
+
                 </>
             )
             : null

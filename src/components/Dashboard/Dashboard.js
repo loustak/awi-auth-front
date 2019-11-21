@@ -50,7 +50,6 @@ function Dashboard (props) {
               <div className={styles.loadingText}>
                 <h4>Chargement en cours</h4>
               </div>
-
             </div>
           : <div className={styles.dashboard}>
             <div>

@@ -11,7 +11,7 @@ function Collapse (props) {
   const randomID = getRandomInt(9999)
 
   return (
-    <div className={styles.collapse}>
+    <div className={props.special ? styles.specialCollapse : styles.collapse}>
       <div className={styles.top}>
         <div className={styles.topLeft}>
           <FontAwesomeIcon
