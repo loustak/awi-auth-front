@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Collapse from '../../Collapse/Collapse'
 import UEItem from '../../CollapseItems/UEItem/UEItem'
 import { setPeriodsSubjects } from '../../../store/actions/periods.action'
@@ -9,15 +9,12 @@ import { Col, Form } from 'react-bootstrap'
 import { useFormik } from 'formik'
 
 function Courses (props) {
-  const [query, setQuery] = useState('')
-
-
   const periods = props.periods.periods
-  const isFirtSemester = (new Date().getMonth() < 8)
+  const isFirtSemester = (new Date().getMonth() > 8)
 
   useEffect(() => {
     if (!props.periods.fetched) {
-      setPeriodsSubjects('IG', 4)
+      setPeriodsSubjects('IG', 3)
     }
   }, [])
 

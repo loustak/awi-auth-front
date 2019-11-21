@@ -6,11 +6,9 @@ import { connect } from 'react-redux'
 import { CSVLink } from 'react-csv'
 
 function ExamItem (props) {
-  console.log(props.marks)
 
-  let avg = props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : current.mark), 0) / props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : 1), 0)
-  console.log(avg)
-
+  let avg = props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : current.mark), 0)
+    / props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : 1), 0)
 
   const headers = [
     { label: 'examName', key: 'name' },
@@ -36,7 +34,7 @@ function ExamItem (props) {
   return (
     <div className={styles.examItem}>
       <Collapse
-        title={props.name + ' | Coeff : ' + props.coeff + ' | Moyenne : ' + avg}
+        title={props.name + ' | Coeff : ' + props.coeff + ' | Moyenne : ' + avg.toFixed(2)}
         button={<CSVLink data={data} headers={headers} filename={props.name + '.csv'} className='btn btn-blue' style={{borderRadius: '9999px'}}>Exporter</CSVLink>}
       >
         {

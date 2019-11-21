@@ -8,9 +8,6 @@ function MarkItem(props) {
   return (
     <div className={styles.markItem}>
       <div>
-        {props.student}
-      </div>
-      <div>
         {student.lastName} {student.firstName}
       </div>
       <div>
