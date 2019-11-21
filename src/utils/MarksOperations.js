@@ -15,7 +15,7 @@ function getAverageFromUE (ue) {
 
 function getECTSFromUE (ue) {
   if (ue.subjects) {
-    return ue.subjects.reduce((accumulator, currentValue) => (accumulator + currentValue.ects), 0)
+    return ue.subjects.reduce((accumulator, currentValue) => (accumulator + parseFloat(currentValue.credit)), 0)
   }
   return null
 }

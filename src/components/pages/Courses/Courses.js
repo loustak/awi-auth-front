@@ -10,8 +10,6 @@ import { useFormik } from 'formik'
 
 function Courses (props) {
   const [query, setQuery] = useState('')
-
-
   const periods = props.periods.periods
   const isFirtSemester = (new Date().getMonth() < 8)
 
@@ -23,7 +21,7 @@ function Courses (props) {
 
   const formik = useFormik({
     initialValues: {
-      name: '',
+      name: ''
     }
   })
 
@@ -31,9 +29,9 @@ function Courses (props) {
     <>
       {
         (!props.periods.fetched)
-          ? <div  className={styles.loading}>
-            <div className="spinner-border text-info" role="status">
-              <span className="sr-only"/>
+          ? <div className={styles.loading}>
+            <div className='spinner-border text-info' role='status'>
+              <span className='sr-only' />
             </div>
             <div className={styles.loadingText}>
               <h4>Chargement en cours</h4>
@@ -54,19 +52,18 @@ function Courses (props) {
                 </Form.Row>
               </Form>
 
-
               <div>
                 {
                   periods.length > 0
                     ? periods.filter(p => (p.modules && p.modules.length > 0)).map((p, i) => {
                       return (
-                         <React.Fragment key={i}>
+                        <React.Fragment key={i}>
                           <Collapse title={p.title} defaultOpen={isFirtSemester ? (i === 0 ? 1 : 0) : (i === 1 ? 1 : 0)}>
-                            <UEItem ue={p.modules} query={formik.values.name.toLowerCase()}/>
+                            <UEItem ue={p.modules} query={formik.values.name.toLowerCase()} />
                           </Collapse>
                           <br />
                         </React.Fragment>
-                        )
+                      )
                     })
                     : null
                 }

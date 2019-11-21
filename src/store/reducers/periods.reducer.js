@@ -22,6 +22,57 @@ export default (state = {}, action) => {
         err: action.payload
       }
     }
+    case 'ADD_TEST': {
+      const currentPeriods = state.periods.slice()
+      const currentSemester = currentPeriods.filter(semester => semester.title === action.payload.semesterName)[0]
+      const currentUe = currentSemester.modules.filter(ue => ue.id === action.payload.ueId)[0]
+      const currentSubject = currentUe.subjects.filter(subject => subject.id === action.payload.subjectId)[0]
+      const semesterIndex = currentPeriods.indexOf(currentSemester)
+      const ueIndex = currentSemester.modules.indexOf(currentUe)
+      const subjectIndex = currentUe.subjects.indexOf(currentSubject)
+      if (currentSubject.tests && currentSubject.tests.length > 0) {
+        currentPeriods[semesterIndex].modules[ueIndex].subjects[subjectIndex].nbTestsCreated += 1
+        const newTestId = currentPeriods[semesterIndex].ue[ueIndex].subjects[subjectIndex].nbTestsCreated
+        currentPeriods[semesterIndex].modules[ueIndex].subjects[subjectIndex].tests = currentSubject.tests.concat([{ id: newTestId, mark: action.payload.mark, exam: action.payload.exam, coeff: action.payload.coeff }])
+      } else {
+        currentPeriods[semesterIndex].modules[ueIndex].subjects[subjectIndex].nbTestsCreated = 0
+        currentPeriods[semesterIndex].modules[ueIndex].subjects[subjectIndex].tests = [{ id: 0, mark: action.payload.mark, exam: action.payload.exam, coeff: action.payload.coeff }]
+        console.log(currentPeriods[semesterIndex].modules[ueIndex].subjects[subjectIndex])
+      }
+      return {
+        ...state,
+        periods: { ...state, periods: currentPeriods }
+      }
+    }
+    case 'DELETE_TEST': {
+      const currentSemester = state.semesters.filter(semester => semester.name === action.payload.semesterName)[0]
+      const currentUe = currentSemester.modules.filter(ue => ue.id === action.payload.ueId)[0]
+      const currentSubject = currentUe.subjects.filter(subject => subject.id === action.payload.subjectId)[0]
+      let currentSimulator = state.semesters.slice()
+      const semesterIndex = currentSimulator.indexOf(currentSemester)
+      const ueIndex = currentSemester.modules.indexOf(currentUe)
+      const subjectIndex = currentUe.subjects.indexOf(currentSubject)
+      currentSimulator[semesterIndex].ue[ueIndex].subjects[subjectIndex].tests = currentSubject.tests.filter(test => test.id !== action.payload.testId)
+      return {
+        ...state,
+        semesters: currentSimulator
+      }
+    }
+    case 'UPDATE_TEST': {
+      console.log(action.payload)
+      const currentSemester = state.semesters.filter(semester => semester.name === action.payload.semesterName)[0]
+      const currentUe = currentSemester.modules.filter(ue => ue.id === action.payload.ueId)[0]
+      const currentSubject = currentUe.subjects.filter(subject => subject.id === action.payload.subjectId)[0]
+      let currentSimulator = state.semesters.slice()
+      const semesterIndex = currentSimulator.indexOf(currentSemester)
+      const ueIndex = currentSemester.modules.indexOf(currentUe)
+      const subjectIndex = currentUe.subjects.indexOf(currentSubject)
+      currentSimulator[semesterIndex].ue[ueIndex].subjects[subjectIndex].tests = currentSubject.tests.map((test, i) => test.id === action.payload.testId ? { ...test, exam: action.payload.testName, mark: action.payload.testMark, coeff: action.payload.testCoeff } : test)
+      return {
+        ...state,
+        semesters: currentSimulator
+      }
+    }
     default:
       return {
         ...state

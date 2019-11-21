@@ -3,7 +3,7 @@ import styles from './SubjectItem.module.css'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Form } from 'react-bootstrap'
-import { addTest } from '../../../store/actions/simulator.action'
+import { addTest } from '../../../store/actions/periods.action'
 import { useFormik } from 'formik'
 import classNames from 'classnames'
 
@@ -16,6 +16,7 @@ function NewTestForm (props) {
     }
   })
   function handleSubmit (e) {
+    e.preventDefault()
     addTest(props.semesterName, props.ueId, props.subjectId, formik.values.exam, formik.values.mark, formik.values.coeff)
     formik.resetForm()
     e.preventDefault()
