@@ -8,6 +8,7 @@ import ExamItem from '../CollapseItems/ExamItem/ExamItem'
 import { withRouter } from 'react-router-dom'
 import { CSVLink} from 'react-csv'
 import { setTeacherSubjects } from '../../store/actions/subjects.action'
+import EmptyItem from '../CollapseItems/EmptyItem/EmptyItem'
 
 function Dashboard (props) {
 
@@ -67,7 +68,7 @@ function Dashboard (props) {
                       as='select'
                       {...formik.getFieldProps('training')}
                     >
-                      <option value=''>Choose...</option>
+                      <option value=''>Choisir...</option>
                       <option>IG</option>
                       <option>MEA</option>
                       <option>STE</option>
@@ -83,7 +84,7 @@ function Dashboard (props) {
                       as='select'
                       {...formik.getFieldProps('year')}
                     >
-                      <option value=''>Choose...</option>
+                      <option value=''>Choisir...</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -119,7 +120,7 @@ function Dashboard (props) {
                     }
                   })
                 })
-
+                
                 return (
                   <Collapse
                     title={subject.title + (subject.training ? + ' | ' + subject.training : '') }
@@ -143,24 +144,31 @@ function Dashboard (props) {
                       </ButtonGroup>
                     }
                   >
-                    <div
-                      style={{
-                        paddingTop: '20px',
-                        paddingBottom: '20px',
-                        display: 'grid',
-                        gridRowGap: '20px'
-                      }}
-                    >
-                      {
-                        subject.exams.map((exam, j) =>
-                          <ExamItem
-                            {...exam}
-                            students={props.students.students}
-                            key={j}
-                          />
-                        )
-                      }
-                    </div>
+                    {
+                      subject.exams.length > 0?
+                        <div
+                          style={{
+                            paddingTop: '20px',
+                            paddingBottom: '20px',
+                            display: 'grid',
+                            gridRowGap: '20px'
+                          }}
+                        >
+                          {
+                            subject.exams.map((exam, j) =>
+                            {
+                              return(
+                                <ExamItem
+                                  {...exam}
+                                  students={props.students.students}
+                                  key={j}
+                                />
+                              )
+                            })
+                          }
+                        </div>
+                        : <EmptyItem message='Aucun examen ajouté'/>
+                    }
                   </Collapse>
                 )
               })
