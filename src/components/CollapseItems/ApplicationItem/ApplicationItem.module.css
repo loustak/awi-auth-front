@@ -7,14 +7,20 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
     cursor : pointer;
     max-width: 300px;
+    padding: 20px 45px;
 }
 
 .applicationName {
-    padding: 20px 45px;
-    font-size: 18px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: 20px;
+}
+
+.applicationDescription {
+    font-size: 15px;
+}
+
+.applicationCreator {
+    margin-top: 10px;
+    font-size: 15px;
 }
 
 .status {

@@ -1,13 +1,5 @@
-.searchInput{
-    flex-shrink: 0;
-}
-
-.appsContainer {
-    flex-wrap: wrap;
+.applications {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-}
-
-.applicationItem{
-    margin-top: 10px;
 }

@@ -4,6 +4,7 @@ import ApplicationItem from '../../CollapseItems/ApplicationItem/ApplicationItem
 import EmptyItem from '../../CollapseItems/EmptyItem/EmptyItem'
 import Form from 'react-bootstrap/Form'
 import styles from './Applications.module.css'
+import { getUserApps } from '../../../services/castelstoreService'
 
 const recentApps = [
   { name: 'PolyTeach', url: 'url' },
@@ -26,52 +27,31 @@ const apps = [
 ]
 
 class Applications extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { apps: [] }
+    this.getApps = this.getApps.bind(this)
+  }
+
+  componentDidMount () {
+    this.getApps()
+  }
+
+  getApps () {
+    getUserApps().then(res => {
+      console.log(res)
+      this.setState({ apps: res })
+    })
+  }
+
   render () {
     return (
-      <div className={styles.applicationItem}>
-        <Collapse title='Récemment ouvertes' subtitle='Cliquer sur la croix pour supprimer une application du Store.' defaultOpen={true}>
-          {
-            recentApps.length > 0
-              ? recentApps.map((app, i) =>
-                <ApplicationItem name={app.name} status={app.url} key={i} />
-              )
-              : <EmptyItem />
-          }
-        </Collapse>
-        <br />
-        <Collapse title='Toutes les applications' subtitle='Cliquer sur la croix pour supprimer une application du Store.'>
-          <div>
-            {
-              apps.length > 0
-                ? <div>
-                  <Form.Control
-                    type='text'
-                    placeholder='Rechercher'
-                    // onChange={e => setSearch(e.target.value.toLowerCase())}
-                  />
-                  </div>
-                : null
-            }
-            {
-              apps.filter(app => app.name.toLowerCase().includes('search')).map((app, i) => // TODO
-                <div key={i}>
-                  <div />
-                  <div>
-                    <div>{app.name}</div>
-                    <div>{app.url}</div>
-                  </div>
-                </div>
-              )
-            }
-            {
-              apps.length > 0
-                ? apps.map((app, i) =>
-                  <ApplicationItem name={app.name} url={app.url} key={i} />
-                )
-                : <EmptyItem />
-            }
-          </div>
-        </Collapse>
+      <div className={styles.applications}>
+        {
+          this.state.apps.map((app, i) => (
+            <ApplicationItem {...app} onDelete={() => this.getApps()} key={i} />
+          ))
+        }
       </div>
     )
   }
