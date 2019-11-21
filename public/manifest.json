@@ -8,6 +8,11 @@
       "type": "image/x-icon"
     },
     {
+      "src": "logo100x100.png",
+      "type": "image/png",
+      "sizes": "100x100"
+    },
+    {
       "src": "logo200x200.png",
       "type": "image/png",
       "sizes": "200x200"
@@ -18,7 +23,7 @@
       "sizes": "1000x1000"
     }
   ],
-  "start_url": "/",
+  "start_url": "https://mydash-dev.igpolytech.fr/",
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff"
