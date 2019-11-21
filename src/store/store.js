@@ -83,57 +83,5 @@ const defaultPeriodsState = {
   }
 }
 
-const defaultSimulatorState = {
-  simulator: {
-    semesters: [
-      {
-        name: 'Semestre 8',
-        ue: [
-          {
-            id: 1,
-            name: 'Architecture des Systemes d\'Information',
-            subjects: [
-              {
-                id: 1,
-                name: 'Applications Web et Interopérabilité',
-                ects: 4.5
-              },
-              {
-                id: 2,
-                name: 'Tests des Systèmes d\'Information',
-                ects: 0.5
-              },
-              {
-                id: 3,
-                name: 'Urbanisation des SI',
-                ects: 1
-              }
-            ]
-          },
-          {
-            id: 2,
-            name: 'Traitement des données et sécurité',
-            subjects: [
-              {
-                id: 4,
-                name: 'Sécurité des SI',
-                ects: 1
-              },
-              {
-                id: 5,
-                name: 'Data Science Avancée',
-                ects: 1
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: 'Semestre 9'
-      }
-    ]
-  }
-}
-
-export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState, defaultStudentsState, defaultPeriodsState, defaultSimulatorState)
+export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState, defaultStudentsState, defaultPeriodsState)
 export default createStore(reducer, { ...defaultState }, enhancer)

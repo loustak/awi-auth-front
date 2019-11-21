@@ -38,15 +38,23 @@ function Simulator (props) {
                     <Form.Control
                       as='select'
                       {...formik.getFieldProps('semester')}
+                      className={styles.simulatorFormSemester}
                     >
                       <option value=''>Choisissez un semestre</option>
                       {
-                        periods.map((period) => <option value={period.title}>{period.title}</option>)
+                        periods.map((period, i) => <option key={Math.random()} value={period.title}>{period.title}</option>)
                       }
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
               </Form>
+              {
+                formik.values.semester !== ''
+                  ? <div className={styles.simulatorGlobalAverage}>
+                    Moyenne : {markOperations.getGlobalAverage(filteredSemesters[0])}
+                </div>
+                  : null
+              }
             </div>
             {
               filteredSemesters.length === 1
@@ -78,7 +86,7 @@ function Simulator (props) {
                   }
                   )
                   : <ErrorPage errorMessage='Aucune UE associée' />
-                : <ErrorPage errorMessage='Aucun semestre sélectionné' />
+                : null
             }
             </>
           : <div className={styles.loading}>

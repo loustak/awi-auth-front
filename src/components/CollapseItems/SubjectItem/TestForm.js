@@ -23,7 +23,7 @@ function TestForm (props) {
   }
   return (
     <Form onSubmit={handleUpdate} onBlur={handleUpdate} className={styles.testContainer} id={props.test.id + '' + props.subjectId + '' + props.ueId}>
-      {/*<Form.Control {...formik.getFieldProps('exam')} type='text' className={styles.testName} />
+      <Form.Control {...formik.getFieldProps('exam')} type='text' className={styles.testName} />
       <div className={styles.markFieldContainer}>
         <Form.Control
           {...formik.getFieldProps('mark')}
@@ -53,7 +53,7 @@ function TestForm (props) {
           className={styles.testButtonIcon}
         />
       </Button>
-      <button type='submit' className='d-none' />*/}
+      <button type='submit' className='d-none' />
     </Form>
   )
 }

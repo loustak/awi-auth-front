@@ -3,17 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="901ff738-2cab-43b2-99b4-4e4cc11727b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/NewTestForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/NewTestForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/SubjectItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/TestForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/SubjectItem/TestForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseItems/UEItem/UEItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseItems/UEItem/UEItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard/Dashboard.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Simulator/Simulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Simulator/Simulator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/Courses/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/Courses/Courses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/oauth2Service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/oauth2Service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/periods.action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/periods.action.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/simulator.action.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/periods.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/periods.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/simulator.reducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/MarksOperations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/MarksOperations.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,14 +72,14 @@
     <property name="standardjs.codestyle.accepted" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/components/CollapseItems" />
       <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components\pages" />
       <recent name="D:\Dev\Web\Projects\awi-auth-front\src" />
-      <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Dev\Web\Projects\awi-auth-front\src\components" />
     </key>
   </component>

@@ -26,14 +26,14 @@ function SubjectItem (props) {
                 <div className={styles.subjectUnderDescription}>Moyenne</div>
               </div>
               <div className={styles.subjectECTS}>
-                <div>{props.credit}</div>
+                <div>{props.credit.toString()}</div>
                 <div className={styles.subjectUnderDescription}>ECTS</div>
               </div>
             </div>
             {
               props.tests !== undefined
                 ? props.tests.map((test, i) => {
-                  return <TestForm test={test} semesterName={props.title} ueId={props.ueId} subjectId={props.id} key={Math.random()} id={'test' + i + test.name} />
+                  return <TestForm test={test} semesterName={props.semesterName} ueId={props.ueId} subjectId={props.id} key={Math.random()} id={'test' + i + test.name} />
                 })
                 : null
             }

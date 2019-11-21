@@ -10,7 +10,21 @@ function getAverageFromSubject (subject) {
 }
 
 function getAverageFromUE (ue) {
-  return 1
+  if (ue.subjects) {
+    const sumAvg = ue.subjects.reduce((accumulator, currentValue) => (accumulator + getAverageFromSubject(currentValue) * parseFloat(currentValue.credit)), 0)
+    const sumCrd = ue.subjects.reduce((accumulator, currentValue) => (accumulator + parseFloat(currentValue.credit)), 0)
+    return Math.round(sumAvg / sumCrd * 100) / 100
+  }
+  return null
+}
+
+function getGlobalAverage (period) {
+  if (period.modules) {
+    const sumAvg = period.modules.reduce((accumulator, currentValue) => (accumulator + getAverageFromUE(currentValue) * parseFloat(currentValue.credit)), 0)
+    const sumCrd = period.modules.reduce((accumulator, currentValue) => (accumulator + parseFloat(currentValue.credit)), 0)
+    return Math.round(sumAvg / sumCrd * 100) / 100
+  }
+  return null
 }
 
 function getECTSFromUE (ue) {
@@ -20,4 +34,4 @@ function getECTSFromUE (ue) {
   return null
 }
 
-export default { getAverageFromUE, getECTSFromUE, getAverageFromSubject }
+export default { getAverageFromUE, getECTSFromUE, getAverageFromSubject, getGlobalAverage }
