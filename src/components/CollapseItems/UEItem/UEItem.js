@@ -5,16 +5,29 @@ import Collapse from '../../Collapse/Collapse'
 
 function UEItem (props) {
   const modules = props.ue
+
+  let filterSubjectName = false
+
+  function matchSearch (module, query) {
+    const subjects = module.subjects.filter(s => s.title.toLowerCase().match(query))
+    if (subjects.length > 0) { filterSubjectName = true}
+    return module.title.toLowerCase().match(query) || subjects.length > 0
+  }
+
+  const filteredModules = modules
+    .filter(module => props.query !== '' ? matchSearch(module, props.query) : true)
+
+
   return (
     <div>
         {
           modules && modules.length > 0
-          ? modules.map((u, i) =>
+          ? filteredModules.map((u, i) =>
                 <>
                 <h4 className={styles.title}> {u.title} </h4>
                 {
                   u.subjects && u.subjects.length > 0
-                  ? u.subjects.map((course, j) =>
+                  ? u.subjects.filter(s => filterSubjectName ? s.title.toLowerCase().match(props.query) : true).map((course, j) =>
                     <Collapse title={course.title} special={true} defaultOpen={true}>
                       <div className={styles.courseInfo}>
                           {course.prenomFormateur ?
