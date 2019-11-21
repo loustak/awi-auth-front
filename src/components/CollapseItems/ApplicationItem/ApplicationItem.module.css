@@ -9,6 +9,7 @@
     max-width: 300px;
     padding: 20px 45px;
     background-color: white;
+    text-decoration: none;
 }
 
 .applicationItem:hover {
