@@ -3,7 +3,7 @@ import axios from 'axios'
 /**
  * Get a formation using the Formatech API
  * @param formation A string which is the formation name (IG, DO, MEA, etc.)
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getFormation (formation) {
   return new Promise((resolve, reject) => {
@@ -16,7 +16,7 @@ export function getFormation (formation) {
 /**
  * Get a step using the Formatech API
  * @param idStep the step ID
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getStep (idStep) {
   return new Promise((resolve, reject) => {
@@ -26,16 +26,15 @@ export function getStep (idStep) {
   })
 }
 
-
 /**
  * Get a period using the Formatech API
  * @param idPeriod the period ID
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
-export function getPeriod (idPeriod) {
+export function getPeriod (period) {
   return new Promise((resolve, reject) => {
-    axios.get(`https://test-api-formatech.igpolytech.fr/sagesse/period/${idPeriod}`)
-      .then(response => resolve(response.data))
+    axios.get(`https://test-api-formatech.igpolytech.fr/sagesse/period/${period.id}`)
+      .then(response => resolve({ ...period, ...response.data }))
       .catch(err => reject(err))
   })
 }
@@ -43,7 +42,7 @@ export function getPeriod (idPeriod) {
 /**
  * Get a module using the Formatech API
  * @param idModule the module ID
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getModule (idModule) {
   return new Promise((resolve, reject) => {
@@ -56,7 +55,7 @@ export function getModule (idModule) {
 /**
  * Get a subject using the Formatech API
  * @param idSubject the subject ID
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
  */
 export function getSubject (idSubject) {
   return new Promise((resolve, reject) => {
@@ -137,47 +136,56 @@ export function getTrainingTeacherSubjects (trainings, teacherFirstName, teacher
 
 
 /**
- * Get all the modules and subjects from a period given
- * @param formationName a string which is the formation name (IG, DI, MEA, etc.)
+ * Get all the periods, modules and subjects from a grade level given
+ * @param formationName a string which is the formation name
  * @param stepNumber an integer which is the grade level number
- * @param periodNumber an integer which is the semester number
- * @returns {Promise<unknown>} A Promise which contains a JSON
+ * @returns {Promise<[unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown]>} a Promise which contains a JSON
  */
-export async function getPeriodSubjects (formationName, stepNumber, periodNumber) {
-  // Get the formation
-  const formation = await getFormation(formationName)
-
-  // Filter and get the step
-  const s = formation.steps.filter(s => s.title.includes(stepNumber))[0]
-  const step = await getStep(s.id)
-
-  // Filter and get the period
-  const p = step.periods.filter(p => p.title.includes(periodNumber))[0]
-  const period = await getPeriod(p.id)
-
-  // Get all the modules of the period
-  Promise.all(period.modules.map(async (m) => {
-    // Get a module
-    const module = await getModule(m.id)
-    delete module.id
-    delete module.title
-    return { ...m, ...module }
-  }))
-    .then(modules => {
-      // Get all subjects for the current module got
-      return Promise.all(modules.map(async (m) => getSubjectsInModule(m)))
+export function getPeriodsSubjects (formationName, stepNumber) {
+  return new Promise((resolve, reject) => {
+    getFormation(formationName).then(formation => {
+      const s = formation.steps.filter(ss => ss.title.includes(stepNumber))[0]
+      getStep(s.id).then(step => {
+        Promise.all(step.periods.map(p => {
+          return getPeriod(p)
+        })).then(periods => {
+          Promise.all(periods.map(p => {
+            return getPeriodSubjects(p)
+          })).then(subjects => {
+            console.log(subjects)
+            resolve(subjects)
+          })
+        })
+      })
     })
-    .then(modules => {
-      // Add the modules data in the JSON
-      period.modules = modules
-    })
+  })
+}
 
-  return period
+/**
+ * Get all the modules and subjects from a period given
+ * @param period the period JSON
+ * @returns {Promise<unknown>} a Promise which contains a JSON
+ */
+function getPeriodSubjects (period) {
+  return new Promise((resolve, reject) => {
+    Promise.all(period.modules.map(m => {
+      return getModule(m.id)
+    })).then(modules => {
+      Promise.all(modules.map(m => {
+        return getSubjectsInModule(m)
+      })).then(subjects => {
+        console.log(subjects)
+        const newPeriod = JSON.parse(JSON.stringify(period))
+        newPeriod.modules = subjects
+        resolve(newPeriod)
+      })
+    })
+  })
 }
 
 /**
  * Get all the subjects from a module given
- * @param module the module ID
+ * @param module the module JSON
  * @returns {Promise<[unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown, unknown]>} a Promise which contains a JSON
  */
 function getSubjectsInModule (module) {

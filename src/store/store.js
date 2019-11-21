@@ -81,5 +81,14 @@ const defaultSubjectsState = {
   }
 }
 
-export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState, defaultStudentsState)
+const defaultPeriodsState = {
+  periods: {
+    fetching: false,
+    fetched: false,
+    error: null,
+    periods: []
+  }
+}
+
+export const defaultState = Object.assign(defaultCurrentUserState, defaultSubjectsState, defaultStudentsState, defaultPeriodsState)
 export default createStore(reducer, { ...defaultState }, enhancer)
