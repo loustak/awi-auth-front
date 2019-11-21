@@ -11,16 +11,18 @@ function UEItem (props) {
           modules && modules.length > 0
           ? modules.map((u, i) =>
                 <>
-                <h4 className={styles.title}> {u.title} - {u.credit} ETCS </h4>
+                <h4 className={styles.title}> {u.title} </h4>
                 {
                   u.subjects && u.subjects.length > 0
                   ? u.subjects.map((course, j) =>
                     <Collapse title={course.title} special={true} defaultOpen={true}>
                       <div className={styles.courseInfo}>
                           {course.prenomFormateur ?
-                            <h4 className={styles.titleCourse}><span id={styles.teacherName}>{"   "+course.prenomFormateur+" "+
+                            <h4 className={styles.titleCourse}>
+                              <span id={styles.teacherName}>{"Enseigné par "+course.prenomFormateur+" "+
                               (course.nomFormateur ? course.nomFormateur : '' )}
-                            </span></h4>
+                              </span>
+                            </h4>
                             : null
                           }
                         <CourseItem

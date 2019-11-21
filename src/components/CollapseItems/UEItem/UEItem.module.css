@@ -4,7 +4,6 @@
 }
 
 .titleCourse{
-    /*margin-left: 10px;*/
     color : #707070;
 }
 
@@ -13,8 +12,8 @@
 }
 
 #teacherName {
-    margin-left: 10px;
     font-size: 16px;
+    margin-left: 20px;
 }
 
 .specialCollapse{
