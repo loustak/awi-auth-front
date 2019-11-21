@@ -9,7 +9,7 @@ import styles from '../../Dashboard/Dashboard.module.css'
 function Courses (props) {
 
   const periods = props.periods.periods
-
+  const isFirtSemester = (new Date().getMonth() < 8)
   useEffect(() => {
     if (!props.periods.fetched) {
       setPeriodsSubjects('IG', 4)
@@ -32,16 +32,15 @@ function Courses (props) {
             <div>
               {
                 periods.length > 0
-                  ? periods.map((p, i) => {
-                    const isFirtSemester = (new Date().getMonth() > 8)
-                    return (p.modules && p.modules.length > 0
-                      ? <React.Fragment key={i}>
-                        <Collapse title={p.title} defaultOpen={isFirtSemester ? 1 : 0}>
+                  ? periods.filter(p => (p.modules && p.modules.length > 0)).map((p, i) => {
+                    return (
+                       <React.Fragment key={i}>
+                        <Collapse title={p.title} defaultOpen={isFirtSemester ? (i === 0 ? 1 : 0) : (i === 1 ? 1 : 0)}>
                           <UEItem ue={p.modules} />
                         </Collapse>
                         <br />
                       </React.Fragment>
-                      : null)
+                      )
                   })
                   : null
               }
