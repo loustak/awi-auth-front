@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import styles from './Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
-import { Button, ButtonGroup, Col, Form} from 'react-bootstrap'
+import { Button, ButtonGroup, Col, DropdownButton, Form, Row, Dropdown } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import ExamItem from '../CollapseItems/ExamItem/ExamItem'
 import { withRouter } from 'react-router-dom'
@@ -15,7 +15,7 @@ function Dashboard (props) {
 
   useEffect(() => {
     if (!props.subjects.fetched) {
-      setTeacherSubjects('Corinne','Seguin')
+      setTeacherSubjects('Arnaud','Castelltort')
     }
   },[])
 
@@ -50,7 +50,6 @@ function Dashboard (props) {
               <div className={styles.loadingText}>
                 <h4>Chargement en cours</h4>
               </div>
-
             </div>
           : <div className={styles.dashboard}>
             <div>

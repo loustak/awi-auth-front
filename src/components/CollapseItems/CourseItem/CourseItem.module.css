@@ -28,9 +28,10 @@
     border-radius: 5px;
 }
 
-.hours{
+.varInfo{
     color: #00ABB2;
     margin-left: 10px;
+    text-align: justify;
 }
 
 .variable{
