@@ -5,7 +5,6 @@ import { setPeriodsSubjects } from '../../../store/actions/periods.action'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-
 const courses = [
   {
     name: 'Cours 1',
@@ -40,15 +39,14 @@ const UE1 =
     courses: courses
   }
 
-
 const semestres = [
   {
     name: 'Semestre 1',
-    ue: [UE1,UE1]
+    ue: [UE1, UE1]
   },
   {
     name: 'Semestre 2',
-    ue: [UE1,UE1]
+    ue: [UE1, UE1]
   }
 ]
 
@@ -67,30 +65,34 @@ function Courses (props) {
     <>
       {
         (!props.periods.fetched)
-        ? <h2>NO DATA</h2>
-        : <div className='applicationItem'>
-        <div>
-          {
-            periods.length > 0
-              ? periods.map((p, i) => {
-                const mod = p.modules
-                  //console.log('MODULE')
-                  console.log(p)
-                  console.log(mod)
-                  return (p.modules && p.modules.length > 0
-                    ? <React.Fragment key={i}>
+          ? <h2>NO DATA</h2>
+          : <div className='applicationItem'>
+            <div>
+              {
+                periods.length > 0
+                  ? periods.map((p, i) => {
+                    const mod = p.modules
+                    //console.log('MODULE')
+                    console.log(p)
+                    console.log(p.modules)
+                    const mods = {
+                      ...p
+                    }
+                    console.log(mods)
+                    return (p.modules && p.modules.length > 0
+                      ? <React.Fragment key={i}>
                         <Collapse title={p.title} defaultOpen={i === 0}>
-                          <UEItem  ue={p.modules} />
+                          <UEItem ue={p.modules} />
                         </Collapse>
                         <br />
                       </React.Fragment>
                       : null)
-                })
-              : null
-          }
-        </div>
-      </div>
-    }
+                  })
+                  : null
+              }
+            </div>
+          </div>
+      }
     </>
   )
 }
