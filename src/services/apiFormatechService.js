@@ -96,8 +96,8 @@ export function getTrainingTeacherSubjects (trainings, teacherFirstName, teacher
     .then(step => {
       return Promise.all(step.map(s => {
         return Promise.all(s.periods.map(async (p) => {
-          const period = await getPeriod(p.id)
-          return { ...p, ...period }
+          const period = await getPeriod(p)
+          return period
         }))
       }))
     })
