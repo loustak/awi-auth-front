@@ -19,12 +19,23 @@ function ApplicationItem (props) {
   }
 
   return (
-    <a href={props.link_app} target='_blank' rel='noreferrer noopener' className={styles.applicationItem}>
-      <div className={styles.applicationName}>{props.name_app}</div>
-      <div className={styles.applicationDescription}>{props.description_app}</div>
-      <div className={styles.applicationCreator}>Par {appCreator}</div>
-      <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={showConfirmDelete} />
-    </a>
+    <>
+      {
+        props.link_app !== ''
+          ? <a href={props.link_app} target='_blank' rel='noreferrer noopener' className={styles.applicationItem}>
+            <div className={styles.applicationName}>{props.name_app}</div>
+            <div className={styles.applicationDescription}>{props.description_app}</div>
+            <div className={styles.applicationCreator}>Par {appCreator}</div>
+            <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={showConfirmDelete} />
+          </a>
+          : <div className={styles.applicationItem}>
+            <div className={styles.applicationName}>{props.name_app}</div>
+            <div className={styles.applicationDescription}>{props.description_app}</div>
+            <div className={styles.applicationCreator}>Par {appCreator}</div>
+            <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={showConfirmDelete} />
+          </div>
+      }
+    </>
   )
 }
 
