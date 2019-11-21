@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styles from './Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
-import { Button, ButtonGroup, Col, DropdownButton, Form, Row, Dropdown } from 'react-bootstrap'
+import { Button, ButtonGroup, Col, Form} from 'react-bootstrap'
 import { useFormik } from 'formik'
 import ExamItem from '../CollapseItems/ExamItem/ExamItem'
 import { withRouter } from 'react-router-dom'
@@ -10,8 +10,6 @@ import { CSVLink} from 'react-csv'
 import { setTeacherSubjects } from '../../store/actions/subjects.action'
 
 function Dashboard (props) {
-  const [show, setShow] = useState(false)
-  const [subjectId, setSubjectId] = useState(null)
 
   useEffect(() => {
     if (!props.subjects.fetched) {
@@ -98,14 +96,6 @@ function Dashboard (props) {
             </div>
             {
               filteredSubjects.map((subject, i) => {
-                // let avg = subject.students.reduce((total, current) => {
-                //   return total + current.marks.reduce((total2, current2) => {
-                //     return total2 + (current2.mark * current2.coeff)
-                //   }, 0) / current.marks.reduce((total2, current2) => {
-                //     return total2 + current2.coeff
-                //   }, 0)
-                // }, 0) / subject.students.length
-                // avg = Math.round(avg * 100) / 100
 
                 const headers = [
                   { label: 'examName', key: 'name' },
@@ -132,7 +122,7 @@ function Dashboard (props) {
 
                 return (
                   <Collapse
-                    title={subject.title + ' | ' + subject.training + ' ' + subject.year + ' | moyenne : TODO'}
+                    title={subject.title + (subject.training ? + ' | ' + subject.training : '') }
                     key={i}
                     button={
                       <ButtonGroup className='roundedButtonGroup'>

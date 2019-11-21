@@ -41,18 +41,20 @@ function Courses (props) {
           </div>
           : <>
             <div className='applicationItem'>
-              <Form>
-                <Form.Row className={styles.searchBar}>
-                  <Form.Group as={Col} controlId='name'>
-                    <Form.Label>Rechercher</Form.Label>
-                    <Form.Control
-                      placeholder='Rechercher'
-                      type='text'
-                      {...formik.getFieldProps('name')}
-                    />
-                  </Form.Group>
-                </Form.Row>
-              </Form>
+              <div className='divSearchBarDash'>
+                <Form>
+                  <Form.Row className='searchBarDash'>
+                    <Form.Group as={Col} controlId='name'>
+                      <Form.Label>Rechercher une UE ou une Matière : </Form.Label>
+                      <Form.Control
+                        placeholder='Rechercher'
+                        type='text'
+                        {...formik.getFieldProps('name')}
+                      />
+                    </Form.Group>
+                  </Form.Row>
+                </Form>
+              </div>
 
 
               <div>

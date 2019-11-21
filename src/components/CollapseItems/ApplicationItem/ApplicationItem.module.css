@@ -8,6 +8,11 @@
     cursor : pointer;
     max-width: 300px;
     padding: 20px 45px;
+    background-color: white;
+}
+
+.applicationItem:hover {
+    border: 1px solid #00ABB2;
 }
 
 .applicationName {
@@ -16,11 +21,13 @@
 
 .applicationDescription {
     font-size: 15px;
+    color: #707070;
 }
 
 .applicationCreator {
     margin-top: 10px;
     font-size: 15px;
+    color: #707070;
 }
 
 .status {
