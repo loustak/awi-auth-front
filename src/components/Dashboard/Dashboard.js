@@ -28,13 +28,11 @@ function Dashboard (props) {
 
   function matchSearch (subject, query) {
     return subject.title.toLowerCase().match(query) ||
-      subject.training.toLowerCase().match(query) ||
-      subject.year.toString().match(query)
+      subject.training.toLowerCase().match(query)
   }
 
   const filteredSubjects = props.subjects.subjects
     .filter(subject => formik.values.training !== '' ? subject.training === formik.values.training : true)
-    .filter(subject => formik.values.year !== '' ? subject.year === parseInt(formik.values.year) : true)
     .filter(subject => formik.values.search !== '' ? matchSearch(subject, formik.values.search.toLowerCase()) : true)
 
   return (
