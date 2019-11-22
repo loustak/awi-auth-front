@@ -24,7 +24,7 @@ function Simulator (props) {
     if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
       setPeriodsSubjects( training, year)
     }
-  }, [])
+  }, )
   const filteredSemesters = periods
     .filter(semester => formik.values.semester !== '' ? semester.title === formik.values.semester : true)
 
