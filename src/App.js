@@ -15,7 +15,6 @@ import Courses from './components/pages/Courses/Courses'
 import { isAuthenticated, isAuthenticatedAs, logout, setProfile } from './services/AuthenticationService'
 import Simulator from './components/pages/Simulator/Simulator'
 import { auth } from './services/oauth2Service'
-import PagesWrapper from './components/PagesWrapper/PageWrapper'
 
 export class AbsoluteRedirect extends React.Component {
   componentDidMount () {
@@ -143,7 +142,7 @@ function App () {
   useEffect(() => {
     setProfile()
   }, [])
-  
+
   return (
     <Router>
       <Provider store={store}>
