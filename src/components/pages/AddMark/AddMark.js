@@ -49,7 +49,7 @@ function AddMarkPage (props) {
 
   return (
     <div className={styles.addMark}>
-      <h2 className='pageTitle'>Nouvel examen pour {props.location.state.subject.name}</h2>
+      <h2 className='pageTitle'>Nouvel examen pour {props.location.state.subject.title}</h2>
       <Form onSubmit={formikExam.handleSubmit} className={styles.form}>
         <Form.Row>
           <Form.Group as={Col} controlId='exam'>
