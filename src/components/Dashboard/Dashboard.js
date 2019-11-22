@@ -114,10 +114,11 @@ function Dashboard (props) {
                     }
                   })
                 })
-
+                
                 return (
                   <Collapse
-                    title={subject.title + (subject.training ? ' | ' + subject.training : '') }
+                    title={subject.title}
+                    training={subject.training}
                     key={i}
                     button={
                       <ButtonGroup className='roundedButtonGroup'>

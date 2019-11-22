@@ -29,7 +29,7 @@ function Collapse (props) {
             className={styles.icon}
           />
           <div>
-            <h4 className={styles.title}>{props.title}</h4>
+            <h4 className={styles.title}>{props.title}{props.training ? <span style={{color: '#707070'}}> - {props.training}</span> : ''}</h4>
             {
               props.subtitle
                 ? <label className={styles.subtitle}>{props.subtitle}</label>
