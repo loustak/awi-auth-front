@@ -14,7 +14,7 @@ function Page (props) {
   //-----------------------------FUNCTIONS-------------------------------------
 
   function showLayout () {
-    return location !== 'login' && location !== 'register' && location !== 'recovery' && location !== 'connexion' && location !== 'token'
+    return location === 'applications' || location === 'cours' || location === 'simulateur' || location === 'dashboard' || location === 'notes'
   }
 
   //-----------------------------RETURN-------------------------------------

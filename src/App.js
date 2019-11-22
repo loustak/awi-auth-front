@@ -3,7 +3,7 @@ import 'semantic-ui-css/semantic.min.css'
 import OauthLogin from './components/LoginOAuth/Login'
 import Login from './components/pages/Login/Login'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dashboard from './components/pages/Dashboard/Dashboard'
 import './App.css'
@@ -15,6 +15,7 @@ import Courses from './components/pages/Courses/Courses'
 import { isAuthenticated, isAuthenticatedAs, logout, setProfile } from './services/AuthenticationService'
 import Simulator from './components/pages/Simulator/Simulator'
 import { auth } from './services/oauth2Service'
+import ErrorPage from './components/common/ErrorPage/ErrorPage'
 
 export class AbsoluteRedirect extends React.Component {
   componentDidMount () {
@@ -138,6 +139,21 @@ const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   />
 )
 
+function Oups (props) {
+  return (
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <ErrorPage errorMessage="La page que vous avez demandée n'est pas accessible !" />
+    </div>
+  )
+}
+
 function App () {
   useEffect(() => {
     setProfile()
@@ -145,20 +161,23 @@ function App () {
 
   return (
     <Router>
-      <Provider store={store}>
-        <div className='App'>
-          <Page>
-            <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
-            <StudentRoute exact path='/applications' component={Applications} />
-            <StudentRoute exact path='/cours' component={Courses} />
-            <StudentRoute exact path='/simulateur' component={Simulator} />
-            <TeacherRoute exact path='/dashboard' component={Dashboard} />
-            <TeacherRoute exact path='/notes' component={AddMarkPage} />
-            <RedirectToHome exact path='/' />
-            <NonAuthenticatedRoute exact path='/token' component={Login} />
-          </Page>
-        </div>
-      </Provider>
+      <Switch>
+        <Provider store={store}>
+          <div className='App'>
+            <Page>
+              <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
+              <StudentRoute exact path='/applications' component={Applications} />
+              <StudentRoute exact path='/cours' component={Courses} />
+              <StudentRoute exact path='/simulateur' component={Simulator} />
+              <TeacherRoute exact path='/dashboard' component={Dashboard} />
+              <TeacherRoute exact path='/notes' component={AddMarkPage} />
+              <RedirectToHome exact path='/' />
+              <NonAuthenticatedRoute exact path='/token' component={Login} />
+              <Route component={Oups} />
+            </Page>
+          </div>
+        </Provider>
+      </Switch>
     </Router>
   )
 }
