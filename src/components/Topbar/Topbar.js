@@ -35,7 +35,7 @@ function Topbar (props) {
                 <Nav.Link as={NavLink} className={classNames({
                   [styles.topBarLink]: true,
                   [styles.current]: props.location.pathname === '/applications'
-                })} to="/applications">APPLICATION</Nav.Link>
+                })} to="/applications">APPLICATIONS</Nav.Link>
                 <Nav.Link as={NavLink} className={classNames({
                   [styles.topBarLink]: true,
                   [styles.current]: props.location.pathname === '/cours'
