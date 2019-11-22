@@ -3,7 +3,7 @@ import styles from './SubjectItem.module.css'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Form } from 'react-bootstrap'
-import { addTest } from '../../../store/actions/simulator.action'
+import { addTest } from '../../../store/actions/periods.action'
 import { useFormik } from 'formik'
 import classNames from 'classnames'
 

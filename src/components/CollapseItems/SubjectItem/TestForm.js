@@ -3,11 +3,10 @@ import styles from './SubjectItem.module.css'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Form } from 'react-bootstrap'
-import { deleteTest, updateTest } from '../../../store/actions/simulator.action'
+import { deleteTest, updateTest } from '../../../store/actions/periods.action'
 import { useFormik } from 'formik'
 
 function TestForm (props) {
-
   const formik = useFormik({
     initialValues: {
       exam: props.test.exam,
@@ -54,7 +53,7 @@ function TestForm (props) {
           className={styles.testButtonIcon}
         />
       </Button>
-      <button type='submit' className="d-none" />
+      <button type='submit' className='d-none' />
     </Form>
   )
 }

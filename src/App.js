@@ -151,6 +151,7 @@ function App () {
             <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
             <StudentRoute exact path='/applications' component={Applications} />
             <StudentRoute exact path='/cours' component={Courses} />
+            <StudentRoute exact path='/simulateur' component={Simulator} />
             <TeacherRoute exact path='/dashboard' component={Dashboard} />
             <TeacherRoute exact path='/notes' component={AddMarkPage} />
             <RedirectToHome exact path='/' />
