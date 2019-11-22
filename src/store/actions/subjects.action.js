@@ -10,14 +10,21 @@ export function addExam (subjectId, name, coeff, marks) {
   })
 }
 
+export function removeExam (subjectId, examId) {
+  store.dispatch({
+    type: 'REMOVE_EXAM',
+    payload: { subjectId: subjectId, examId: examId }
+  })
+}
+
 export function setTeacherSubjects (teacherFirstName, teacherLastName) {
   store.dispatch({type: 'SET_SUBJECTS_START'})
-
-  apiFormatechService.getTeacherSubjects( teacherFirstName, teacherLastName)
+  apiFormatechService.getSubjectByTeacher( teacherFirstName, teacherLastName)
     .then(res => {
+      const newRes = res.subjects.map(r => {return {subject: {...r.subject, exams: []}}})
       store.dispatch({
         type: 'SET_SUBJECTS_SUCCESS',
-        payload: res
+        payload: newRes
       })
     })
     .catch(err => {

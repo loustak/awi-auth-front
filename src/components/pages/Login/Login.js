@@ -7,6 +7,9 @@ import { setCurrentUser } from '../../../store/actions/currentUser.action'
 import { logout } from '../../../services/AuthenticationService'
 
 class LoginPage extends React.Component {
+
+  //-----------------------------FUNCTIONS-------------------------------------
+
   constructor (props) {
     super(props)
     this.state = {

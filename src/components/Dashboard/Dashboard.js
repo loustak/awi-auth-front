@@ -12,12 +12,7 @@ import EmptyItem from '../CollapseItems/EmptyItem/EmptyItem'
 
 function Dashboard (props) {
 
-  useEffect(() => {
-    if (!props.subjects.fetched) {
-      setTeacherSubjects('Arnaud','Castelltort')
-    }
-  },[])
-
+  //-----------------------------VARIABLES-------------------------------------
 
   const formik = useFormik({
     initialValues: {
@@ -26,16 +21,26 @@ function Dashboard (props) {
     }
   })
 
-  function matchSearch (subject, query) {
-    return subject.title.toLowerCase().match(query) ||
-      subject.training.toLowerCase().match(query) ||
-      subject.year.toString().match(query)
-  }
-
   const filteredSubjects = props.subjects.subjects
     .filter(subject => formik.values.training !== '' ? subject.training === formik.values.training : true)
-    .filter(subject => formik.values.year !== '' ? subject.year === parseInt(formik.values.year) : true)
-    .filter(subject => formik.values.search !== '' ? matchSearch(subject, formik.values.search.toLowerCase()) : true)
+    .filter(subject => formik.values.search !== '' ? matchSearch(subject.subject, formik.values.search.toLowerCase()) : true)
+
+
+  //-----------------------------FUNCTIONS-------------------------------------
+
+  useEffect(() => {
+    if (!props.subjects.fetched && props.currentUser.fetched && !props.subjects.fetching) {
+      setTeacherSubjects(props.currentUser.user.firstname,props.currentUser.user.lastname)
+    }
+  },)
+
+  function matchSearch (subject, query) {
+    return subject.title.toLowerCase().match(query) ||
+      subject.training.toLowerCase().match(query)
+  }
+
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <>
@@ -81,7 +86,8 @@ function Dashboard (props) {
               </Form>
             </div>
             {
-              filteredSubjects.map((subject, i) => {
+              filteredSubjects.map((sub, i) => {
+                const subject = sub.subject
 
                 const headers = [
                   { label: 'examName', key: 'name' },
@@ -146,6 +152,7 @@ function Dashboard (props) {
                                 <ExamItem
                                   {...exam}
                                   students={props.students.students}
+                                  subjectId={subject.id}
                                   key={j}
                                 />
                               )
@@ -164,10 +171,13 @@ function Dashboard (props) {
   )
 }
 
+//-----------------------------SATEMAP-------------------------------------
+
 const stateMap = (state) => {
   return {
     subjects: state.subjects,
-    students: state.students
+    students: state.students,
+    currentUser: state.currentUser
   }
 }
 

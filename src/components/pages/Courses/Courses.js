@@ -9,20 +9,31 @@ import { Col, Form } from 'react-bootstrap'
 import { useFormik } from 'formik'
 
 function Courses (props) {
+
+  //-----------------------------VARIABLES-------------------------------------
+
   const periods = props.periods.periods
   const isFirtSemester = (new Date().getMonth() > 8)
 
-  useEffect(() => {
-    if (!props.periods.fetched) {
-      setPeriodsSubjects('IG', 3)
-    }
-  }, [])
+  const year = props.currentUser.user ? props.currentUser.user.section.substr(props.currentUser.user.section.length - 1) : null
+  const training = props.currentUser.user ? props.currentUser.user.section.slice(0, -1).toUpperCase() : null
 
   const formik = useFormik({
     initialValues: {
       name: ''
     }
   })
+
+  //-----------------------------FUNCTIONS-------------------------------------
+
+  useEffect(() => {
+      if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
+        setPeriodsSubjects( training, year)
+      }
+  }, )
+
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <>
@@ -56,7 +67,17 @@ function Courses (props) {
               <div>
                 {
                   periods.length > 0
-                    ? periods.filter(p => (p.modules && p.modules.length > 0)).map((p, i) => {
+                    ? periods.filter(p => (p.modules && p.modules.length > 0)).sort((a, b) => {
+                      const nameA = a.title.toLowerCase()
+                      const nameB = b.title.toLowerCase()
+                      if (nameA < nameB) {
+                        return 1
+                      }
+                      if (nameA > nameB) {
+                        return -1
+                      }
+                      return 0
+                    }).map((p, i) => {
                       return (
                         <React.Fragment key={i}>
                           <Collapse title={p.title} defaultOpen={isFirtSemester ? (i === 0 ? 1 : 0) : (i === 1 ? 1 : 0)}>
@@ -76,9 +97,12 @@ function Courses (props) {
   )
 }
 
+//-----------------------------STATEMAP-------------------------------------
+
 const stateMap = (state) => {
   return {
-    periods: state.periods
+    periods: state.periods,
+    currentUser: state.currentUser
   }
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 import classNames from 'classnames'
-
 import styles from './Topbar.module.css'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -11,6 +10,8 @@ import { connect } from 'react-redux'
 import { capitalize } from '../../Utils'
 
 function Topbar (props) {
+
+  //-----------------------------FUNCTIONS-------------------------------------
 
   function handleLogout () {
     logout()
@@ -35,7 +36,7 @@ function Topbar (props) {
                 <Nav.Link as={NavLink} className={classNames({
                   [styles.topBarLink]: true,
                   [styles.current]: props.location.pathname === '/applications'
-                })} to="/applications">APPLICATION</Nav.Link>
+                })} to="/applications">APPLICATIONS</Nav.Link>
                 <Nav.Link as={NavLink} className={classNames({
                   [styles.topBarLink]: true,
                   [styles.current]: props.location.pathname === '/cours'
@@ -75,6 +76,9 @@ function Topbar (props) {
     </Navbar>
   )
 }
+
+
+//-----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

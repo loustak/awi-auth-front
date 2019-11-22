@@ -6,11 +6,18 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 function Page (props) {
+
+  //-----------------------------VARIABLES-------------------------------------
+
   const location = props.location.pathname.substring(1)
+
+  //-----------------------------FUNCTIONS-------------------------------------
 
   function showLayout () {
     return location !== 'login' && location !== 'register' && location !== 'recovery' && location !== 'connexion' && location !== 'token'
   }
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     showLayout()
@@ -34,6 +41,8 @@ function Page (props) {
       </div>
   )
 }
+
+//-----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

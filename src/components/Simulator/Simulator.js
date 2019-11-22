@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import styles from '../Dashboard/Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
-import { useFormik } from 'formik'
 import { Col, Form } from 'react-bootstrap'
 import SubjectItem from '../CollapseItems/SubjectItem/SubjectItem'
 import ErrorPage from '../common/ErrorPage/ErrorPage'
@@ -11,19 +10,28 @@ import { withRouter } from 'react-router-dom'
 import { setPeriodsSubjects } from '../../store/actions/periods.action'
 
 function Simulator (props) {
+
+  //-----------------------------FUNCTIONS-------------------------------------
+
   const periods = props.periods.periods.filter(period => period.modules && period.modules.length > 0)
-  const formik = useFormik({
-    initialValues: {
-      semester: ''
+
+  const [selectedSemester, setSelectedSemester] = useState('')
+
+  const year = props.currentUser.user ? props.currentUser.user.section.substr(props.currentUser.user.section.length - 1) : null
+  const training = props.currentUser.user ? props.currentUser.user.section.slice(0, -1).toUpperCase() : null
+
+  const filteredSemesters = periods
+    .filter(semester => selectedSemester !== '' ? semester.title === selectedSemester : true)
+
+  //-----------------------------FUNCTIONS-------------------------------------
+
+  useEffect(() => {
+    if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
+      setPeriodsSubjects(training, year)
     }
   })
-  useEffect(() => {
-    if (!props.periods.fetched) {
-      setPeriodsSubjects('IG', 4)
-    }
-  }, [])
-  const filteredSemesters = periods
-    .filter(semester => formik.values.semester !== '' ? semester.title === formik.values.semester : true)
+
+  //-----------------------------RETURN-------------------------------------
 
   const globalAvg = markOperations.getGlobalAverage(filteredSemesters[0])
   return (
@@ -34,11 +42,14 @@ function Simulator (props) {
             <div className={styles.simulatorHeader}>
               <Form>
                 <Form.Label>Semestre</Form.Label>
-                <Form.Control
-                  as='select'
-                  {...formik.getFieldProps('semester')}
-                  className={styles.simulatorFormSemester}
-                >
+                  <Form.Control
+                    as='select'
+                    className={styles.simulatorFormSemester}
+                    onChange={e => {
+                      setSelectedSemester(e.target.value)
+                      e.target.blur()
+                    }}
+                  >
                   <option value=''>Choisissez un semestre</option>
                   {
                     periods.map((period, i) => <option key={Math.random()} value={period.title}>{period.title}</option>)
@@ -46,7 +57,7 @@ function Simulator (props) {
                 </Form.Control>
               </Form>
               {
-                formik.values.semester !== ''
+                selectedSemester !== ''
                   ? <div className={styles.simulatorGlobalAverage}>
                     Moyenne Générale
                     <div className={styles.simulatorGlobalAverageMark}>
@@ -95,11 +106,11 @@ function Simulator (props) {
                       </div>
                       : null
                   }
-                  )
-                  : <ErrorPage errorMessage='Aucune UE associée' />
+                )
+                : <ErrorPage errorMessage='Aucune UE associée' />
                 : null
             }
-            </>
+          </>
           : <div className={styles.loading}>
             <div className='spinner-border text-info' role='status'>
               <span className='sr-only'/>
@@ -107,15 +118,18 @@ function Simulator (props) {
             <div className={styles.loadingText}>
               <h4>Chargement en cours</h4>
             </div>
-            </div>
+          </div>
       }
     </>
   )
 }
 
+//-----------------------------STATEMAP-------------------------------------
+
 const stateMap = (state) => {
   return {
-    periods: state.periods
+    periods: state.periods,
+    currentUser: state.currentUser
   }
 }
 

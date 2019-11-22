@@ -1,8 +1,10 @@
 import React from 'react'
 import styles from './CourseItem.module.css'
+import Encoder from '../../../utils/htmlEncoder'
 
 function CourseItem (props) {
-  // eslint-disable-next-line no-unused-vars
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <div className={styles.courseItem}>
@@ -23,14 +25,14 @@ function CourseItem (props) {
       <div className={styles.varInfo}>
         {
           props.description
-            ? <p>Description : <span className={styles.variable}>{props.description}</span></p>
+            ? <p>Description : <span className={styles.variable}>{Encoder.htmlDecode(props.description)}</span></p>
             : <p>Description : <span className={styles.variable}>--</span></p>
         }
       </div>
       <div className={styles.varInfo}>
         {
           props.content
-            ? <p>Contenu : <span className={styles.variable}>{props.content}</span></p>
+            ? <p>Contenu : <span className={styles.variable}>{Encoder.htmlDecode(props.content)}</span></p>
             : <p>Contenu : <span className={styles.variable}>--</span></p>
         }
       </div>

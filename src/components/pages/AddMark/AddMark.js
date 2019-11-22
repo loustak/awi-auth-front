@@ -7,6 +7,9 @@ import { addExam } from '../../../store/actions/subjects.action'
 import styles from './addMark.module.css'
 
 function AddMarkPage (props) {
+
+  //-----------------------------VARIABLES-------------------------------------
+
   const formikInitialValues = {
     name: '',
     coeff: ''
@@ -41,6 +44,9 @@ function AddMarkPage (props) {
     }
   })
 
+
+  //-----------------------------RETURN-------------------------------------
+
   return (
     <div className={styles.addMark}>
       <h2 className='pageTitle'>Nouvel examen pour {props.location.state.subject.name}</h2>
@@ -70,6 +76,7 @@ function AddMarkPage (props) {
                 <Col xs='6'>
                   <Form.Control
                     type='number'
+                    placeholder='Non noté'
                     {...formikExam.getFieldProps('note_' + student.id)}
                   />
                 </Col>
@@ -88,6 +95,8 @@ function AddMarkPage (props) {
     </div>
   )
 }
+
+//-----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {
