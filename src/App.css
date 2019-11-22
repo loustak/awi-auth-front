@@ -35,7 +35,13 @@ p {
 }
 
 .searchBarDash{
-  width: 30%;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .searchBarDash{
+    width: 30%;
+  }
 }
 
 .divSearchBarDash{

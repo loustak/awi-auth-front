@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './SubjectItem.module.css'
 import TestForm from './TestForm'
 import NewTestForm from './NewTestForm'
+import EmptyTest from './EmptyTest'
 
 function SubjectItem (props) {
 
@@ -33,14 +34,14 @@ function SubjectItem (props) {
                 <div className={styles.subjectUnderDescription}>ECTS</div>
               </div>
             </div>
+            <NewTestForm semesterName={props.semesterName} ueId={props.ueId} subjectId={props.id} />
             {
-              props.tests !== undefined
+              props.tests !== undefined && props.tests.length > 0
                 ? props.tests.map((test, i) => {
                   return <TestForm test={test} semesterName={props.semesterName} ueId={props.ueId} subjectId={props.id} key={Math.random()} id={'test' + i + test.name} />
                 })
-                : null
+                : <EmptyTest />
             }
-            <NewTestForm semesterName={props.semesterName} ueId={props.ueId} subjectId={props.id} />
           </div>
           </>
           : null
