@@ -23,7 +23,7 @@ function Dashboard (props) {
 
   const filteredSubjects = props.subjects.subjects
     .filter(subject => formik.values.training !== '' ? subject.training === formik.values.training : true)
-    .filter(subject => formik.values.search !== '' ? matchSearch(subject, formik.values.search.toLowerCase()) : true)
+    .filter(subject => formik.values.search !== '' ? matchSearch(subject.subject, formik.values.search.toLowerCase()) : true)
 
 
   //-----------------------------FUNCTIONS-------------------------------------
@@ -86,7 +86,8 @@ function Dashboard (props) {
               </Form>
             </div>
             {
-              filteredSubjects.map((subject, i) => {
+              filteredSubjects.map((sub, i) => {
+                const subject = sub.subject
 
                 const headers = [
                   { label: 'examName', key: 'name' },
