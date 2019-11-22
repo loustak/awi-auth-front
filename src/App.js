@@ -146,7 +146,7 @@ function Oups (props) {
         height: '100vh',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
       }}
     >
       <ErrorPage errorMessage="La page que vous avez demandée n'est pas accessible !" />
@@ -165,15 +165,17 @@ function App () {
         <Provider store={store}>
           <div className='App'>
             <Page>
-              <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
-              <StudentRoute exact path='/applications' component={Applications} />
-              <StudentRoute exact path='/cours' component={Courses} />
-              <StudentRoute exact path='/simulateur' component={Simulator} />
-              <TeacherRoute exact path='/dashboard' component={Dashboard} />
-              <TeacherRoute exact path='/notes' component={AddMarkPage} />
-              <RedirectToHome exact path='/' />
-              <NonAuthenticatedRoute exact path='/token' component={Login} />
-              <Route component={Oups} />
+              <Switch>
+                <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
+                <StudentRoute exact path='/applications' component={Applications} />
+                <StudentRoute exact path='/cours' component={Courses} />
+                <StudentRoute exact path='/simulateur' component={Simulator} />
+                <TeacherRoute exact path='/dashboard' component={Dashboard} />
+                <TeacherRoute exact path='/notes' component={AddMarkPage} />
+                <RedirectToHome exact path='/' />
+                <NonAuthenticatedRoute exact path='/token' component={Login} />
+                <Route component={Oups} />
+              </Switch>
             </Page>
           </div>
         </Provider>
