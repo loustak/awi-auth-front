@@ -4,6 +4,8 @@ import Collapse from '../../Collapse/Collapse'
 import MarkItem from '../MarkItem/MarkItem'
 import { connect } from 'react-redux'
 import { CSVLink } from 'react-csv'
+import { Button, ButtonGroup } from 'react-bootstrap'
+import { removeExam } from '../../../store/actions/subjects.action'
 
 function ExamItem (props) {
 
@@ -35,7 +37,29 @@ function ExamItem (props) {
     <div className={styles.examItem}>
       <Collapse
         title={props.name + ' | Coeff : ' + props.coeff + ' | Moyenne : ' + avg.toFixed(2)}
-        button={<CSVLink data={data} headers={headers} filename={props.name + '.csv'} className='btn btn-blue' style={{borderRadius: '9999px'}}>Exporter</CSVLink>}
+        button={
+          <ButtonGroup className='roundedButtonGroup'>
+            <Button
+              variant='blue'
+              onClick={() => {
+                if (window.confirm('Confirmer la suppression ?')) {
+                  removeExam(props.subjectId, props.id)
+                }
+              }}
+            >
+              Supprimer
+            </Button>
+            <CSVLink
+              data={data}
+              headers={headers}
+              filename={props.name + '.csv'}
+              className='btn btn-blue'
+              style={{ borderTopRightRadius: '9999px', borderBottomRightRadius: '9999px' }}
+            >
+              Exporter
+            </CSVLink>
+          </ButtonGroup>
+        }
       >
         {
           props.marks.sort((a, b) => {
