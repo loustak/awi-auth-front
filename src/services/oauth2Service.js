@@ -5,7 +5,7 @@ export const auth = new ClientOAuth2({
   clientSecret: 'secret-dashboard',
   accessTokenUri: 'https://oauth-dev.igpolytech.fr/token',
   authorizationUri: 'https://oauth-dev.igpolytech.fr/authorize',
-  redirectUri: 'http://localhost:3000/token',
+  redirectUri: 'https://mydash-dev.igpolytech.fr/token',
   state: 'monState',
   body: {
     client_id: 'o1-g3'
