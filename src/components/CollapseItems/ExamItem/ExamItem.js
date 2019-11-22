@@ -9,6 +9,8 @@ import { removeExam } from '../../../store/actions/subjects.action'
 
 function ExamItem (props) {
 
+  //-----------------------------VARIABLES-------------------------------------
+
   let avg = props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : current.mark), 0)
     / props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : 1), 0)
 
@@ -32,6 +34,9 @@ function ExamItem (props) {
       mark: mark.mark
     }
   })
+
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <div className={styles.examItem}>
@@ -83,6 +88,8 @@ function ExamItem (props) {
     </div>
   )
 }
+
+//-----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

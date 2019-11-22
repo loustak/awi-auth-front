@@ -8,6 +8,9 @@ import { useFormik } from 'formik'
 import classNames from 'classnames'
 
 function NewTestForm (props) {
+
+  //-----------------------------VARIABLES-------------------------------------
+
   const formik = useFormik({
     initialValues: {
       exam: 'Partiel',
@@ -15,11 +18,17 @@ function NewTestForm (props) {
       coeff: 1
     }
   })
+
+  //-----------------------------FUNCTIONS-------------------------------------
+
   function handleSubmit (e) {
     addTest(props.semesterName, props.ueId, props.subjectId, formik.values.exam, formik.values.mark, formik.values.coeff)
     formik.resetForm()
     e.preventDefault()
   }
+
+  //-----------------------------RETURN-------------------------------------
+
   return (
     <Form onSubmit={handleSubmit} className={classNames({ [styles.testContainer]: true, [styles.newTestContainer]: true })}>
       <Form.Control {...formik.getFieldProps('exam')} type='text' className={styles.testName} />

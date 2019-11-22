@@ -7,6 +7,8 @@ import classNames from 'classnames/bind';
 
 class Applications extends React.Component {
 
+  //-----------------------------FUNCTIONS-------------------------------------
+
   constructor (props) {
     super(props)
     this.state = { apps: [] }
@@ -22,6 +24,8 @@ class Applications extends React.Component {
       this.setState({ apps: res })
     })
   }
+
+  //-----------------------------RETURN-------------------------------------
 
   render () {
     return (

@@ -7,9 +7,14 @@ import { connect } from 'react-redux'
 import { deleteUserApp } from '../../../services/castelstoreService'
 
 function ApplicationItem (props) {
-  const content = `Êtes vous sûr de vouloir supprimer ${props.name_app} de votre liste d'Applications ?`
 
+  //-----------------------------VARIABLES-------------------------------------
+
+  const content = `Êtes vous sûr de vouloir supprimer ${props.name_app} de votre liste d'Applications ?`
   const appCreator = props.name_user.split('.').map(n => n.split('-').map(nn => capitalize(nn)).join('-')).join(' ')
+
+
+  //-----------------------------FUNCTIONS-------------------------------------
 
   function showConfirmDelete () {
     if (window.confirm(content)) {
@@ -17,6 +22,8 @@ function ApplicationItem (props) {
       deleteUserApp(username, props.id_app).then(() => props.onDelete())
     }
   }
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <>
@@ -38,6 +45,9 @@ function ApplicationItem (props) {
     </>
   )
 }
+
+
+//-----------------------------SATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

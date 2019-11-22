@@ -5,9 +5,18 @@ import Collapse from '../../Collapse/Collapse'
 import markOperations from '../../../utils/MarksOperations'
 
 function UEItem (props) {
+
+  //-----------------------------VARIABLES-------------------------------------
+
   const modules = props.ue
 
   let filterSubjectName = false
+
+  const filteredModules = modules
+    .filter(module => props.query !== '' ? matchSearch(module, props.query) : true)
+
+
+  //-----------------------------FUNCTIONS-------------------------------------
 
   function matchSearch (module, query) {
     const subjects = module.subjects.filter(s => s.title.toLowerCase().match(query))
@@ -15,9 +24,8 @@ function UEItem (props) {
     return module.title.toLowerCase().match(query) || subjects.length > 0
   }
 
-  const filteredModules = modules
-    .filter(module => props.query !== '' ? matchSearch(module, props.query) : true)
 
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <div>

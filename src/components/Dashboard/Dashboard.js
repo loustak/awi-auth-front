@@ -12,12 +12,8 @@ import EmptyItem from '../CollapseItems/EmptyItem/EmptyItem'
 
 function Dashboard (props) {
 
-  useEffect(() => {
-    if (!props.subjects.fetched && props.currentUser.fetched && !props.subjects.fetching) {
-      setTeacherSubjects(props.currentUser.user.firstname,props.currentUser.user.lastname)
-    }
-  },)
-  
+  //-----------------------------VARIABLES-------------------------------------
+
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -25,14 +21,26 @@ function Dashboard (props) {
     }
   })
 
+  const filteredSubjects = props.subjects.subjects
+    .filter(subject => formik.values.training !== '' ? subject.training === formik.values.training : true)
+    .filter(subject => formik.values.search !== '' ? matchSearch(subject, formik.values.search.toLowerCase()) : true)
+
+
+  //-----------------------------FUNCTIONS-------------------------------------
+
+  useEffect(() => {
+    if (!props.subjects.fetched && props.currentUser.fetched && !props.subjects.fetching) {
+      setTeacherSubjects(props.currentUser.user.firstname,props.currentUser.user.lastname)
+    }
+  },)
+
   function matchSearch (subject, query) {
     return subject.title.toLowerCase().match(query) ||
       subject.training.toLowerCase().match(query)
   }
 
-  const filteredSubjects = props.subjects.subjects
-    .filter(subject => formik.values.training !== '' ? subject.training === formik.values.training : true)
-    .filter(subject => formik.values.search !== '' ? matchSearch(subject, formik.values.search.toLowerCase()) : true)
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <>
@@ -161,6 +169,8 @@ function Dashboard (props) {
     </>
   )
 }
+
+//-----------------------------SATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

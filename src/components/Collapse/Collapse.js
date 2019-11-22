@@ -7,8 +7,13 @@ import Button from '../Button/Button'
 import { getRandomInt } from '../../Utils'
 
 function Collapse (props) {
+
+  //-----------------------------VARIABLES-------------------------------------
+
   const [open, setOpen] = useState(props.defaultOpen || false)
   const randomID = getRandomInt(99999)
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <div className={props.special ? styles.specialCollapse : styles.collapse}>
