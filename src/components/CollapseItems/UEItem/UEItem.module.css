@@ -8,7 +8,13 @@
 }
 
 .courseInfo{
-    margin: 10px 40px 10px 40px;
+    margin: 0 5px;
+}
+
+@media (min-width: 768px) {
+    .courseInfo{
+        margin: 10px 40px 10px 40px;
+    }
 }
 
 #teacherName {

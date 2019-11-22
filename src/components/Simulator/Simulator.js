@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import styles from '../Dashboard/Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
-import { Col, Form } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import SubjectItem from '../CollapseItems/SubjectItem/SubjectItem'
 import ErrorPage from '../common/ErrorPage/ErrorPage'
 import markOperations from '../../utils/MarksOperations'
@@ -14,8 +14,20 @@ function Simulator (props) {
   //-----------------------------FUNCTIONS-------------------------------------
 
   const periods = props.periods.periods.filter(period => period.modules && period.modules.length > 0)
+    .sort((a, b) => {
+      const nameA = a.title.toLowerCase()
+      const nameB = b.title.toLowerCase()
+      if (nameA < nameB) {
+        return 1
+      }
+      if (nameA > nameB) {
+        return -1
+      }
+      return 0
+    })
 
   const [selectedSemester, setSelectedSemester] = useState('')
+  const [defaultSemesterChanged = false, setDefaultSemesterChanged] = useState('')
 
   const year = props.currentUser.user ? props.currentUser.user.section.substr(props.currentUser.user.section.length - 1) : null
   const training = props.currentUser.user ? props.currentUser.user.section.slice(0, -1).toUpperCase() : null
@@ -28,6 +40,10 @@ function Simulator (props) {
   useEffect(() => {
     if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
       setPeriodsSubjects(training, year)
+    }
+    if (periods && periods.length > 0 && !defaultSemesterChanged) {
+      setSelectedSemester(periods[0].title)
+      setDefaultSemesterChanged(true)
     }
   })
 
@@ -49,6 +65,7 @@ function Simulator (props) {
                       setSelectedSemester(e.target.value)
                       e.target.blur()
                     }}
+                    value={selectedSemester}
                   >
                   <option value=''>Choisissez un semestre</option>
                   {
