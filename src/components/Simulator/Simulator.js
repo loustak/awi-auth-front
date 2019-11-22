@@ -25,6 +25,7 @@ function Simulator (props) {
   const filteredSemesters = periods
     .filter(semester => formik.values.semester !== '' ? semester.title === formik.values.semester : true)
 
+  const globalAvg = markOperations.getGlobalAverage(filteredSemesters[0])
   return (
     <>
       {
@@ -32,27 +33,35 @@ function Simulator (props) {
           ? <>
             <div className={styles.simulatorHeader}>
               <Form>
-                <Form.Row className={styles.searchBar}>
-                  <Form.Group as={Col} controlId='semester'>
-                    <Form.Label>Semestre</Form.Label>
-                    <Form.Control
-                      as='select'
-                      {...formik.getFieldProps('semester')}
-                      className={styles.simulatorFormSemester}
-                    >
-                      <option value=''>Choisissez un semestre</option>
-                      {
-                        periods.map((period, i) => <option key={Math.random()} value={period.title}>{period.title}</option>)
-                      }
-                    </Form.Control>
-                  </Form.Group>
-                </Form.Row>
+                <Form.Label>Semestre</Form.Label>
+                <Form.Control
+                  as='select'
+                  {...formik.getFieldProps('semester')}
+                  className={styles.simulatorFormSemester}
+                >
+                  <option value=''>Choisissez un semestre</option>
+                  {
+                    periods.map((period, i) => <option key={Math.random()} value={period.title}>{period.title}</option>)
+                  }
+                </Form.Control>
               </Form>
               {
                 formik.values.semester !== ''
                   ? <div className={styles.simulatorGlobalAverage}>
-                    Moyenne : {markOperations.getGlobalAverage(filteredSemesters[0])}
-                </div>
+                    Moyenne Générale
+                    <div className={styles.simulatorGlobalAverageMark}>
+                      <span className={(globalAvg
+                        ? globalAvg < 6
+                          ? styles.averageDanger
+                          : globalAvg < 10
+                            ? styles.averageRisk
+                            : styles.averageValid
+                        : styles.averageMissing)}
+                      >
+                        {globalAvg ? globalAvg.toString() : '-'}
+                      </span>
+                    </div>
+                    </div>
                   : null
               }
             </div>
@@ -60,13 +69,15 @@ function Simulator (props) {
               filteredSemesters.length === 1
                 ? filteredSemesters[0].modules !== undefined
                   ? filteredSemesters[0].modules.map((ue) => {
+                    const ueAvg = markOperations.getAverageFromUE(ue)
+                    const ueAvgFiltered = ueAvg ? ' - Moyenne: ' + ueAvg.toString() : ''
                     return markOperations.getECTSFromUE(ue) > 0
                       ? <div key={Math.random()}>
                         <Collapse
                           defaultOpen
                           title={ue.title}
                           key={Math.random()}
-                          subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue) + ' - Moyenne: ' + markOperations.getAverageFromUE(ue)}
+                          subtitle={'ECTS: ' + markOperations.getECTSFromUE(ue) + ueAvgFiltered}
                         >
                           {
                             ue.subjects.map((subject, j) =>
@@ -90,7 +101,7 @@ function Simulator (props) {
             }
             </>
           : <div className={styles.loading}>
-            <div className='spinner-border text-info' role="status">
+            <div className='spinner-border text-info' role='status'>
               <span className='sr-only'/>
             </div>
             <div className={styles.loadingText}>
