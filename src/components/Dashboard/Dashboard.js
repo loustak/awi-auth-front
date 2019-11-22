@@ -13,12 +13,11 @@ import EmptyItem from '../CollapseItems/EmptyItem/EmptyItem'
 function Dashboard (props) {
 
   useEffect(() => {
-    if (!props.subjects.fetched) {
-      setTeacherSubjects('Arnaud','Castelltort')
+    if (!props.subjects.fetched && props.currentUser.fetched && !props.subjects.fetching) {
+      setTeacherSubjects(props.currentUser.user.firstname,props.currentUser.user.lastname)
     }
-  },[])
-
-
+  },)
+  
   const formik = useFormik({
     initialValues: {
       search: '',
@@ -182,7 +181,8 @@ function Dashboard (props) {
 const stateMap = (state) => {
   return {
     subjects: state.subjects,
-    students: state.students
+    students: state.students,
+    currentUser: state.currentUser
   }
 }
 
