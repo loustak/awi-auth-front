@@ -5,6 +5,7 @@ import { AbsoluteRedirect } from '../../../App'
 import jwtDecode from 'jwt-decode'
 import { setCurrentUser } from '../../../store/actions/currentUser.action'
 import { logout } from '../../../services/AuthenticationService'
+import styles from '../../Dashboard/Dashboard.module.css'
 
 class LoginPage extends React.Component {
 
@@ -41,7 +42,14 @@ class LoginPage extends React.Component {
   render () {
     return (
       this.state.loading
-        ? <div>loading</div>
+        ? <div className={styles.loading}>
+          <div className='spinner-border text-info' role='status'>
+            <span className='sr-only'/>
+          </div>
+          <div className={styles.loadingText}>
+            <h4>Chargement en cours</h4>
+          </div>
+        </div>
         : (this.state.ok
           ? <Redirect to='/' />
           : <AbsoluteRedirect to={auth.code.getUri()} />
