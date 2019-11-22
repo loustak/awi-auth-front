@@ -9,6 +9,9 @@ import axios from 'axios'
 import { Alert } from 'react-bootstrap'
 
 function LoginForm (props) {
+
+  //-----------------------------VARIABLES-------------------------------------
+
   const [error, setError] = useState(null)
 
   const formik = useFormik({
@@ -27,6 +30,8 @@ function LoginForm (props) {
       })
     }
   })
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <Form className={styles.loginForm} onSubmit={formik.handleSubmit}>

@@ -2,7 +2,8 @@ import React from 'react'
 import styles from './CourseItem.module.css'
 
 function CourseItem (props) {
-  // eslint-disable-next-line no-unused-vars
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <div className={styles.courseItem}>
