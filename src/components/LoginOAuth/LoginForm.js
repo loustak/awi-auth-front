@@ -27,6 +27,7 @@ export const LoginForm = (props) => (
       auth
         .login(values.username, values.password, props.client_id)
         .then(function (response) {
+          console.log(props.redirect_uri)
           window.location.replace(props.redirect_uri + '?code=' + response + '&state=' + props.stateAuth)
         })
         .catch(error => {
@@ -48,9 +49,9 @@ export const LoginForm = (props) => (
             onChange={handleChange('username')}
           />
           {errors.username && touched.username &&
-            <Label basic prompt pointing>
-              {errors.username}
-            </Label>}
+          <Label basic prompt pointing>
+            {errors.username}
+          </Label>}
 
         </Form.Field>
         <Divider hidden />
@@ -65,9 +66,9 @@ export const LoginForm = (props) => (
             onChange={handleChange('password')}
           />
           {errors.password && touched.password &&
-            <Label basic prompt pointing>
-              {errors.password}
-            </Label>}
+          <Label basic prompt pointing>
+            {errors.password}
+          </Label>}
         </Form.Field>
 
         {errors.general && <Message size='mini' negative>{errors.general}</Message>}

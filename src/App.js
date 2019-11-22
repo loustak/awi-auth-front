@@ -132,7 +132,7 @@ const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => (
-      isAuthenticated()
+      isAuthenticated() && new URLSearchParams(props.location.search).get('redirect_uri').match('mydash.igpolytech.fr')
         ? <Redirect to={{ pathname: '/' }} />
         : <Component {...props} {...rest} />
     )}
@@ -146,15 +146,13 @@ function App () {
         <div className='App'>
           <Page>
             <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
-            <PagesWrapper>
-              <StudentRoute exact path='/applications' component={Applications} />
-              <StudentRoute exact path='/cours' component={Courses} />
-              <StudentRoute exact path='/simulateur' component={Simulator} />
-              <TeacherRoute exact path='/dashboard' component={Dashboard} />
-              <TeacherRoute exact path='/notes' component={AddMarkPage} />
-              <RedirectToHome exact path='/' />
-              <NonAuthenticatedRoute exact path='/token' component={Login} />
-            </PagesWrapper>
+            <StudentRoute exact path='/applications' component={Applications} />
+            <StudentRoute exact path='/cours' component={Courses} />
+            <StudentRoute exact path='/simulateur' component={Simulator} />
+            <TeacherRoute exact path='/dashboard' component={Dashboard} />
+            <TeacherRoute exact path='/notes' component={AddMarkPage} />
+            <RedirectToHome exact path='/' />
+            <NonAuthenticatedRoute exact path='/token' component={Login} />
           </Page>
         </div>
       </Provider>
