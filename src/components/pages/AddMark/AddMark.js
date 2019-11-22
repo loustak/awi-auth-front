@@ -70,6 +70,7 @@ function AddMarkPage (props) {
                 <Col xs='6'>
                   <Form.Control
                     type='number'
+                    placeholder='Non noté'
                     {...formikExam.getFieldProps('note_' + student.id)}
                   />
                 </Col>

@@ -10,6 +10,13 @@ export function addExam (subjectId, name, coeff, marks) {
   })
 }
 
+export function removeExam (subjectId, examId) {
+  store.dispatch({
+    type: 'REMOVE_EXAM',
+    payload: { subjectId: subjectId, examId: examId }
+  })
+}
+
 export function setTeacherSubjects (teacherFirstName, teacherLastName) {
   store.dispatch({type: 'SET_SUBJECTS_START'})
 

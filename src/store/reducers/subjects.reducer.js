@@ -27,7 +27,7 @@ export default (state = {}, action) => {
 
       const newExams = subject.exams.slice()
 
-      const id = subject.exams.length + 1
+      const id = subject.exams ? Math.max(subject.exams.map(e => e.id)) + 1 : 1
       const exam = {
         id: id,
         name: action.payload.name,
@@ -44,114 +44,22 @@ export default (state = {}, action) => {
         ...state,
         subjects: newSubjects
       }
-
-      // const newSubjects = state.subjects.slice()
-      // let subject = state.subjects.filter(subject => subject.id === action.payload.subjectId)[0]
-      // const subjectIndex = newSubjects.indexOf(subject)
-      //
-      // const newStudents = subject.students.slice()
-      // let student = subject.students.filter(student => student.id === action.payload.studentId)[0]
-      // const studentIndex = newStudents.indexOf(student)
-      //
-      // student.marks.push(action.payload.mark)
-      //
-      // newStudents[studentIndex] = student
-      // subject.students = newStudents
-      // newSubjects[subjectIndex] = subject
-      //
-      // return {
-      //   ...state,
-      //   subjects: newSubjects
-      // }
     }
-    // case 'ADD_COMMENT': {
-    //   const newElements = state.user.comments.slice()
-    //   newElements.push(action.payload)
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       comments: newElements
-    //     }
-    //   }
-    // }
+    case 'REMOVE_EXAM': {
+      const newSubjects = state.subjects.slice()
+      const subject = state.subjects.filter(s => s.id === action.payload.subjectId)[0]
+      const subjectIndex = newSubjects.indexOf(subject)
 
-    // case 'UPDATE_USER_COMMENT': {
-    //   const newElements = state.user.comments.slice()
-    //   let comment = state.user.comments.filter((comment, i) => comment._id === action.payload._id)[0]
-    //   const commentIndex = newElements.indexOf(comment)
-    //   comment = {
-    //     ...action.payload
-    //   }
-    //   newElements[commentIndex] = comment
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       comments: newElements
-    //     }
-    //   }
-    // }
+      const newExams = subject.exams.filter(e => e.id !== action.payload.examId)
 
-    // case 'FETCH_USER_PROFILE_ERROR': {
-    //   return {
-    //     ...state,
-    //     fetching: false,
-    //     error: action.payload
-    //   }
-    // }
-    //
-    // case 'UPDATE_USER': {
-    //   // console.log(...state)
-    //   // console.log(...action.payload)
-    //   return {
-    //     ...state,
-    //     ...action.payload
-    //   }
-    // }
-    //
-    // case 'UPDATE_USER_PROFILE_PAGE': {
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       name: action.payload.name,
-    //       username: action.payload.username,
-    //       picture: action.payload.picture,
-    //       bio: action.payload.bio
-    //     }
-    //   }
-    // }
-    //
-    // case 'ADD_COMMENT': {
-    //   const newElements = state.user.comments.slice()
-    //   newElements.push(action.payload)
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       comments: newElements
-    //     }
-    //   }
-    // }
-    //
-    // case 'UPDATE_USER_COMMENT': {
-    //   const newElements = state.user.comments.slice()
-    //   let comment = state.user.comments.filter((comment, i) => comment._id === action.payload._id)[0]
-    //   const commentIndex = newElements.indexOf(comment)
-    //   comment = {
-    //     ...action.payload
-    //   }
-    //   newElements[commentIndex] = comment
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       comments: newElements
-    //     }
-    //   }
-    // }
+      subject.exams = newExams
+      newSubjects[subjectIndex] = subject
 
+      return {
+        ...state,
+        subjects: newSubjects
+      }
+    }
     default:
       return {
         ...state

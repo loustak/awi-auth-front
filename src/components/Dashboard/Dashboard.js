@@ -144,6 +144,7 @@ function Dashboard (props) {
                                 <ExamItem
                                   {...exam}
                                   students={props.students.students}
+                                  subjectId={subject.id}
                                   key={j}
                                 />
                               )
