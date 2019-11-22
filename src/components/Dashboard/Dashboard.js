@@ -22,7 +22,7 @@ function Dashboard (props) {
   })
 
   const filteredSubjects = props.subjects.subjects
-    .filter(subject => formik.values.training !== '' ? subject.training === formik.values.training : true)
+    .filter(subject => formik.values.training !== '' ? subject.subject.training === formik.values.training : true)
     .filter(subject => formik.values.search !== '' ? matchSearch(subject.subject, formik.values.search.toLowerCase()) : true)
 
 
@@ -79,6 +79,9 @@ function Dashboard (props) {
                       <option>GBA</option>
                       <option>MI</option>
                       <option>MAT</option>
+                      <option>SE</option>
+                      <option>EGC</option>
+                      <option>DO</option>
                       <option>PeiP</option>
                     </Form.Control>
                   </Form.Group>

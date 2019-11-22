@@ -21,7 +21,7 @@ export function setTeacherSubjects (teacherFirstName, teacherLastName) {
   store.dispatch({type: 'SET_SUBJECTS_START'})
   apiFormatechService.getSubjectByTeacher( teacherFirstName, teacherLastName)
     .then(res => {
-      const newRes = res.subjects.map(r => {return {subject: {...r.subject, exams: []}}})
+      const newRes = res.subjects.map(r => {return {subject: {...r.subject, exams: [], training: r.code}}})
       store.dispatch({
         type: 'SET_SUBJECTS_SUCCESS',
         payload: newRes
