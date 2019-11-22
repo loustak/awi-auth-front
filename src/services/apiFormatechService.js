@@ -65,6 +65,22 @@ export function getSubject (idSubject) {
   })
 }
 
+/**
+ * Get subjects of a teacher using Formatech API
+ * @param firstname of the teacher
+ * @param lastname of the teacher
+ * @returns {Promise<unknown>} a promise which contains a JSON
+ * Result format:
+ * {subjects: [{subject:{idem getSubject}}, {subject:{idem.getSubject}}]}
+ */
+export function getSubjectByTeacher (firstname, lastname) {
+  return new Promise((resolve, reject) => {
+    axios.get(`https://test-api-formatech.igpolytech.fr/sagesse/teacher/${firstname}/${lastname}`)
+      .then(response => resolve(response.data))
+      .catch(err => reject(err))
+  })
+}
+
 
 export function getTeacherSubjects (teacherFirstName, teacherLastName) {
   return getTrainingTeacherSubjects(['IG'], teacherFirstName, teacherLastName).then(r1 => {
