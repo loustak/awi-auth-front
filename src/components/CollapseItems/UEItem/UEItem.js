@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './UEItem.module.css'
 import CourseItem from '../CourseItem/CourseItem'
 import Collapse from '../../Collapse/Collapse'
+import markOperations from '../../../utils/MarksOperations'
 
 function UEItem (props) {
   const modules = props.ue
@@ -24,7 +25,7 @@ function UEItem (props) {
           modules && modules.length > 0
           ? filteredModules.map((u, i) =>
                 <><React.Fragment key={'ue'+i}>
-                <h4 className={styles.title}> {u.title} </h4>
+                <h4 className={styles.title}> {u.title + '  -  ' + markOperations.getECTSFromUE(u) + ' ECTS'} </h4>
                 {
                   u.subjects && u.subjects.length > 0
                   ? u.subjects.filter(s => filterSubjectName ? s.title.toLowerCase().match(props.query) : true).map((course, j) =>
