@@ -1,0 +1,21 @@
+.markItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    align-items: center;
+    border-bottom: 1px solid #D3D3D3;
+    padding: 10px;
+}
+
+.applicationItem:last-child {
+    border-bottom: none;
+}
+
+.left {
+}
+
+.right {
+}
+.status {
+    font-weight: 500;
+}

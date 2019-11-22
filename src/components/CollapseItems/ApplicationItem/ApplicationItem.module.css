@@ -1,0 +1,82 @@
+.applicationItem {
+    position: relative;
+    border: 1px solid #D3D3D3;
+    color: #00ABB2 ;
+    border-radius: 5px;
+    margin: 15px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    /*padding: 20px 45px;*/
+    background-color: white;
+    text-decoration: none !important;
+}
+
+.applicationItem:hover {
+    border: 1px solid #00ABB2;
+}
+
+.link {
+    color: #00ABB2 !important;
+    height: 100%;
+}
+
+.link:hover {
+    color: #007e85 !important;
+    text-decoration: none;
+}
+
+
+.itemTop {
+    position: relative;
+    /*border-bottom: 1px solid black;*/
+    display: flex;
+    justify-content: flex-end;
+    height: 10%;
+}
+
+.itemBody {
+    position: relative;
+    margin: 0 45px 20px 45px;
+    height: 90%;
+}
+
+
+
+.applicationName {
+    font-size: 20px;
+    width: min-content;
+}
+
+.applicationDescription {
+    font-size: 15px;
+    color: #707070;
+}
+
+.applicationCreator {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #707070;
+}
+
+.status {
+    font-weight: 500;
+}
+
+.applicationDelete {
+    /*position: absolute;*/
+    /*right : 5px;*/
+    /*top : 5px;*/
+    color: #D3D3D3;
+    /*z-index: 999;*/
+    padding: 5px 5px 0 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.deleteConfirm {
+    color: #00ABB2;
+}
+
+.deleteCancel {
+    color : grey;
+}

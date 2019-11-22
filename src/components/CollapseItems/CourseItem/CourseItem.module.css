@@ -1,0 +1,43 @@
+.courseItem{
+    padding: 10px;
+}
+
+.info{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.info>div>label {
+    color: #00ABB2;
+}
+.info div p {
+    color: #707070;
+}
+.info>div{
+    text-align: center;
+    min-width: 250px;
+    min-height: 100px;
+    padding: 15px;
+    width: 100%;
+}
+
+#description{
+    margin-top: 20px;
+    border: 1px solid #00ABB2;
+    border-radius: 5px;
+}
+
+.varInfo{
+    color: #00ABB2;
+    margin-left: 10px;
+    text-align: justify;
+}
+
+.variable{
+    color: #707070;
+}
+
+.variable{
+    color: #707070;
+}
