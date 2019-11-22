@@ -5,6 +5,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { capitalize } from '../../../Utils'
 import { connect } from 'react-redux'
 import { deleteUserApp } from '../../../services/castelstoreService'
+import classNames from 'classnames'
 
 function ApplicationItem (props) {
 
@@ -12,7 +13,6 @@ function ApplicationItem (props) {
 
   const content = `Êtes vous sûr de vouloir supprimer ${props.name_app} de votre liste d'Applications ?`
   const appCreator = props.name_user.split('.').map(n => n.split('-').map(nn => capitalize(nn)).join('-')).join(' ')
-
 
   //-----------------------------FUNCTIONS-------------------------------------
 
@@ -29,23 +29,37 @@ function ApplicationItem (props) {
     <>
       {
         props.link_app !== ''
-          ? <a href={props.link_app} target='_blank' rel='noreferrer noopener' className={styles.applicationItem}>
-            <div className={styles.applicationName}>{props.name_app}</div>
-            <div className={styles.applicationDescription}>{props.description_app}</div>
-            <div className={styles.applicationCreator}>Par {appCreator}</div>
-            <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={showConfirmDelete} />
-          </a>
+          ? <div className={styles.applicationItem}>
+            <div className={styles.itemTop}>
+              <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={showConfirmDelete} />
+            </div>
+            <div className={styles.itemBody}>
+              <a href={props.link_app} target='_blank' rel='noreferrer noopener'
+                 className={classNames({ [styles.link]: true, [styles.applicationName]: true })}>
+                {props.name_app}
+              </a>
+
+              <div className={styles.applicationDescription}>{props.description_app}</div>
+              <div className={styles.applicationCreator}>Par {appCreator}</div>
+            </div>
+          </div>
           : <div className={styles.applicationItem}>
-            <div className={styles.applicationName}>{props.name_app}</div>
-            <div className={styles.applicationDescription}>{props.description_app}</div>
-            <div className={styles.applicationCreator}>Par {appCreator}</div>
-            <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={showConfirmDelete} />
+            <div className={styles.itemTop}>
+              <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={showConfirmDelete} />
+            </div>
+            <div className={styles.itemBody}>
+              <div className={classNames({ [styles.link]: false, [styles.applicationName]: true })}>
+                {props.name_app}
+              </div>
+
+              <div className={styles.applicationDescription}>{props.description_app}</div>
+              <div className={styles.applicationCreator}>Par {appCreator}</div>
+            </div>
           </div>
       }
     </>
   )
 }
-
 
 //-----------------------------SATEMAP-------------------------------------
 
