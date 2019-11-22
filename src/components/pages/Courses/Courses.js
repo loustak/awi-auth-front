@@ -11,19 +11,15 @@ import { useFormik } from 'formik'
 function Courses (props) {
   const periods = props.periods.periods
   const isFirtSemester = (new Date().getMonth() > 8)
+
   const year = props.currentUser.user ? props.currentUser.user.section.substr(props.currentUser.user.section.length - 1) : null
   const training = props.currentUser.user ? props.currentUser.user.section.slice(0, -1).toUpperCase() : null
-  console.log(props.currentUser.fetched)
-  
+
   useEffect(() => {
-    console.log('USE EFFECT')
-
-      if (!props.periods.fetched && props.currentUser.user) {
-        console.log(training)
-
-        setPeriodsSubjects( training,  year)
+      if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
+        setPeriodsSubjects( training, year)
       }
-  }, [])
+  }, )
 
   const formik = useFormik({
     initialValues: {
