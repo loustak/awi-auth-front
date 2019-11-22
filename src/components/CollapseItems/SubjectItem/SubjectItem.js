@@ -30,7 +30,6 @@ function SubjectItem (props) {
         {
           props.tests !== undefined
             ? props.tests.map((test, i) => {
-              console.log(test)
               return <TestForm test={test} semesterName={props.semesterName} ueId={props.ueId} subjectId={props.id} key={Math.random()} id={'test' + i + test.name} />
             })
             : null

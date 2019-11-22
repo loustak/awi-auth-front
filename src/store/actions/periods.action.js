@@ -6,7 +6,6 @@ export function setPeriodsSubjects (formationName, periodNumber) {
 
   apiFormatechService.getPeriodsSubjects(formationName, periodNumber)
     .then(res => {
-      console.log(res)
       // console.log(JSON.stringify(res[1].modules).toString())
       store.dispatch({
         type: 'SET_PERIODS_SUCCESS',

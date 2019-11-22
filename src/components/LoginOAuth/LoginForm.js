@@ -30,7 +30,6 @@ export const LoginForm = (props) => (
           window.location.replace(props.redirect_uri + '?code=' + response + '&state=' + props.stateAuth)
         })
         .catch(error => {
-          console.log(error)
           actions.setFieldError('general', 'Username or password is incorrect')
         })
     }}

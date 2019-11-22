@@ -17,7 +17,6 @@ class Applications extends React.Component {
 
   getApps () {
     getUserApps().then(res => {
-      console.log(res)
       this.setState({ apps: res })
     })
   }

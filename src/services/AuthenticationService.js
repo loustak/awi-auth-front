@@ -87,7 +87,6 @@ export function isAuthenticatedAs () {
 // }
 //
 export function logout () {
-  console.log('logout')
   window.localStorage.removeItem('accessToken')
   window.localStorage.removeItem('refreshToken')
   setCurrentUser({})

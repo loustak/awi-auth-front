@@ -12,7 +12,6 @@ function RecoveryForm (props) {
       password: ''
     },
     onSubmit: values => {
-      console.log(values, props)
       props.history.push('/')
     }
   })

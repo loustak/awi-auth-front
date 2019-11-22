@@ -39,7 +39,7 @@ function Courses (props) {
           : <>
             <div className='applicationItem'>
               <div className='divSearchBarDash'>
-                <Form>
+                <Form onSubmit={e => e.preventDefault()}>
                   <Form.Row className='searchBarDash'>
                     <Form.Group as={Col} controlId='name'>
                       <Form.Label>Rechercher une UE ou une Matière : </Form.Label>

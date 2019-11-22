@@ -36,7 +36,6 @@ export default (state = {}, action) => {
       }
     }
     case 'UPDATE_TEST': {
-      console.log(action.payload)
       const currentSemester = state.semesters.filter(semester => semester.name === action.payload.semesterName)[0]
       const currentUe = currentSemester.ue.filter(ue => ue.id === action.payload.ueId)[0]
       const currentSubject = currentUe.subjects.filter(subject => subject.id === action.payload.subjectId)[0]
@@ -45,7 +44,6 @@ export default (state = {}, action) => {
       const ueIndex = currentSemester.ue.indexOf(currentUe)
       const subjectIndex = currentUe.subjects.indexOf(currentSubject)
       currentSimulator[semesterIndex].ue[ueIndex].subjects[subjectIndex].tests = currentSubject.tests.map((test, i) => test.id === action.payload.testId ? { ...test, exam: action.payload.testName, mark: action.payload.testMark, coeff: action.payload.testCoeff } : test)
-      console.log(currentSimulator[semesterIndex].ue[ueIndex].subjects[subjectIndex].tests)
       return {
         ...state,
         semesters: currentSimulator

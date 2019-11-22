@@ -17,16 +17,13 @@ function LoginForm (props) {
       password: ''
     },
     onSubmit: values => {
-      console.log(values, props)
       axios.post(Config.API_URL + '/connexion', {
         email: values.email,
         password: values.password
       }).then(res => {
-        console.log(res)
         props.history.push('/')
       }).catch(err => {
         setError(err.response.data.error)
-        console.log(err.response.data.error)
       })
     }
   })

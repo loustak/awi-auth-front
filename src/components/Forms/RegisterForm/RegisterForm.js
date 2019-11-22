@@ -13,7 +13,6 @@ function RegisterForm (props) {
       passwordConfirmation: ''
     },
     onSubmit: values => {
-      console.log(values, props)
       props.history.push('/')
     }
   })

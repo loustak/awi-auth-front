@@ -123,7 +123,7 @@ function Dashboard (props) {
                 
                 return (
                   <Collapse
-                    title={subject.title + (subject.training ? + ' | ' + subject.training : '') }
+                    title={subject.title + (subject.training ? ' | ' + subject.training : '') }
                     key={i}
                     button={
                       <ButtonGroup className='roundedButtonGroup'>
@@ -136,7 +136,7 @@ function Dashboard (props) {
                         <CSVLink
                           data={data}
                           headers={headers}
-                          filename={subject.name + '_' + subject.training + '_' + subject.year + '.csv'}
+                          filename={subject.title + '_' + subject.training + '_' + subject.year + '.csv'}
                           className='btn btn-blue'
                         >
                           Exporter
