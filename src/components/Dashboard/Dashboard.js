@@ -22,8 +22,7 @@ function Dashboard (props) {
   const formik = useFormik({
     initialValues: {
       search: '',
-      training: '',
-      year: ''
+      training: ''
     }
   })
 
@@ -78,20 +77,6 @@ function Dashboard (props) {
                       <option>PeiP</option>
                     </Form.Control>
                   </Form.Group>
-                  <Form.Group as={Col} controlId='year'>
-                    <Form.Label>Année</Form.Label>
-                    <Form.Control
-                      as='select'
-                      {...formik.getFieldProps('year')}
-                    >
-                      <option value=''>Choisir...</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </Form.Control>
-                  </Form.Group>
                 </Form.Row>
               </Form>
             </div>
@@ -120,7 +105,7 @@ function Dashboard (props) {
                     }
                   })
                 })
-                
+
                 return (
                   <Collapse
                     title={subject.title + (subject.training ? ' | ' + subject.training : '') }
@@ -136,7 +121,7 @@ function Dashboard (props) {
                         <CSVLink
                           data={data}
                           headers={headers}
-                          filename={subject.title + '_' + subject.training + '_' + subject.year + '.csv'}
+                          filename={subject.title + '.csv'}
                           className='btn btn-blue'
                         >
                           Exporter

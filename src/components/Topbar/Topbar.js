@@ -45,9 +45,16 @@ function Topbar (props) {
                   [styles.current]: props.location.pathname === '/simulateur'
                 })} to="/simulateur">SIMULATEUR</Nav.Link>
               </>
-              : <>
-                <><Nav.Link as={NavLink} className={styles.topBarLink} to="/dashboard">DASHBOARD</Nav.Link></>
-              </>
+              : <Nav.Link
+                as={NavLink}
+                to="/dashboard"
+                className={classNames({
+                  [styles.topBarLink]: true,
+                  [styles.current]: props.location.pathname === '/dashboard'
+                })}
+              >
+                DASHBOARD
+              </Nav.Link>
           }
         </Nav>
         <Nav>

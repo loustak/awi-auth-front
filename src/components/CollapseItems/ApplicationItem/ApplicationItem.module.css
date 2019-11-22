@@ -14,6 +14,7 @@
 
 .applicationItem:hover {
     border: 1px solid #00ABB2;
+    color: #00ABB2 !important;
 }
 
 .applicationName {
