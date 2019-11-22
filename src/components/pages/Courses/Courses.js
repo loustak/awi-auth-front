@@ -60,7 +60,17 @@ function Courses (props) {
               <div>
                 {
                   periods.length > 0
-                    ? periods.filter(p => (p.modules && p.modules.length > 0)).map((p, i) => {
+                    ? periods.filter(p => (p.modules && p.modules.length > 0)).sort((a, b) => {
+                      const nameA = a.title.toLowerCase()
+                      const nameB = b.title.toLowerCase()
+                      if (nameA < nameB) {
+                        return 1
+                      }
+                      if (nameA > nameB) {
+                        return -1
+                      }
+                      return 0
+                    }).map((p, i) => {
                       return (
                         <React.Fragment key={i}>
                           <Collapse title={p.title} defaultOpen={isFirtSemester ? (i === 0 ? 1 : 0) : (i === 1 ? 1 : 0)}>
