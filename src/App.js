@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
 import OauthLogin from './components/LoginOAuth/Login'
 import Login from './components/pages/Login/Login'
@@ -12,9 +12,10 @@ import store from './store/store'
 import Applications from './components/pages/Applications/Applications'
 import AddMarkPage from './components/pages/AddMark/AddMark'
 import Courses from './components/pages/Courses/Courses'
-import { isAuthenticated, isAuthenticatedAs, logout, setProfile } from './services/AuthenticationService'
+import { isAuthenticated, isAuthenticatedAs, logout } from './services/AuthenticationService'
 import Simulator from './components/pages/Simulator/Simulator'
 import { auth } from './services/oauth2Service'
+import PagesWrapper from './components/PagesWrapper/PageWrapper'
 
 export class AbsoluteRedirect extends React.Component {
   componentDidMount () {
@@ -139,24 +140,21 @@ const NonAuthenticatedRoute = ({ component: Component, ...rest }) => (
 )
 
 function App () {
-  useEffect(() => {
-    setProfile()
-  }, [])
-
   return (
     <Router>
       <Provider store={store}>
         <div className='App'>
           <Page>
             <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
-            <StudentRoute exact path='/applications' component={Applications} />
-            <StudentRoute exact path='/cours' component={Courses} />
-            <StudentRoute exact path='/simulateur' component={Simulator} />
-            <TeacherRoute exact path='/dashboard' component={Dashboard} />
-            <TeacherRoute exact path='/notes' component={AddMarkPage} />
-            <RedirectToHome exact path='/' />
-            <NonAuthenticatedRoute exact path='/token' component={Login} />
-
+            <PagesWrapper>
+              <StudentRoute exact path='/applications' component={Applications} />
+              <StudentRoute exact path='/cours' component={Courses} />
+              <StudentRoute exact path='/simulateur' component={Simulator} />
+              <TeacherRoute exact path='/dashboard' component={Dashboard} />
+              <TeacherRoute exact path='/notes' component={AddMarkPage} />
+              <RedirectToHome exact path='/' />
+              <NonAuthenticatedRoute exact path='/token' component={Login} />
+            </PagesWrapper>
           </Page>
         </div>
       </Provider>
