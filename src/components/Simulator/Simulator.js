@@ -11,22 +11,33 @@ import { withRouter } from 'react-router-dom'
 import { setPeriodsSubjects } from '../../store/actions/periods.action'
 
 function Simulator (props) {
+
+  //-----------------------------FUNCTIONS-------------------------------------
+
   const periods = props.periods.periods.filter(period => period.modules && period.modules.length > 0)
+
   const formik = useFormik({
     initialValues: {
       semester: ''
     }
   })
+
   const year = props.currentUser.user ? props.currentUser.user.section.substr(props.currentUser.user.section.length - 1) : null
   const training = props.currentUser.user ? props.currentUser.user.section.slice(0, -1).toUpperCase() : null
+
+  const filteredSemesters = periods
+    .filter(semester => formik.values.semester !== '' ? semester.title === formik.values.semester : true)
+
+
+  //-----------------------------FUNCTIONS-------------------------------------
 
   useEffect(() => {
     if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
       setPeriodsSubjects( training, year)
     }
   }, )
-  const filteredSemesters = periods
-    .filter(semester => formik.values.semester !== '' ? semester.title === formik.values.semester : true)
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <>
@@ -104,6 +115,8 @@ function Simulator (props) {
     </>
   )
 }
+
+//-----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

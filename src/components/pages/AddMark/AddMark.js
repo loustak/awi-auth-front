@@ -7,6 +7,9 @@ import { addExam } from '../../../store/actions/subjects.action'
 import styles from './addMark.module.css'
 
 function AddMarkPage (props) {
+
+  //-----------------------------VARIABLES-------------------------------------
+
   const formikInitialValues = {
     name: '',
     coeff: ''
@@ -40,6 +43,9 @@ function AddMarkPage (props) {
       }
     }
   })
+
+
+  //-----------------------------RETURN-------------------------------------
 
   return (
     <div className={styles.addMark}>
@@ -89,6 +95,8 @@ function AddMarkPage (props) {
     </div>
   )
 }
+
+//-----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {
