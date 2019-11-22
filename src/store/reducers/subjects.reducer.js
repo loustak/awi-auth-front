@@ -22,9 +22,10 @@ export default (state = {}, action) => {
     }
     case 'ADD_EXAM': {
       const newSubjects = state.subjects.slice()
-      const subject = state.subjects.filter(s => s.id === action.payload.subjectId)[0]
+      const subject = state.subjects.filter(s => s.subject.id === action.payload.subjectId)[0].subject
       const subjectIndex = newSubjects.indexOf(subject)
 
+      console.log(subject)
       const newExams = subject.exams.slice()
 
       const id = subject.exams ? Math.max(subject.exams.map(e => e.id)) + 1 : 1
@@ -47,7 +48,7 @@ export default (state = {}, action) => {
     }
     case 'REMOVE_EXAM': {
       const newSubjects = state.subjects.slice()
-      const subject = state.subjects.filter(s => s.id === action.payload.subjectId)[0]
+      const subject = state.subjects.filter(s => s.subject.id === action.payload.subjectId)[0].subject
       const subjectIndex = newSubjects.indexOf(subject)
 
       const newExams = subject.exams.filter(e => e.id !== action.payload.examId)

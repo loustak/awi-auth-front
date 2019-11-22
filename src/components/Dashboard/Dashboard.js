@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import styles from './Dashboard.module.css'
 import Collapse from '../Collapse/Collapse'
-import { Button, ButtonGroup, Col, Form} from 'react-bootstrap'
+import { Button, ButtonGroup, Col, Form } from 'react-bootstrap'
 import { useFormik } from 'formik'
 import ExamItem from '../CollapseItems/ExamItem/ExamItem'
 import { withRouter } from 'react-router-dom'
-import { CSVLink} from 'react-csv'
+import { CSVLink } from 'react-csv'
 import { setTeacherSubjects } from '../../store/actions/subjects.action'
 import EmptyItem from '../CollapseItems/EmptyItem/EmptyItem'
 
@@ -25,20 +25,18 @@ function Dashboard (props) {
     .filter(subject => formik.values.training !== '' ? subject.subject.training === formik.values.training : true)
     .filter(subject => formik.values.search !== '' ? matchSearch(subject.subject, formik.values.search.toLowerCase()) : true)
 
-
   //-----------------------------FUNCTIONS-------------------------------------
 
   useEffect(() => {
     if (!props.subjects.fetched && props.currentUser.fetched && !props.subjects.fetching) {
-      setTeacherSubjects(props.currentUser.user.firstname,props.currentUser.user.lastname)
+      setTeacherSubjects(props.currentUser.user.firstname, props.currentUser.user.lastname)
     }
-  },)
+  })
 
   function matchSearch (subject, query) {
     return subject.title.toLowerCase().match(query) ||
       subject.training.toLowerCase().match(query)
   }
-
 
   //-----------------------------RETURN-------------------------------------
 
@@ -46,14 +44,14 @@ function Dashboard (props) {
     <>
       {
         (!props.subjects.fetched)
-          ? <div  className={styles.loading}>
-              <div className="spinner-border text-info" role="status">
-                <span className="sr-only"/>
-              </div>
-              <div className={styles.loadingText}>
-                <h4>Chargement en cours</h4>
-              </div>
+          ? <div className={styles.loading}>
+            <div className="spinner-border text-info" role="status">
+              <span className="sr-only" />
             </div>
+            <div className={styles.loadingText}>
+              <h4>Chargement en cours</h4>
+            </div>
+          </div>
           : <div className={styles.dashboard}>
             <div>
               <Form>
@@ -114,7 +112,7 @@ function Dashboard (props) {
                     }
                   })
                 })
-                
+
                 return (
                   <Collapse
                     title={subject.title}
@@ -140,8 +138,8 @@ function Dashboard (props) {
                     }
                   >
                     {
-                      subject.exams.length > 0?
-                        <div
+                      subject.exams.length > 0
+                        ? <div
                           style={{
                             paddingTop: '20px',
                             paddingBottom: '20px',
@@ -150,9 +148,8 @@ function Dashboard (props) {
                           }}
                         >
                           {
-                            subject.exams.map((exam, j) =>
-                            {
-                              return(
+                            subject.exams.map((exam, j) => {
+                              return (
                                 <ExamItem
                                   {...exam}
                                   students={props.students.students}
@@ -163,7 +160,7 @@ function Dashboard (props) {
                             })
                           }
                         </div>
-                        : <EmptyItem message='Aucun examen ajouté'/>
+                        : <EmptyItem message='Aucun examen ajouté' />
                     }
                   </Collapse>
                 )
