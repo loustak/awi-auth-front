@@ -13,6 +13,8 @@ class Applications extends React.Component {
     super(props)
     this.state = { apps: [] }
     this.getApps = this.getApps.bind(this)
+    
+    this.storeURL = 'http://oauth.igpolytech.fr/authorize?client_id=566e7eb0-0081-4171-9cef-de9e92e84901&redirect_uri=https://castelstore.igpolytech.fr/login&state=cqpyyi'
   }
 
   componentDidMount () {
@@ -29,7 +31,9 @@ class Applications extends React.Component {
 
   render () {
     return (
-      <><h4 className={classNames({ [styles.applications]: true, [styles.title]: true})}>Vos applications téléchargées depuis le <a className={styles.link} href={'https://castelstore.igpolytech.fr/'} target='_blank' rel='noreferrer noopener' > CastelStore</a></h4>
+      <><h4 className={classNames({ [styles.applications]: true, [styles.title]: true})}>
+        Vos applications téléchargées depuis le 
+        <a className={styles.link} href={this.storeURL} target='_blank' rel='noreferrer noopener' > CastelStore</a></h4>
       <div className={styles.applications}>
         {
           this.state.apps.length > 0 ?
