@@ -33,11 +33,11 @@
     "yup": "^0.27.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "REACT_APP_ENV=dev PORT=5000 react-scripts start",
     "build": "react-scripts build",
     "style": "standard",
     "style-fix": "standard --fix",
-    "test": "react-scripts test",
+    "test": "REACT_APP_ENV=test react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
