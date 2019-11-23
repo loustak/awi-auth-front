@@ -14,7 +14,7 @@ function Page (props) {
   //-----------------------------FUNCTIONS-------------------------------------
 
   function showLayout () {
-    return location === 'applications' || location === 'cours' || location === 'simulateur' || location === 'dashboard' || location === 'notes'
+    return location === 'applications' || location === 'agenda' || location === 'cours' || location === 'simulateur' || location === 'dashboard' || location === 'notes'
   }
 
   //-----------------------------RETURN-------------------------------------

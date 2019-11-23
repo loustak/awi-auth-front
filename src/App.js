@@ -10,6 +10,7 @@ import './App.css'
 import Page from './components/Page/Page'
 import store from './store/store'
 import Applications from './components/pages/Applications/Applications'
+import Agenda from './components/pages/Agenda/Agenda'
 import AddMarkPage from './components/pages/AddMark/AddMark'
 import Courses from './components/pages/Courses/Courses'
 import { isAuthenticated, isAuthenticatedAs, logout, setProfile } from './services/AuthenticationService'
@@ -168,6 +169,7 @@ function App () {
               <Switch>
                 <NonAuthenticatedRoute exact path='/login' component={OauthLogin} />
                 <StudentRoute exact path='/applications' component={Applications} />
+                <StudentRoute exact path='/agenda' component={Agenda} />
                 <StudentRoute exact path='/cours' component={Courses} />
                 <StudentRoute exact path='/simulateur' component={Simulator} />
                 <TeacherRoute exact path='/dashboard' component={Dashboard} />
