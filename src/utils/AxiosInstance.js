@@ -1,15 +1,14 @@
 import axios from 'axios'
 import {
-  inProduction,
-  inIntegration
+  inLocalDev,
+  inTest
 } from '../Utils'
 
 console.log(`App started in ${process.env.REACT_APP_ENV}`)
 
-let url = 'https://oauth.igpolytech.fr'
-
-if (inProduction() || inIntegration()) {
-  url = REACT_APP_SERVER_URL
+let url = process.env.REACT_APP_SERVER_URL
+if (inLocalDev() || inTest()) {
+  url = 'https://oauth.igpolytech.fr'
 }
 
 const axiosInstance = axios.create({

@@ -1,7 +1,17 @@
+import {
+  inLocalDev,
+  inTest
+} from '../Utils'
+
 const ClientOAuth2 = require('client-oauth2')
 
-const accessTokenUri = process.env.REACT_APP_SERVER_URL + '/token'
-const authorizationUri = process.env.REACT_APP_SERVER_URL + '/authorize'
+let oauthServerURL = process.env.REACT_APP_SERVER_URL
+if (inLocalDev() || inTest()) {
+  oauthServerURL = 'https://oauth.igpolytech.fr'
+}
+
+const accessTokenUri = oauthServerURL + '/token'
+const authorizationUri = oauthServerURL + '/authorize'
 const redirectUri = window.location.origin + '/token'
 
 export const auth = new ClientOAuth2({
