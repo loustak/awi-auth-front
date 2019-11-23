@@ -3,8 +3,7 @@ import styles from './CourseItem.module.css'
 import Encoder from '../../../utils/htmlEncoder'
 
 function CourseItem (props) {
-
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <div className={styles.courseItem}>

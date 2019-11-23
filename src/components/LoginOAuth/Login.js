@@ -4,9 +4,7 @@ import LoginForm from './LoginForm.js'
 import { Grid, Divider, Header, Segment, Message, Image, Icon } from 'semantic-ui-react'
 import logo from '../../assets/logoPolytech.png'
 
-
-//-----------------------------VARIABLES-------------------------------------
-
+// -----------------------------VARIABLES-------------------------------------
 
 // MISSING PARAMS IN URL
 const requiredParams = ['client_id', 'state', 'redirect_uri']
@@ -26,8 +24,7 @@ const MessageMissingParam = (props) => (
 // TO DO : chose nice colors
 const availableColors = ['blue', 'red', 'green', 'orange', 'teal']
 
-
-//-----------------------------FUNCTIONS-------------------------------------
+// -----------------------------FUNCTIONS-------------------------------------
 
 function getColor (name) {
   const unicodes = name.split('').map(c => c.charCodeAt(0))

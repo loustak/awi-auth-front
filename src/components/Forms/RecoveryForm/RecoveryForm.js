@@ -6,8 +6,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { useFormik } from 'formik'
 
 function RecoveryForm (props) {
-
-  //-----------------------------VARIBALES-------------------------------------
+  // -----------------------------VARIBALES-------------------------------------
 
   const formik = useFormik({
     initialValues: {
@@ -19,7 +18,7 @@ function RecoveryForm (props) {
     }
   })
 
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <Form className={styles.recoveryForm} onSubmit={formik.handleSubmit}>

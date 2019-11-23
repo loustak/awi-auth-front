@@ -20,7 +20,7 @@ export function getUserApps () {
  * @param idApp given by castelstore
  */
 export function deleteUserApp (username, idApp) {
-  return new Promise((resolve,reject) => {
+  return new Promise((resolve, reject) => {
     return axios.delete('https://castelstore-back.igpolytech.fr/user/name/' + username + '/myappsondashboard/' + idApp, {
       headers: {
         Authorization: 'Bearer ' + window.localStorage.getItem('accessToken')

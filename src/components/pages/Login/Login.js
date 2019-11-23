@@ -8,8 +8,7 @@ import { logout } from '../../../services/AuthenticationService'
 import styles from '../../Dashboard/Dashboard.module.css'
 
 class LoginPage extends React.Component {
-
-  //-----------------------------FUNCTIONS-------------------------------------
+  // -----------------------------FUNCTIONS-------------------------------------
 
   constructor (props) {
     super(props)
@@ -44,7 +43,7 @@ class LoginPage extends React.Component {
       this.state.loading
         ? <div className={styles.loading}>
           <div className='spinner-border text-info' role='status'>
-            <span className='sr-only'/>
+            <span className='sr-only' />
           </div>
           <div className={styles.loadingText}>
             <h4>Chargement en cours</h4>

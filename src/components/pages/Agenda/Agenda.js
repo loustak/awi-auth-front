@@ -4,15 +4,13 @@ import { withRouter } from 'react-router-dom'
 import styles from './Agenda.module.css'
 
 function Agenda (props) {
-
-
   function getURI () {
     const upperCaseSection = props.currentUser.user.section.toUpperCase()
     const iframeUri = `https://wave-it.fr/polytech/${upperCaseSection}`
     return iframeUri
   }
 
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   if (!props.currentUser.fetched) {
     return null
@@ -20,15 +18,16 @@ function Agenda (props) {
 
   return (
     <iframe
+      title='Agenda'
       className={styles.frame}
       src={getURI()}
-      frameBorder="0"
-      seamless>
-    </iframe>
+      frameBorder='0'
+      seamless
+    />
   )
 }
 
-//-----------------------------STATEMAP-------------------------------------
+// -----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

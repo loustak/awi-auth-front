@@ -37,6 +37,6 @@ export function deleteTest (semesterName, ueId, subjectId, testId) {
 export function updateTest (semesterName, ueId, subjectId, testId, testName, testMark, testCoeff) {
   store.dispatch({
     type: 'UPDATE_TEST',
-    payload: { semesterName: semesterName, ueId: ueId, subjectId: subjectId, testId: testId, testName: testName, testMark: testMark, testCoeff: testCoeff}
+    payload: { semesterName: semesterName, ueId: ueId, subjectId: subjectId, testId: testId, testName: testName, testMark: testMark, testCoeff: testCoeff }
   })
 }

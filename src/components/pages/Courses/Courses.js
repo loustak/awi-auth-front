@@ -9,8 +9,7 @@ import { Col, Form } from 'react-bootstrap'
 import { useFormik } from 'formik'
 
 function Courses (props) {
-
-  //-----------------------------VARIABLES-------------------------------------
+  // -----------------------------VARIABLES-------------------------------------
 
   const periods = props.periods.periods
   const isFirtSemester = (new Date().getMonth() > 8)
@@ -24,16 +23,15 @@ function Courses (props) {
     }
   })
 
-  //-----------------------------FUNCTIONS-------------------------------------
+  // -----------------------------FUNCTIONS-------------------------------------
 
   useEffect(() => {
-      if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
-        setPeriodsSubjects( training, year)
-      }
-  }, )
+    if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
+      setPeriodsSubjects(training, year)
+    }
+  })
 
-
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <>
@@ -97,7 +95,7 @@ function Courses (props) {
   )
 }
 
-//-----------------------------STATEMAP-------------------------------------
+// -----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

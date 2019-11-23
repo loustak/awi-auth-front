@@ -2,8 +2,8 @@ export function capitalize (string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-export function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+export function getRandomInt (max) {
+  return Math.floor(Math.random() * Math.floor(max))
 }
 
 const env = process.env.REACT_APP_ENV

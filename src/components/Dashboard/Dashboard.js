@@ -11,8 +11,7 @@ import { setTeacherSubjects } from '../../store/actions/subjects.action'
 import EmptyItem from '../CollapseItems/EmptyItem/EmptyItem'
 
 function Dashboard (props) {
-
-  //-----------------------------VARIABLES-------------------------------------
+  // -----------------------------VARIABLES-------------------------------------
 
   const formik = useFormik({
     initialValues: {
@@ -25,7 +24,7 @@ function Dashboard (props) {
     .filter(subject => formik.values.training !== '' ? subject.subject.training === formik.values.training : true)
     .filter(subject => formik.values.search !== '' ? matchSearch(subject.subject, formik.values.search.toLowerCase()) : true)
 
-  //-----------------------------FUNCTIONS-------------------------------------
+  // -----------------------------FUNCTIONS-------------------------------------
 
   useEffect(() => {
     if (!props.subjects.fetched && props.currentUser.fetched && !props.subjects.fetching) {
@@ -38,15 +37,15 @@ function Dashboard (props) {
       subject.training.toLowerCase().match(query)
   }
 
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <>
       {
         (!props.subjects.fetched)
           ? <div className={styles.loading}>
-            <div className="spinner-border text-info" role="status">
-              <span className="sr-only" />
+            <div className='spinner-border text-info' role='status'>
+              <span className='sr-only' />
             </div>
             <div className={styles.loadingText}>
               <h4>Chargement en cours</h4>
@@ -172,7 +171,7 @@ function Dashboard (props) {
   )
 }
 
-//-----------------------------SATEMAP-------------------------------------
+// -----------------------------SATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

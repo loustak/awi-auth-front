@@ -8,11 +8,10 @@ import { Button, ButtonGroup } from 'react-bootstrap'
 import { removeExam } from '../../../store/actions/subjects.action'
 
 function ExamItem (props) {
+  // -----------------------------VARIABLES-------------------------------------
 
-  //-----------------------------VARIABLES-------------------------------------
-
-  let avg = props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : current.mark), 0)
-    / props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : 1), 0)
+  const avg = props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : current.mark), 0) /
+    props.marks.reduce((total, current) => total + (isNaN(current.mark) ? 0 : 1), 0)
 
   const headers = [
     { label: 'examName', key: 'name' },
@@ -35,8 +34,7 @@ function ExamItem (props) {
     }
   })
 
-
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <div className={styles.examItem}>
@@ -89,7 +87,7 @@ function ExamItem (props) {
   )
 }
 
-//-----------------------------STATEMAP-------------------------------------
+// -----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

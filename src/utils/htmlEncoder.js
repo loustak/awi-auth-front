@@ -30,11 +30,11 @@
 const Encoder = {
 
   // When encoding do we convert characters into html or numerical entities
-  EncodeType: 'entity',  // entity OR numerical
+  EncodeType: 'entity', // entity OR numerical
 
   isEmpty: function (val) {
     if (val) {
-      return ((val === null) || val.length == 0 || /^\s+$/.test(val))
+      return ((val === null) || val.length === 0 || /^\s+$/.test(val))
     } else {
       return true
     }
@@ -58,14 +58,14 @@ const Encoder = {
   numEncode: function (s) {
     if (this.isEmpty(s)) return ''
 
-    var a = [],
-      l = s.length
+    var a = []
+    var l = s.length
 
     for (var i = 0; i < l; i++) {
       var c = s.charAt(i)
       if (c < ' ' || c > '~') {
         a.push('&#')
-        a.push(c.charCodeAt()) //numeric value of code point
+        a.push(c.charCodeAt()) // numeric value of code point
         a.push(';')
       } else {
         a.push(c)
@@ -77,8 +77,7 @@ const Encoder = {
 
   // HTML Decode numerical and HTML entities back to original values
   htmlDecode: function (s) {
-
-    var c, m, d = s
+    var c; var m; var d = s
 
     if (this.isEmpty(d)) return ''
 
@@ -92,13 +91,13 @@ const Encoder = {
     if (arr != null) {
       for (var x = 0; x < arr.length; x++) {
         m = arr[x]
-        c = m.substring(2, m.length - 1) //get numeric part which is refernce to unicode character
+        c = m.substring(2, m.length - 1) // get numeric part which is refernce to unicode character
         // if its a valid number we can decode
         if (c >= -32768 && c <= 65535) {
           // decode every single match within string
           d = d.replace(m, String.fromCharCode(c))
         } else {
-          d = d.replace(m, '') //invalid so replace with nada
+          d = d.replace(m, '') // invalid so replace with nada
         }
       }
     }
@@ -108,15 +107,14 @@ const Encoder = {
 
   // encode an input string into either numerical or HTML entities
   htmlEncode: function (s, dbl) {
-
     if (this.isEmpty(s)) return ''
 
     // do we allow double encoding? E.g will &amp; be turned into &amp;amp;
-    dbl = dbl || false //default to prevent double encoding
+    dbl = dbl || false // default to prevent double encoding
 
     // if allowing double encoding we do ampersands first
     if (dbl) {
-      if (this.EncodeType == 'numerical') {
+      if (this.EncodeType === 'numerical') {
         s = s.replace(/&/g, '&#38;')
       } else {
         s = s.replace(/&/g, '&amp;')
@@ -126,7 +124,7 @@ const Encoder = {
     // convert the xss chars to numerical entities ' " < >
     s = this.XSSEncode(s, false)
 
-    if (this.EncodeType == 'numerical' || !dbl) {
+    if (this.EncodeType === 'numerical' || !dbl) {
       // Now call function that will convert any HTML entities to numerical codes
       s = this.HTML2Numerical(s)
     }
@@ -143,7 +141,7 @@ const Encoder = {
     if (!dbl) {
       s = s.replace(/&#/g, '##AMPHASH##')
 
-      if (this.EncodeType == 'numerical') {
+      if (this.EncodeType === 'numerical') {
         s = s.replace(/&/g, '&#38;')
       } else {
         s = s.replace(/&/g, '&amp;')
@@ -161,7 +159,7 @@ const Encoder = {
     }
 
     // now do we need to convert our numerical encoded string into entities
-    if (this.EncodeType == 'entity') {
+    if (this.EncodeType === 'entity') {
       s = this.NumericalToHTML(s)
     }
 
@@ -174,13 +172,13 @@ const Encoder = {
       en = en || true
       // do we convert to numerical or html entity?
       if (en) {
-        s = s.replace(/\'/g, '&#39;') //no HTML equivalent as &apos is not cross browser supported
-        s = s.replace(/\"/g, '&quot;')
+        s = s.replace(/'/g, '&#39;') // no HTML equivalent as &apos is not cross browser supported
+        s = s.replace(/"/g, '&quot;')
         s = s.replace(/</g, '&lt;')
         s = s.replace(/>/g, '&gt;')
       } else {
-        s = s.replace(/\'/g, '&#39;') //no HTML equivalent as &apos is not cross browser supported
-        s = s.replace(/\"/g, '&#34;')
+        s = s.replace(/'/g, '&#39;') // no HTML equivalent as &apos is not cross browser supported
+        s = s.replace(/"/g, '&#34;')
         s = s.replace(/</g, '&#60;')
         s = s.replace(/>/g, '&#62;')
       }
@@ -204,7 +202,6 @@ const Encoder = {
   // will remove any unicode characters
   stripUnicode: function (s) {
     return s.replace(/[^\x20-\x7E]/g, '')
-
   },
 
   // corrects any double encoded &amp; entities e.g &amp;amp;
@@ -217,12 +214,12 @@ const Encoder = {
     if (this.isEmpty(s)) return ''
     var re
     if (arr1 && arr2) {
-      //ShowDebug("in swapArrayVals arr1.length = " + arr1.length + " arr2.length = " + arr2.length)
+      // ShowDebug("in swapArrayVals arr1.length = " + arr1.length + " arr2.length = " + arr2.length)
       // array lengths must match
-      if (arr1.length == arr2.length) {
+      if (arr1.length === arr2.length) {
         for (var x = 0, i = arr1.length; x < i; x++) {
           re = new RegExp(arr1[x], 'g')
-          s = s.replace(re, arr2[x]) //swap arr1 item with matching item from arr2
+          s = s.replace(re, arr2[x]) // swap arr1 item with matching item from arr2
         }
       }
     }

@@ -39,7 +39,7 @@ function getGlobalAverage (period) {
       }, 0)
       return Math.round(sumAvg / sumCrd * 100) / 100
     }
-  return null
+    return null
   }
   return null
 }

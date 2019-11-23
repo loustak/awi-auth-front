@@ -8,13 +8,12 @@ import { deleteUserApp } from '../../../services/castelstoreService'
 import classNames from 'classnames'
 
 function ApplicationItem (props) {
-
-  //-----------------------------VARIABLES-------------------------------------
+  // -----------------------------VARIABLES-------------------------------------
 
   const content = `Êtes vous sûr de vouloir supprimer ${props.name_app} de votre liste d'Applications ?`
   const appCreator = props.name_user.split('.').map(n => n.split('-').map(nn => capitalize(nn)).join('-')).join(' ')
 
-  //-----------------------------FUNCTIONS-------------------------------------
+  // -----------------------------FUNCTIONS-------------------------------------
 
   function showConfirmDelete () {
     if (window.confirm(content)) {
@@ -23,7 +22,7 @@ function ApplicationItem (props) {
     }
   }
 
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <>
@@ -34,8 +33,10 @@ function ApplicationItem (props) {
               <FontAwesomeIcon className={styles.applicationDelete} icon={faTimes} onClick={showConfirmDelete} />
             </div>
             <div className={styles.itemBody}>
-              <a href={props.link_app} target='_blank' rel='noreferrer noopener'
-                 className={classNames({ [styles.link]: true, [styles.applicationName]: true })}>
+              <a
+                href={props.link_app} target='_blank' rel='noreferrer noopener'
+                className={classNames({ [styles.link]: true, [styles.applicationName]: true })}
+              >
                 {props.name_app}
               </a>
 
@@ -61,7 +62,7 @@ function ApplicationItem (props) {
   )
 }
 
-//-----------------------------SATEMAP-------------------------------------
+// -----------------------------SATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

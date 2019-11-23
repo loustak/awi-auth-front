@@ -7,13 +7,12 @@ import Button from '../Button/Button'
 import { getRandomInt } from '../../Utils'
 
 function Collapse (props) {
-
-  //-----------------------------VARIABLES-------------------------------------
+  // -----------------------------VARIABLES-------------------------------------
 
   const [open, setOpen] = useState(props.defaultOpen || false)
   const randomID = getRandomInt(99999)
 
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <div className={props.special ? styles.specialCollapse : styles.collapse}>
@@ -29,7 +28,7 @@ function Collapse (props) {
             className={styles.icon}
           />
           <div>
-            <h4 className={styles.title}>{props.title}{props.training ? <span style={{color: '#707070'}}> - {props.training}</span> : ''}</h4>
+            <h4 className={styles.title}>{props.title}{props.training ? <span style={{ color: '#707070' }}> - {props.training}</span> : ''}</h4>
             {
               props.subtitle
                 ? <label className={styles.subtitle}>{props.subtitle}</label>
@@ -45,8 +44,8 @@ function Collapse (props) {
               {props.buttonText}
             </Button>
             : props.button
-            ? props.button
-            : null
+              ? props.button
+              : null
         }
       </div>
 

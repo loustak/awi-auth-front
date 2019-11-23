@@ -3,8 +3,7 @@ import styles from './Button.module.css'
 import { Button as BButton } from 'react-bootstrap'
 
 function Button (props) {
-
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <BButton

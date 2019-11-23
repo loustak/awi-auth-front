@@ -6,8 +6,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { useFormik } from 'formik'
 
 function RegisterForm (props) {
-
-  //-----------------------------VARIBALES-------------------------------------
+  // -----------------------------VARIBALES-------------------------------------
 
   const formik = useFormik({
     initialValues: {
@@ -20,7 +19,7 @@ function RegisterForm (props) {
     }
   })
 
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <Form className={styles.registerForm} onSubmit={formik.handleSubmit}>

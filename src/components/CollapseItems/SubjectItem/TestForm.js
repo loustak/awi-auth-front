@@ -7,8 +7,7 @@ import { deleteTest, updateTest } from '../../../store/actions/periods.action'
 import { useFormik } from 'formik'
 
 function TestForm (props) {
-
-  //-----------------------------VARIABLES-------------------------------------
+  // -----------------------------VARIABLES-------------------------------------
 
   const formik = useFormik({
     initialValues: {
@@ -18,7 +17,7 @@ function TestForm (props) {
     }
   })
 
-  //-----------------------------FUNCTIONS-------------------------------------
+  // -----------------------------FUNCTIONS-------------------------------------
 
   function handleDelete (e) {
     deleteTest(props.semesterName, props.ueId, props.subjectId, props.test.id)
@@ -29,7 +28,7 @@ function TestForm (props) {
     updateTest(props.semesterName, props.ueId, props.subjectId, props.test.id, formik.values.exam, formik.values.mark, formik.values.coeff)
   }
 
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <Form onSubmit={handleUpdate} onBlur={handleUpdate} className={styles.testContainer} id={props.test.id + '' + props.subjectId + '' + props.ueId}>

@@ -6,8 +6,7 @@ import { Modal as BModal } from 'react-bootstrap'
  * @return {null}
  */
 function Modal (props) {
-
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     !props.show

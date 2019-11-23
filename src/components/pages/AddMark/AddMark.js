@@ -7,8 +7,7 @@ import { addExam } from '../../../store/actions/subjects.action'
 import styles from './addMark.module.css'
 
 function AddMarkPage (props) {
-
-  //-----------------------------VARIABLES-------------------------------------
+  // -----------------------------VARIABLES-------------------------------------
 
   const formikInitialValues = {
     name: '',
@@ -22,14 +21,13 @@ function AddMarkPage (props) {
   const formikExam = useFormik({
     initialValues: formikInitialValues,
     onSubmit: values => {
-
       const emptyIds = Object.keys(values).filter(k => values[k] === '').map(k => parseInt(k.substring(5)))
       const emptyNames = emptyIds.map(id => {
         const student = props.students.students.filter(s => s.id === id)[0]
         return student.lastName + ' ' + student.firstName
       })
 
-      if (emptyNames.length === 0 || window.confirm('Des étudiants n\'ont pas de note :\n' + emptyNames.join("\n"))) {
+      if (emptyNames.length === 0 || window.confirm('Des étudiants n\'ont pas de note :\n' + emptyNames.join('\n'))) {
         const exam = {
           name: values.name,
           coeff: values.coeff,
@@ -44,8 +42,7 @@ function AddMarkPage (props) {
     }
   })
 
-
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   return (
     <div className={styles.addMark}>
@@ -96,7 +93,7 @@ function AddMarkPage (props) {
   )
 }
 
-//-----------------------------STATEMAP-------------------------------------
+// -----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

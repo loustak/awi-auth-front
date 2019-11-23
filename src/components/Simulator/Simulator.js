@@ -10,8 +10,7 @@ import { withRouter } from 'react-router-dom'
 import { setPeriodsSubjects } from '../../store/actions/periods.action'
 
 function Simulator (props) {
-
-  //-----------------------------FUNCTIONS-------------------------------------
+  // -----------------------------FUNCTIONS-------------------------------------
 
   const periods = props.periods.periods.filter(period => period.modules && period.modules.length > 0)
     .sort((a, b) => {
@@ -35,7 +34,7 @@ function Simulator (props) {
   const filteredSemesters = periods
     .filter(semester => selectedSemester !== '' ? semester.title === selectedSemester : true)
 
-  //-----------------------------FUNCTIONS-------------------------------------
+  // -----------------------------FUNCTIONS-------------------------------------
 
   useEffect(() => {
     if (!props.periods.fetched && props.currentUser.fetched && !props.periods.fetching) {
@@ -45,9 +44,9 @@ function Simulator (props) {
       setSelectedSemester(periods[0].title)
       setDefaultSemesterChanged(true)
     }
-  })
+  }, [props.periods.fetched, props.periods.fetching, props.currentUser.fetched, periods, defaultSemesterChanged, training, year])
 
-  //-----------------------------RETURN-------------------------------------
+  // -----------------------------RETURN-------------------------------------
 
   const globalAvg = markOperations.getGlobalAverage(filteredSemesters[0])
   return (
@@ -58,15 +57,15 @@ function Simulator (props) {
             <div className={styles.simulatorHeader}>
               <Form>
                 <Form.Label>Semestre</Form.Label>
-                  <Form.Control
-                    as='select'
-                    className={styles.simulatorFormSemester}
-                    onChange={e => {
-                      setSelectedSemester(e.target.value)
-                      e.target.blur()
-                    }}
-                    value={selectedSemester}
-                  >
+                <Form.Control
+                  as='select'
+                  className={styles.simulatorFormSemester}
+                  onChange={e => {
+                    setSelectedSemester(e.target.value)
+                    e.target.blur()
+                  }}
+                  value={selectedSemester}
+                >
                   <option value=''>Choisissez un semestre</option>
                   {
                     periods.map((period, i) => <option key={Math.random()} value={period.title}>{period.title}</option>)
@@ -123,14 +122,14 @@ function Simulator (props) {
                       </div>
                       : null
                   }
-                )
-                : <ErrorPage errorMessage='Aucune UE associée' />
+                  )
+                  : <ErrorPage errorMessage='Aucune UE associée' />
                 : null
             }
           </>
           : <div className={styles.loading}>
             <div className='spinner-border text-info' role='status'>
-              <span className='sr-only'/>
+              <span className='sr-only' />
             </div>
             <div className={styles.loadingText}>
               <h4>Chargement en cours</h4>
@@ -141,7 +140,7 @@ function Simulator (props) {
   )
 }
 
-//-----------------------------STATEMAP-------------------------------------
+// -----------------------------STATEMAP-------------------------------------
 
 const stateMap = (state) => {
   return {

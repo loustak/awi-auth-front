@@ -18,10 +18,10 @@ export function removeExam (subjectId, examId) {
 }
 
 export function setTeacherSubjects (teacherFirstName, teacherLastName) {
-  store.dispatch({type: 'SET_SUBJECTS_START'})
-  apiFormatechService.getSubjectByTeacher( teacherFirstName, teacherLastName)
+  store.dispatch({ type: 'SET_SUBJECTS_START' })
+  apiFormatechService.getSubjectByTeacher(teacherFirstName, teacherLastName)
     .then(res => {
-      const newRes = res.subjects.map(r => {return {subject: {...r.subject, exams: [], training: r.code}}})
+      const newRes = res.subjects.map(r => { return { subject: { ...r.subject, exams: [], training: r.code } } })
       store.dispatch({
         type: 'SET_SUBJECTS_SUCCESS',
         payload: newRes
@@ -34,7 +34,6 @@ export function setTeacherSubjects (teacherFirstName, teacherLastName) {
       })
     })
 }
-
 
 // export function setFetchedUser (id) {
 //   return new Promise((resolve, reject) => {
@@ -54,7 +53,6 @@ export function setTeacherSubjects (teacherFirstName, teacherLastName) {
 //     })
 //   })
 // }
-
 
 // export function setFetchedUser (id) {
 //   return new Promise((resolve, reject) => {
