@@ -1,17 +1,8 @@
 const ClientOAuth2 = require('client-oauth2')
-import {
-  inProduction,
-  inIntegration
-} from '../Utils'
 
-const accessTokenUri = 'https://oauth.igpolytech.fr/token'
-const authorizationUri = 'https://oauth.igpolytech.fr/authorize'
-const redirectUri = 'http://localhost:5000/token'
-
-if (inProduction() || inIntegration()) {
-  authorizationUri = REACT_APP_AUTHORIZATION_URI
-  redirectUri = REACT_APP_REDIRECT_URI
-}
+const accessTokenUri = process.env.REACT_APP_SERVER_URL + '/token'
+const authorizationUri = process.env.REACT_APP_SERVER_URL + '/authorize'
+const redirectUri = window.location.origin + '/token'
 
 export const auth = new ClientOAuth2({
   clientId: '61976b76-48e7-4d07-98cb-88828f7dcf40',
